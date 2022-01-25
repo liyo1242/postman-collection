@@ -1,0 +1,484 @@
+{
+	"info": {
+		"_postman_id": "afcd55e7-b61d-4064-9546-6cf9e65f9dbc",
+		"name": "CrossClockIn",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "上班打卡",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"上班打卡成功\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"var Today = pm.collectionVariables.get(\"Today\");",
+							"pm.test(\"上班打卡時間是今天\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.Data.ClockTime).to.include(Today);",
+							"});",
+							"const jsonResponse = pm.response.json();",
+							"pm.globals.set(\"ClockId\", jsonResponse.Data.ClockId);"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"pm.sendRequest({",
+							"    url: 'https://local.kingnetsmart.com.tw/mvc/api/Login/CheckAccountPassword',",
+							"    method: 'POST',",
+							"    header: {",
+							"        'content-type': 'application/json',",
+							"    },",
+							"    body: {",
+							"        mode: 'raw',",
+							"        raw: JSON.stringify({",
+							"            \"Account\": \"0921229318\",",
+							"            \"Password\": \"850404\",",
+							"            \"Latitude\": 0,",
+							"            \"Longitude\": 0",
+							"        })",
+							"    }",
+							"}, function (err, response) {",
+							"    const jsonResponse = response.json();",
+							"    pm.collectionVariables.set(\"housekeeperToken\", jsonResponse.Data.Token);",
+							"    pm.collectionVariables.set(\"Com_id\", jsonResponse.Data.communities[1].Id);",
+							"});",
+							"const housekeeperToken = pm.collectionVariables.get(\"housekeeperToken\");",
+							"const Com_id = pm.collectionVariables.get(\"Com_id\");",
+							"",
+							"",
+							"",
+							"setTimeout(function () {",
+							"    pm.sendRequest({",
+							"        url: 'https://local.kingnetsmart.com.tw/api/Login/CommunityLogin',",
+							"        method: 'POST',",
+							"        header: {",
+							"            'content-type': 'application/json',",
+							"        },",
+							"        body: {",
+							"            mode: 'raw',",
+							"            raw: JSON.stringify({",
+							"                \"Token\": pm.collectionVariables.get(\"housekeeperToken\"),",
+							"                \"ComId\": pm.collectionVariables.get(\"Com_id\"),",
+							"            })",
+							"        }",
+							"    }, function (err, response) {",
+							"        const jsonResponse2 = response.json();",
+							"    })",
+							"}, 1000);",
+							"",
+							"Date.prototype.yyyymmdd = function() {",
+							"  var mm = this.getMonth() + 1; // getMonth() is zero-based",
+							"  var dd = this.getDate();",
+							"",
+							"  return [this.getFullYear(),",
+							"          (mm>9 ? '' : '0') + mm,",
+							"          (dd>9 ? '' : '0') + dd",
+							"         ].join('-');",
+							"};",
+							"var date = new Date();",
+							"pm.collectionVariables.set(\"Today\", date.yyyymmdd());"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "ClockCard",
+							"value": "123",
+							"type": "default"
+						},
+						{
+							"key": "Longitude",
+							"value": "0",
+							"type": "default"
+						},
+						{
+							"key": "Latitude",
+							"value": "0",
+							"type": "default"
+						},
+						{
+							"key": "ClockImgFile",
+							"value": "null",
+							"type": "default"
+						},
+						{
+							"key": "IsWarning",
+							"value": "false",
+							"type": "default"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://local.kingnetsmart.com.tw/core/api/ManagerClock/ClockIn",
+					"protocol": "https",
+					"host": [
+						"local",
+						"kingnetsmart",
+						"com",
+						"tw"
+					],
+					"path": [
+						"core",
+						"api",
+						"ManagerClock",
+						"ClockIn"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "上班打卡備註",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"上班打卡增加備註成功\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.Status).to.eql(1);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"content-type": true
+				}
+			},
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "content-type",
+						"value": "application/json;charset=UTF-8",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"Note\":\"ClockIn API testing\"}"
+				},
+				"url": {
+					"raw": "https://local.kingnetsmart.com.tw/core/api/ManagerClock/{{ClockId}}/ClockIn",
+					"protocol": "https",
+					"host": [
+						"local",
+						"kingnetsmart",
+						"com",
+						"tw"
+					],
+					"path": [
+						"core",
+						"api",
+						"ManagerClock",
+						"{{ClockId}}",
+						"ClockIn"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "下班打卡",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"API \bstatus 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "ClockCard",
+							"value": "123",
+							"type": "default"
+						},
+						{
+							"key": "Longitude",
+							"value": "0",
+							"type": "default"
+						},
+						{
+							"key": "Latitude",
+							"value": "0",
+							"type": "default"
+						},
+						{
+							"key": "ClockImgFile",
+							"value": "null",
+							"type": "default"
+						},
+						{
+							"key": "IsWarning",
+							"value": "false",
+							"type": "default"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://local.kingnetsmart.com.tw/core/api/ManagerClock/{{ClockId}}/ClockOut",
+					"protocol": "https",
+					"host": [
+						"local",
+						"kingnetsmart",
+						"com",
+						"tw"
+					],
+					"path": [
+						"core",
+						"api",
+						"ManagerClock",
+						"{{ClockId}}",
+						"ClockOut"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "下班打卡備註",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"下班打卡增加備註成功\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.Status).to.eql(1);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"content-type": true
+				}
+			},
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json;charset=UTF-8",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"Note\":\"ClockOut API testing\"}"
+				},
+				"url": {
+					"raw": "https://local.kingnetsmart.com.tw/core/api/ManagerClock/{{ClockId}}/ClockOut",
+					"protocol": "https",
+					"host": [
+						"local",
+						"kingnetsmart",
+						"com",
+						"tw"
+					],
+					"path": [
+						"core",
+						"api",
+						"ManagerClock",
+						"{{ClockId}}",
+						"ClockOut"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "異動上下班打卡備註",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"上下班打卡備註編輯成功\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.Status).to.eql(1);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json;charset=UTF-8",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"ClockInNote\":\"ClockIn API testing edit\",\"ClockOutNote\":\"ClockOut API testing edit\"}"
+				},
+				"url": {
+					"raw": "https://local.kingnetsmart.com.tw/core/api/ManagerClock/{{ClockId}}",
+					"protocol": "https",
+					"host": [
+						"local",
+						"kingnetsmart",
+						"com",
+						"tw"
+					],
+					"path": [
+						"core",
+						"api",
+						"ManagerClock",
+						"{{ClockId}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "上班打卡失敗 錯誤卡片",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"ErrorMessage 文案正確\", function () {",
+							"    pm.expect(pm.response.text()).to.include(\"此感應卡未綁定帳號\");",
+							"});",
+							"pm.test(\"API Status 404\", function () {",
+							"    pm.response.to.have.status(404);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "ClockCard",
+							"value": "4444444",
+							"type": "default"
+						},
+						{
+							"key": "Longitude",
+							"value": "0",
+							"type": "default"
+						},
+						{
+							"key": "Latitude",
+							"value": "0",
+							"type": "default"
+						},
+						{
+							"key": "ClockImgFile",
+							"value": "null",
+							"type": "default"
+						},
+						{
+							"key": "IsWarning",
+							"value": "false",
+							"type": "default"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://local.kingnetsmart.com.tw/core/api/ManagerClock/ClockIn",
+					"protocol": "https",
+					"host": [
+						"local",
+						"kingnetsmart",
+						"com",
+						"tw"
+					],
+					"path": [
+						"core",
+						"api",
+						"ManagerClock",
+						"ClockIn"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "housekeeperToken",
+			"value": ""
+		},
+		{
+			"key": "Com_id",
+			"value": ""
+		},
+		{
+			"key": "Today",
+			"value": ""
+		}
+	]
+}
