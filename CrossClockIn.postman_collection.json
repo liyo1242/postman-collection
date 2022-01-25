@@ -12,11 +12,11 @@
 					"listen": "test",
 					"script": {
 						"exec": [
-							"pm.test(\"上班打卡成功\", function () {",
+							"pm.test(\"Status code is 200\", function () {",
 							"    pm.response.to.have.status(200);",
 							"});",
 							"var Today = pm.collectionVariables.get(\"Today\");",
-							"pm.test(\"上班打卡時間是今天\", function () {",
+							"pm.test(\"ClockIn Date is Today\", function () {",
 							"    var jsonData = pm.response.json();",
 							"    pm.expect(jsonData.Data.ClockTime).to.include(Today);",
 							"});",
@@ -98,7 +98,7 @@
 					"formdata": [
 						{
 							"key": "ClockCard",
-							"value": "123",
+							"value": "123456789",
 							"type": "default"
 						},
 						{
@@ -120,6 +120,12 @@
 							"key": "IsWarning",
 							"value": "false",
 							"type": "default"
+						},
+						{
+							"key": "",
+							"value": "",
+							"type": "text",
+							"disabled": true
 						}
 					]
 				},
@@ -149,7 +155,7 @@
 					"listen": "test",
 					"script": {
 						"exec": [
-							"pm.test(\"上班打卡增加備註成功\", function () {",
+							"pm.test(\"ClockIn Note Success\", function () {",
 							"    var jsonData = pm.response.json();",
 							"    pm.expect(jsonData.Status).to.eql(1);",
 							"});"
@@ -203,7 +209,7 @@
 					"listen": "test",
 					"script": {
 						"exec": [
-							"pm.test(\"API \bstatus 200\", function () {",
+							"pm.test(\"Status code is 200\", function () {",
 							"    pm.response.to.have.status(200);",
 							"});",
 							""
@@ -220,7 +226,7 @@
 					"formdata": [
 						{
 							"key": "ClockCard",
-							"value": "123",
+							"value": "123456789",
 							"type": "default"
 						},
 						{
@@ -272,7 +278,7 @@
 					"listen": "test",
 					"script": {
 						"exec": [
-							"pm.test(\"下班打卡增加備註成功\", function () {",
+							"pm.test(\"ClockOut Note Success\", function () {",
 							"    var jsonData = pm.response.json();",
 							"    pm.expect(jsonData.Status).to.eql(1);",
 							"});"
@@ -326,7 +332,7 @@
 					"listen": "test",
 					"script": {
 						"exec": [
-							"pm.test(\"上下班打卡備註編輯成功\", function () {",
+							"pm.test(\"ClockIn&Out Note Success\", function () {",
 							"    var jsonData = pm.response.json();",
 							"    pm.expect(jsonData.Status).to.eql(1);",
 							"});"
@@ -383,10 +389,10 @@
 					"listen": "test",
 					"script": {
 						"exec": [
-							"pm.test(\"ErrorMessage 文案正確\", function () {",
+							"pm.test(\"ErrorMessage Prompt Success\", function () {",
 							"    pm.expect(pm.response.text()).to.include(\"此感應卡未綁定帳號\");",
 							"});",
-							"pm.test(\"API Status 404\", function () {",
+							"pm.test(\"Status code is 404\", function () {",
 							"    pm.response.to.have.status(404);",
 							"});"
 						],
@@ -441,6 +447,73 @@
 						"api",
 						"ManagerClock",
 						"ClockIn"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "篩選打卡記錄",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"",
+							"const ClockId = pm.globals.get(\"ClockId\");",
+							"pm.test(\"Filter ClockInRecord Success \", function () {",
+							"    console.log(ClockId);",
+							"    var jsonData = pm.response.json();",
+							"    console.log(jsonData.Data.ManagerClocks[0].ClockId)",
+							"    pm.expect(jsonData.Data.ManagerClocks[0].ClockId).to.eql(ClockId);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://local.kingnetsmart.com.tw/core/api/ManagerClock?Offset=0&MaxCount=10&Filter.ManagerName=羅恩圻&Filter.DateAt.StartAt={{Today}}&Filter.DateAt.DueAt={{Today}}&Filter.NoClockOut=false",
+					"protocol": "https",
+					"host": [
+						"local",
+						"kingnetsmart",
+						"com",
+						"tw"
+					],
+					"path": [
+						"core",
+						"api",
+						"ManagerClock"
+					],
+					"query": [
+						{
+							"key": "Offset",
+							"value": "0"
+						},
+						{
+							"key": "MaxCount",
+							"value": "10"
+						},
+						{
+							"key": "Filter.ManagerName",
+							"value": "羅恩圻"
+						},
+						{
+							"key": "Filter.DateAt.StartAt",
+							"value": "{{Today}}"
+						},
+						{
+							"key": "Filter.DateAt.DueAt",
+							"value": "{{Today}}"
+						},
+						{
+							"key": "Filter.NoClockOut",
+							"value": "false"
+						}
 					]
 				}
 			},
