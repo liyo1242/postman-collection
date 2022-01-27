@@ -4,7 +4,7 @@ const newman = require('newman'); // require newman in your project
 newman.run({
     collection: require('./CrossClockIn.postman_collection.json'),
     reporters: ['junit', 'cli'],
-    reporter: { junit: { export: "./newman" } }
+    reporter: { junit: { export: "/newman" } }
 }, function (err) {
     if (err) { throw err; }
     console.log('collection run complete!');
@@ -13,7 +13,7 @@ newman.run({
 newman.run({
     collection: require('./HousekeeperToken.postman_collection.json'),
     reporters: ['junit', 'cli'],
-    reporter: { junit: { export: "./newman" } }
+    reporter: { junit: { export: "/newman" } }
 }, function (err) {
     if (err) { throw err; }
     console.log('collection run complete!');
