@@ -1,5 +1,5 @@
 const newman = require('newman'); // require newman in your project
-
+const { lineNotify } = require("./lineNotify");
 // call newman.run to pass `options` object and wait for callback
 async function CrossClockIn() {
     newman.run({
@@ -9,6 +9,7 @@ async function CrossClockIn() {
     }, function (err) {
         if (err) { throw err; }
         console.log('collection run complete!');
+        lineNotify('CrossClockIn collection run complete!')
     });
 
     newman.run({
@@ -18,6 +19,7 @@ async function CrossClockIn() {
     }, function (err) {
         if (err) { throw err; }
         console.log('collection run complete!');
+        lineNotify(`HousekeeperToken collection run complete!`);
     });
 };
 
