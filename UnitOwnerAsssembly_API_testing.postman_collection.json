@@ -312,7 +312,7 @@
 						{
 							"key": "UnitOwnerListExcel",
 							"type": "file",
-							"src": "dev.xlsx"
+							"src": "../QA-AutoTest-Api/file/dev.xlsx"
 						}
 					]
 				},
@@ -532,7 +532,7 @@
 						{
 							"key": "UnitOwnerListExcel",
 							"type": "file",
-							"src": "dev.xlsx"
+							"src": "../QA-AutoTest-Api/file/dev.xlsx"
 						}
 					]
 				},
@@ -752,7 +752,7 @@
 						{
 							"key": "UnitOwnerListExcel",
 							"type": "file",
-							"src": "dev.xlsx"
+							"src": "../QA-AutoTest-Api/file/dev.xlsx"
 						}
 					]
 				},
@@ -972,7 +972,7 @@
 						{
 							"key": "UnitOwnerListExcel",
 							"type": "file",
-							"src": "dev.xlsx"
+							"src": "../QA-AutoTest-Api/file/dev.xlsx"
 						}
 					]
 				},
@@ -1192,7 +1192,7 @@
 						{
 							"key": "UnitOwnerListExcel",
 							"type": "file",
-							"src": "dev.xlsx"
+							"src": "../QA-AutoTest-Api/file/dev.xlsx"
 						}
 					]
 				},
@@ -2089,6 +2089,323 @@
 			"response": []
 		},
 		{
+			"name": "編輯議案",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"InsertTopics Success\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{comLoginToken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "authority",
+						"value": "uoa-dev.kingnetsmart.com.tw"
+					},
+					{
+						"key": "sec-ch-ua",
+						"value": "\" Not A;Brand\";v=\"99\", \"Chromium\";v=\"98\", \"Google Chrome\";v=\"98\""
+					},
+					{
+						"key": "authenticationscheme",
+						"value": "SmartlifeBackstageAuthenticationHandler"
+					},
+					{
+						"key": "content-type",
+						"value": "application/json;charset=UTF-8"
+					},
+					{
+						"key": "authorization",
+						"value": "Bearer x4/h3t9g+2cGflxQRaGaIF68z1OUZS07yKnghDk/eXnkckEOgMkTkfUNDqC516LzKe8bmYlkf+mm4PLYZlQLvRWmg278WKvksmlITMea0ZSZHaegajR3G97BYj1QGsKfxFw0jIkCHdbVjdXdgoXlG55e3e38FvMbi3DQ+8xh8cp8q2uGaSyql9LV9GwzYbfGBQlTd7vY5QgfYUwiYbufl9jUBm877Mdc9D3CRNuHPHUwDE60FHSsKF2sbS9VrinAyJiqlXn0nUbVGU8lXP7Xj0MFeAjncmM+GNYMxwnpURVvuhZN6OjQVVujE9hKt2qgQfo2E/kgkLBOPTkCLMNLPMWocAav4rGd1e0l5WlrJ/EjhZKgu4iR1+BgUCxIKjpWW4IamUNYz93qoJYRoHktw1L373oq4Kn/ieocGiT2Em96nGSA2wtE/CmWJqvw+fyG7neOK6EbU7/8Ly+pwbHj7lyUon4tJdhQdpszn0EhEaWkAUg8JxFd3uJazuDV1WVgPs0OLUmRh/wTJCEhLri7gQHUtLKM27lNzl8IIyf0XF7iAh+v8c7HUCgWUA2Cr6zO3vYTDLk2BgF8uFTnmlklow==",
+						"disabled": true
+					},
+					{
+						"key": "sec-ch-ua-mobile",
+						"value": "?0"
+					},
+					{
+						"key": "user-agent",
+						"value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/98.0.4758.81 Safari/537.36"
+					},
+					{
+						"key": "sec-ch-ua-platform",
+						"value": "\"Windows\""
+					},
+					{
+						"key": "accept",
+						"value": "*/*"
+					},
+					{
+						"key": "origin",
+						"value": "https://local.kingnetsmart.com.tw"
+					},
+					{
+						"key": "sec-fetch-site",
+						"value": "same-site"
+					},
+					{
+						"key": "sec-fetch-mode",
+						"value": "cors"
+					},
+					{
+						"key": "sec-fetch-dest",
+						"value": "empty"
+					},
+					{
+						"key": "referer",
+						"value": "https://local.kingnetsmart.com.tw/"
+					},
+					{
+						"key": "accept-language",
+						"value": "zh-TW,zh;q=0.9,en-US;q=0.8,en;q=0.7,zh-CN;q=0.6,ig;q=0.5,th;q=0.4"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"assemblyId\":\"{{AssemblyId}}\",\"topicDtos\":[{\"title\":\"API testing edit\",\"description\":\"API testing edit\",\"attendanceThreshold\":0.3,\"consentThreshold\":0.3},{\"title\":\"edit\",\"description\":\"edit\",\"attendanceThreshold\":0.5,\"consentThreshold\":0.5}]}"
+				},
+				"url": {
+					"raw": "{{devUrl}}/UnitOwnerAssembly/InsertTopics",
+					"host": [
+						"{{devUrl}}"
+					],
+					"path": [
+						"UnitOwnerAssembly",
+						"InsertTopics"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "輸出已建立的出席名單",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"GetRegistrationExport Success\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{comLoginToken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "authority",
+						"value": "uoa-dev.kingnetsmart.com.tw"
+					},
+					{
+						"key": "sec-ch-ua",
+						"value": "\" Not A;Brand\";v=\"99\", \"Chromium\";v=\"98\", \"Google Chrome\";v=\"98\""
+					},
+					{
+						"key": "authenticationscheme",
+						"value": "SmartlifeBackstageAuthenticationHandler"
+					},
+					{
+						"key": "authorization",
+						"value": "Bearer x4/h3t9g+2cGflxQRaGaIF68z1OUZS07yKnghDk/eXnkckEOgMkTkfUNDqC516LzKe8bmYlkf+mm4PLYZlQLvRWmg278WKvksmlITMea0ZSZHaegajR3G97BYj1QGsKfxFw0jIkCHdbVjdXdgoXlG55e3e38FvMbi3DQ+8xh8cp8q2uGaSyql9LV9GwzYbfGBQlTd7vY5QgfYUwiYbufl9jUBm877Mdc9D3CRNuHPHUwDE60FHSsKF2sbS9VrinAyJiqlXn0nUbVGU8lXP7Xj0MFeAjncmM+GNYMxwnpURVvuhZN6OjQVVujE9hKt2qgQfo2E/kgkLBOPTkCLMNLPMWocAav4rGd1e0l5WlrJ/EjhZKgu4iR1+BgUCxIKjpWW4IamUNYz93qoJYRoHktw1L373oq4Kn/ieocGiT2Em96nGSA2wtE/CmWJqvw+fyG7neOK6EbU7/8Ly+pwbHj7lyUon4tJdhQdpszn0EhEaWkAUg8JxFd3uJazuDV1WVgPs0OLUmRh/wTJCEhLri7gQHUtLKM27lNzl8IIyf0XF7iAh+v8c7HUCgWUA2Cr6zO3vYTDLk2BgF8uFTnmlklow==",
+						"disabled": true
+					},
+					{
+						"key": "sec-ch-ua-mobile",
+						"value": "?0"
+					},
+					{
+						"key": "user-agent",
+						"value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/98.0.4758.81 Safari/537.36"
+					},
+					{
+						"key": "sec-ch-ua-platform",
+						"value": "\"Windows\""
+					},
+					{
+						"key": "accept",
+						"value": "*/*"
+					},
+					{
+						"key": "origin",
+						"value": "https://local.kingnetsmart.com.tw"
+					},
+					{
+						"key": "sec-fetch-site",
+						"value": "same-site"
+					},
+					{
+						"key": "sec-fetch-mode",
+						"value": "cors"
+					},
+					{
+						"key": "sec-fetch-dest",
+						"value": "empty"
+					},
+					{
+						"key": "referer",
+						"value": "https://local.kingnetsmart.com.tw/"
+					},
+					{
+						"key": "accept-language",
+						"value": "zh-TW,zh;q=0.9,en-US;q=0.8,en;q=0.7,zh-CN;q=0.6,ig;q=0.5,th;q=0.4"
+					}
+				],
+				"url": {
+					"raw": "{{devUrl}}/UnitOwnerAssembly/GetRegistrationExport?AssemblyId={{AssemblyId}}",
+					"host": [
+						"{{devUrl}}"
+					],
+					"path": [
+						"UnitOwnerAssembly",
+						"GetRegistrationExport"
+					],
+					"query": [
+						{
+							"key": "AssemblyId",
+							"value": "{{AssemblyId}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "取得已建立的出席證",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"GetAttendanceCardList Success\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{comLoginToken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "authority",
+						"value": "uoa-staging.kingnetsmart.com.tw"
+					},
+					{
+						"key": "sec-ch-ua",
+						"value": "\" Not A;Brand\";v=\"99\", \"Chromium\";v=\"98\", \"Google Chrome\";v=\"98\""
+					},
+					{
+						"key": "authenticationscheme",
+						"value": "SmartlifeBackstageAuthenticationHandler"
+					},
+					{
+						"key": "authorization",
+						"value": "Bearer x4/h3t9g+2cGflxQRaGaICqLx5kwbK8kOsYSK9g4psuu0BSfVXox4yS36T7K8GiUmj06cbOYgFnGhfz9tjXN1JvuY0Hq1TzZUi8VY8/6Lc0Jfx3VQW8fbpCCv32T41lHtBbxwkSUHu4fcmCVD+IIBP6c95nuPjc/wndHv9M+yPUWdo9RttnFQqJGoZqwSnk0KJxzc4Hivvoy5rMh/8Bk2aMx49vaRsABAzPLGd/Hz88Ci43elQw6Ez7otQQ8SVnoVtM7Xp+5pLRIUctSEvJN/hdmTONAD6S8GLmdYDQ6gwIdBpMsFum/hhr0B43GA3kXte/Fpy4HZipPMx82utiPAskG1d/b1aQEZoUfaAA7XcM0jIjPt8Hy6pmYGZl7gMiIsv/VDQNZg4YNquO83cX5bdAor5JLHB1jcVjUzof3NsvWaaNS/TJEecDmj7LCxirSjdXye6l8cDsKsxjdObvlVaT9s++eBmKVtqf/H3Oxha7NDrK3Uyq6KtTFV/cRBfzUTEPrrsZ8XPC8oozEXkh7Xiy+YNnUL3VWkYltNixM4Tg0QRdtNGO+Al0K3A4cBTjFt+To9UvJcRZQr8caFlqqTA==",
+						"disabled": true
+					},
+					{
+						"key": "sec-ch-ua-mobile",
+						"value": "?0"
+					},
+					{
+						"key": "user-agent",
+						"value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/98.0.4758.81 Safari/537.36"
+					},
+					{
+						"key": "sec-ch-ua-platform",
+						"value": "\"Windows\""
+					},
+					{
+						"key": "accept",
+						"value": "*/*"
+					},
+					{
+						"key": "origin",
+						"value": "https://test.kingnetsmart.com.tw"
+					},
+					{
+						"key": "sec-fetch-site",
+						"value": "same-site"
+					},
+					{
+						"key": "sec-fetch-mode",
+						"value": "cors"
+					},
+					{
+						"key": "sec-fetch-dest",
+						"value": "empty"
+					},
+					{
+						"key": "referer",
+						"value": "https://test.kingnetsmart.com.tw/"
+					},
+					{
+						"key": "accept-language",
+						"value": "zh-TW,zh;q=0.9,en-US;q=0.8,en;q=0.7,zh-CN;q=0.6,ig;q=0.5,th;q=0.4"
+					}
+				],
+				"url": {
+					"raw": "{{devUrl}}/UnitOwnerAssembly/GetAttendanceCardList?AssemblyId={{AssemblyId}}",
+					"host": [
+						"{{devUrl}}"
+					],
+					"path": [
+						"UnitOwnerAssembly",
+						"GetAttendanceCardList"
+					],
+					"query": [
+						{
+							"key": "AssemblyId",
+							"value": "{{AssemblyId}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "驗證所建立的會議",
 			"event": [
 				{
@@ -2210,6 +2527,200 @@
 							"key": "AssemblyId",
 							"value": "{{AssemblyId}}"
 						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "編輯會議",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"EditAssembly Success\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{comLoginToken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [
+					{
+						"key": "authority",
+						"value": "uoa-dev.kingnetsmart.com.tw"
+					},
+					{
+						"key": "sec-ch-ua",
+						"value": "\" Not A;Brand\";v=\"99\", \"Chromium\";v=\"98\", \"Google Chrome\";v=\"98\""
+					},
+					{
+						"key": "authenticationscheme",
+						"value": "SmartlifeBackstageAuthenticationHandler"
+					},
+					{
+						"key": "authorization",
+						"value": "Bearer x4/h3t9g+2cGflxQRaGaIF68z1OUZS07yKnghDk/eXnkckEOgMkTkfUNDqC516LzKe8bmYlkf+mm4PLYZlQLvRWmg278WKvksmlITMea0ZSZHaegajR3G97BYj1QGsKfxFw0jIkCHdbVjdXdgoXlG55e3e38FvMbi3DQ+8xh8cp8q2uGaSyql9LV9GwzYbfGBQlTd7vY5QgfYUwiYbufl9jUBm877Mdc9D3CRNuHPHUwDE60FHSsKF2sbS9VrinAyJiqlXn0nUbVGU8lXP7Xj0MFeAjncmM+GNYMxwnpURVvuhZN6OjQVVujE9hKt2qgQfo2E/kgkLBOPTkCLMNLPMWocAav4rGd1e0l5WlrJ/EjhZKgu4iR1+BgUCxIKjpWW4IamUNYz93qoJYRoHktw1L373oq4Kn/ieocGiT2Em96nGSA2wtE/CmWJqvw+fyG7neOK6EbU7/8Ly+pwbHj7lyUon4tJdhQdpszn0EhEaWkAUg8JxFd3uJazuDV1WVgPs0OLUmRh/wTJCEhLri7gQHUtLKM27lNzl8IIyf0XF7iAh+v8c7HUCgWUA2Cr6zO3vYTDLk2BgF8uFTnmlklow==",
+						"disabled": true
+					},
+					{
+						"key": "sec-ch-ua-mobile",
+						"value": "?0"
+					},
+					{
+						"key": "user-agent",
+						"value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/98.0.4758.81 Safari/537.36"
+					},
+					{
+						"key": "sec-ch-ua-platform",
+						"value": "\"Windows\""
+					},
+					{
+						"key": "accept",
+						"value": "*/*"
+					},
+					{
+						"key": "origin",
+						"value": "https://local.kingnetsmart.com.tw"
+					},
+					{
+						"key": "sec-fetch-site",
+						"value": "same-site"
+					},
+					{
+						"key": "sec-fetch-mode",
+						"value": "cors"
+					},
+					{
+						"key": "sec-fetch-dest",
+						"value": "empty"
+					},
+					{
+						"key": "referer",
+						"value": "https://local.kingnetsmart.com.tw/"
+					},
+					{
+						"key": "accept-language",
+						"value": "zh-TW,zh;q=0.9,en-US;q=0.8,en;q=0.7,zh-CN;q=0.6,ig;q=0.5,th;q=0.4"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "Title",
+							"value": "API testing edit",
+							"type": "text"
+						},
+						{
+							"key": "IssueTextNumber",
+							"value": "",
+							"type": "text"
+						},
+						{
+							"key": "Category",
+							"value": "Regular",
+							"type": "text"
+						},
+						{
+							"key": "AssemblyStartAt",
+							"value": "2022-02-09 06:30",
+							"type": "text"
+						},
+						{
+							"key": "CommunityId",
+							"value": "15072201",
+							"type": "text"
+						},
+						{
+							"key": "PlaceName",
+							"value": "API testing edit",
+							"type": "text"
+						},
+						{
+							"key": "PlaceAddress",
+							"value": "",
+							"type": "text"
+						},
+						{
+							"key": "HostRole",
+							"value": "Builder",
+							"type": "text"
+						},
+						{
+							"key": "HostName",
+							"value": "API testing edit",
+							"type": "text"
+						},
+						{
+							"key": "ContactPersonRole",
+							"value": "Others",
+							"type": "text"
+						},
+						{
+							"key": "ContactPersonName",
+							"value": "",
+							"type": "text"
+						},
+						{
+							"key": "Note",
+							"value": "",
+							"type": "text"
+						},
+						{
+							"key": "TabletThreshold",
+							"value": "0.3",
+							"type": "text"
+						},
+						{
+							"key": "AreaThreshold",
+							"value": "0",
+							"type": "text"
+						},
+						{
+							"key": "Description",
+							"value": "",
+							"type": "text"
+						},
+						{
+							"key": "NotificationType",
+							"value": "App",
+							"type": "text"
+						},
+						{
+							"key": "AssemblyDueAt",
+							"value": "2022-02-09 21:00",
+							"type": "text"
+						},
+						{
+							"key": "AssemblyId",
+							"value": "{{AssemblyId}}",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{devUrl}}/UnitOwnerAssembly/EditAssembly",
+					"host": [
+						"{{devUrl}}"
+					],
+					"path": [
+						"UnitOwnerAssembly",
+						"EditAssembly"
 					]
 				}
 			},
