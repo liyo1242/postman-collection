@@ -9,7 +9,7 @@ async function CrossClockIn() {
     }, function (err) {
         if (err) { throw err; }
         console.log('collection run complete!');
-        lineNotify('CrossClockIn collection run complete!')
+        
     });
 
     newman.run({
@@ -19,7 +19,16 @@ async function CrossClockIn() {
     }, function (err) {
         if (err) { throw err; }
         console.log('collection run complete!');
-        lineNotify(`HousekeeperToken collection run complete!`);
+    });
+    
+    newman.run({
+        collection: require('./UnitOwnerAsssembly_API_testing.postman_collection.json'),
+        environment : require('./uoa-dev.postman_environment.json'),
+        reporters: ['junit', 'cli'],
+        reporter: { junit: { export: "./newman" } }
+    }, function (err) {
+        if (err) { throw err; }
+        console.log('collection run complete!');
     });
 };
 
