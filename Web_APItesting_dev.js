@@ -6,6 +6,7 @@ async function Web_APItesting_dev() {
     // 跨案場打卡API測試
     newman.run({
         collection: require('./collection/CrossClockIn_API_testing.postman_collection.json'),
+        environment: require('./environment/Dev.postman_environment.json'),
         reporters: ['junit', 'cli'],
         reporter: { junit: { export: "./newman" } }
     }, function (err) {

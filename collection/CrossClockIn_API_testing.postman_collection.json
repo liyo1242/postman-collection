@@ -90,13 +90,9 @@
 					]
 				},
 				"url": {
-					"raw": "https://local.kingnetsmart.com.tw/api/Login/CommunityLogin",
-					"protocol": "https",
+					"raw": "{{local-devUrl}}/api/Login/CommunityLogin",
 					"host": [
-						"local",
-						"kingnetsmart",
-						"com",
-						"tw"
+						"{{local-devUrl}}"
 					],
 					"path": [
 						"api",
@@ -120,7 +116,7 @@
 							"var Today = pm.collectionVariables.get(\"Today\");",
 							"pm.test(\"ClockIn Date is Today\", function () {",
 							"    var jsonData = pm.response.json();",
-							"    pm.expect(jsonData.Data.ClockTime).to.include(Today);",
+							"    pm.expect(jsonData.Data.ClockTime.substr(0,10)).to.include(Today);",
 							"});",
 							"const jsonResponse = pm.response.json();",
 							"pm.globals.set(\"ClockId\", jsonResponse.Data.ClockId);"
@@ -181,13 +177,9 @@
 					]
 				},
 				"url": {
-					"raw": "https://local.kingnetsmart.com.tw/core/api/ManagerClock/ClockIn",
-					"protocol": "https",
+					"raw": "{{local-devUrl}}/core/api/ManagerClock/ClockIn",
 					"host": [
-						"local",
-						"kingnetsmart",
-						"com",
-						"tw"
+						"{{local-devUrl}}"
 					],
 					"path": [
 						"core",
@@ -234,13 +226,9 @@
 					"raw": "{\"Note\":\"ClockIn API testing\"}"
 				},
 				"url": {
-					"raw": "https://local.kingnetsmart.com.tw/core/api/ManagerClock/{{ClockId}}/ClockIn",
-					"protocol": "https",
+					"raw": "{{local-devUrl}}/core/api/ManagerClock/{{ClockId}}/ClockIn",
 					"host": [
-						"local",
-						"kingnetsmart",
-						"com",
-						"tw"
+						"{{local-devUrl}}"
 					],
 					"path": [
 						"core",
@@ -303,13 +291,9 @@
 					]
 				},
 				"url": {
-					"raw": "https://local.kingnetsmart.com.tw/core/api/ManagerClock/{{ClockId}}/ClockOut",
-					"protocol": "https",
+					"raw": "{{local-devUrl}}/core/api/ManagerClock/{{ClockId}}/ClockOut",
 					"host": [
-						"local",
-						"kingnetsmart",
-						"com",
-						"tw"
+						"{{local-devUrl}}"
 					],
 					"path": [
 						"core",
@@ -357,13 +341,9 @@
 					"raw": "{\"Note\":\"ClockOut API testing\"}"
 				},
 				"url": {
-					"raw": "https://local.kingnetsmart.com.tw/core/api/ManagerClock/{{ClockId}}/ClockOut",
-					"protocol": "https",
+					"raw": "{{local-devUrl}}/core/api/ManagerClock/{{ClockId}}/ClockOut",
 					"host": [
-						"local",
-						"kingnetsmart",
-						"com",
-						"tw"
+						"{{local-devUrl}}"
 					],
 					"path": [
 						"core",
@@ -406,13 +386,9 @@
 					"raw": "{\"ClockInNote\":\"ClockIn API testing edit\",\"ClockOutNote\":\"ClockOut API testing edit\"}"
 				},
 				"url": {
-					"raw": "https://local.kingnetsmart.com.tw/core/api/ManagerClock/{{ClockId}}",
-					"protocol": "https",
+					"raw": "{{local-devUrl}}/core/api/ManagerClock/{{ClockId}}",
 					"host": [
-						"local",
-						"kingnetsmart",
-						"com",
-						"tw"
+						"{{local-devUrl}}"
 					],
 					"path": [
 						"core",
@@ -485,13 +461,9 @@
 					]
 				},
 				"url": {
-					"raw": "https://local.kingnetsmart.com.tw/core/api/ManagerClock/ClockIn",
-					"protocol": "https",
+					"raw": "{{local-devUrl}}/core/api/ManagerClock/ClockIn",
 					"host": [
-						"local",
-						"kingnetsmart",
-						"com",
-						"tw"
+						"{{local-devUrl}}"
 					],
 					"path": [
 						"core",
@@ -511,13 +483,13 @@
 					"script": {
 						"exec": [
 							"",
-							"// const ClockId = pm.globals.get(\"ClockId\");",
-							"// pm.test(\"Filter ClockInRecord Success \", function () {",
-							"//     console.log(ClockId);",
-							"//     var jsonData = pm.response.json();",
-							"//     console.log(jsonData.Data.ManagerClocks[0].ClockId)",
-							"//     pm.expect(jsonData.Data.ManagerClocks[0].ClockId).to.eql(ClockId);",
-							"// });",
+							"const ClockId = pm.globals.get(\"ClockId\");",
+							"pm.test(\"Filter ClockInRecord Success \", function () {",
+							"    console.log(ClockId);",
+							"    var jsonData = pm.response.json();",
+							"    console.log(jsonData.Data.ManagerClocks[0].ClockId)",
+							"    pm.expect(jsonData.Data.ManagerClocks[0].ClockId).to.eql(ClockId);",
+							"});",
 							"",
 							"",
 							"const jsonData = pm.response.json();",
@@ -537,13 +509,9 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "https://local.kingnetsmart.com.tw/core/api/ManagerClock?Offset=0&MaxCount=10&Filter.ManagerName=羅恩圻&Filter.DateAt.StartAt={{Today}}&Filter.DateAt.DueAt={{Today}}&Filter.NoClockOut=false",
-					"protocol": "https",
+					"raw": "{{local-devUrl}}/core/api/ManagerClock?Offset=0&MaxCount=10&Filter.ManagerName=羅恩圻&Filter.DateAt.StartAt={{Today}}&Filter.DateAt.DueAt={{Today}}&Filter.NoClockOut=false",
 					"host": [
-						"local",
-						"kingnetsmart",
-						"com",
-						"tw"
+						"{{local-devUrl}}"
 					],
 					"path": [
 						"core",
