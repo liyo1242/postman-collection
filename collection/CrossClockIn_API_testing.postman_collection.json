@@ -1,10 +1,112 @@
 {
 	"info": {
 		"_postman_id": "afcd55e7-b61d-4064-9546-6cf9e65f9dbc",
-		"name": "CrossClockIn",
+		"name": "CrossClockIn_API_testing",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
+		{
+			"name": "取得ComLogingToken",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Get ComLoginToken Success\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"var jsonData = pm.cookies.get('comLoginToken');\r",
+							"pm.collectionVariables.set('comLoginToken', jsonData)\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"pm.sendRequest({\r",
+							"    url: 'https://local.kingnetsmart.com.tw/mvc/api/Login/CheckAccountPassword',\r",
+							"    method: 'POST',\r",
+							"    header: {\r",
+							"        'content-type': 'application/json',\r",
+							"    },\r",
+							"    body: {\r",
+							"        mode: 'raw',\r",
+							"        raw: JSON.stringify({\r",
+							"            \"Account\": \"0921229318\",\r",
+							"            \"Password\": \"850404\",\r",
+							"            \"Latitude\": 0,\r",
+							"            \"Longitude\": 0\r",
+							"        })\r",
+							"    }\r",
+							"}, function (err, response) {\r",
+							"    const jsonResponse = response.json();\r",
+							"    pm.collectionVariables.set(\"housekeeperToken\", jsonResponse.Data.Token);\r",
+							"    pm.collectionVariables.set(\"Com_id\", jsonResponse.Data.communities[1].Id);\r",
+							"});\r",
+							"\r",
+							"Date.prototype.yyyymmdd = function() {\r",
+							"  var mm = this.getMonth() + 1; // getMonth() is zero-based\r",
+							"  var dd = this.getDate();\r",
+							"\r",
+							"  return [this.getFullYear(),\r",
+							"          (mm>9 ? '' : '0') + mm,\r",
+							"          (dd>9 ? '' : '0') + dd\r",
+							"         ].join('-');\r",
+							"};\r",
+							"var date = new Date();\r",
+							"pm.collectionVariables.set(\"Today\", date.yyyymmdd());\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "Token",
+							"value": "{{housekeeperToken}}",
+							"type": "default"
+						},
+						{
+							"key": "ComId",
+							"value": "{{Com_id}}",
+							"type": "default"
+						},
+						{
+							"key": "BrowserPushToken",
+							"value": "eCMc3tK_sLs:APA91bGcfiIVEbdw9Z-DsbzomG0w8My2Ke440GJAERkefOp-M1ABdo7l2whAl3A8n7hIUZQ81sEV9G5YpdUGoGBGOnh132IcfS4q47PxGnle6c8XidnSK5uIwaPqlXyIbRAg80fuiGmC",
+							"type": "default",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "https://local.kingnetsmart.com.tw/api/Login/CommunityLogin",
+					"protocol": "https",
+					"host": [
+						"local",
+						"kingnetsmart",
+						"com",
+						"tw"
+					],
+					"path": [
+						"api",
+						"Login",
+						"CommunityLogin"
+					]
+				}
+			},
+			"response": []
+		},
 		{
 			"name": "上班打卡",
 			"event": [
@@ -30,61 +132,10 @@
 					"listen": "prerequest",
 					"script": {
 						"exec": [
-							"pm.sendRequest({",
-							"    url: 'https://local.kingnetsmart.com.tw/mvc/api/Login/CheckAccountPassword',",
-							"    method: 'POST',",
-							"    header: {",
-							"        'content-type': 'application/json',",
-							"    },",
-							"    body: {",
-							"        mode: 'raw',",
-							"        raw: JSON.stringify({",
-							"            \"Account\": \"0921229318\",",
-							"            \"Password\": \"850404\",",
-							"            \"Latitude\": 0,",
-							"            \"Longitude\": 0",
-							"        })",
-							"    }",
-							"}, function (err, response) {",
-							"    const jsonResponse = response.json();",
-							"    pm.collectionVariables.set(\"housekeeperToken\", jsonResponse.Data.Token);",
-							"    pm.collectionVariables.set(\"Com_id\", jsonResponse.Data.communities[1].Id);",
-							"});",
-							"const housekeeperToken = pm.collectionVariables.get(\"housekeeperToken\");",
-							"const Com_id = pm.collectionVariables.get(\"Com_id\");",
 							"",
 							"",
 							"",
-							"setTimeout(function () {",
-							"    pm.sendRequest({",
-							"        url: 'https://local.kingnetsmart.com.tw/api/Login/CommunityLogin',",
-							"        method: 'POST',",
-							"        header: {",
-							"            'content-type': 'application/json',",
-							"        },",
-							"        body: {",
-							"            mode: 'raw',",
-							"            raw: JSON.stringify({",
-							"                \"Token\": pm.collectionVariables.get(\"housekeeperToken\"),",
-							"                \"ComId\": pm.collectionVariables.get(\"Com_id\"),",
-							"            })",
-							"        }",
-							"    }, function (err, response) {",
-							"        const jsonResponse2 = response.json();",
-							"    })",
-							"}, 1000);",
-							"",
-							"Date.prototype.yyyymmdd = function() {",
-							"  var mm = this.getMonth() + 1; // getMonth() is zero-based",
-							"  var dd = this.getDate();",
-							"",
-							"  return [this.getFullYear(),",
-							"          (mm>9 ? '' : '0') + mm,",
-							"          (dd>9 ? '' : '0') + dd",
-							"         ].join('-');",
-							"};",
-							"var date = new Date();",
-							"pm.collectionVariables.set(\"Today\", date.yyyymmdd());"
+							""
 						],
 						"type": "text/javascript"
 					}
@@ -460,13 +511,23 @@
 					"script": {
 						"exec": [
 							"",
-							"const ClockId = pm.globals.get(\"ClockId\");",
-							"pm.test(\"Filter ClockInRecord Success \", function () {",
-							"    console.log(ClockId);",
-							"    var jsonData = pm.response.json();",
-							"    console.log(jsonData.Data.ManagerClocks[0].ClockId)",
-							"    pm.expect(jsonData.Data.ManagerClocks[0].ClockId).to.eql(ClockId);",
-							"});"
+							"// const ClockId = pm.globals.get(\"ClockId\");",
+							"// pm.test(\"Filter ClockInRecord Success \", function () {",
+							"//     console.log(ClockId);",
+							"//     var jsonData = pm.response.json();",
+							"//     console.log(jsonData.Data.ManagerClocks[0].ClockId)",
+							"//     pm.expect(jsonData.Data.ManagerClocks[0].ClockId).to.eql(ClockId);",
+							"// });",
+							"",
+							"",
+							"const jsonData = pm.response.json();",
+							"const managerClock = jsonData.Data.ManagerClocks;",
+							"const length = managerClock.length",
+							"const a = []",
+							"const managerClockId = managerClock.forEach((item, index, arr) => a.push(arr[index].ClockId));",
+							"console.log(a);",
+							"console.log(a.sort((x,y) => x-y));",
+							"console.log(a.sort((x,y) => y-x));"
 						],
 						"type": "text/javascript"
 					}
@@ -551,6 +612,10 @@
 		},
 		{
 			"key": "Today",
+			"value": ""
+		},
+		{
+			"key": "comLoginToken",
 			"value": ""
 		}
 	]
