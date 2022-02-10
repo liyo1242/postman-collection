@@ -16,7 +16,7 @@ async function Web_APItesting_dev() {
     // 區權會API測試 
     newman.run({
         collection: require('./collection/UnitOwnerAsssembly_API_testing.postman_collection.json'),
-        environment: require('./environment/uoa-dev.postman_environment.json'),
+        environment: require('./environment/Dev.postman_environment.json'),
         reporters: ['junit', 'cli'],
         reporter: { junit: { export: "./newman" } }
     }, function (err) {
