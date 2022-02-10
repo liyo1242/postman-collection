@@ -312,7 +312,7 @@
 						{
 							"key": "UnitOwnerListExcel",
 							"type": "file",
-							"src": "../QA-AutoTest-Api/file/dev.xlsx"
+							"src": "./file/dev.xlsx"
 						}
 					]
 				},
@@ -532,7 +532,7 @@
 						{
 							"key": "UnitOwnerListExcel",
 							"type": "file",
-							"src": "../QA-AutoTest-Api/file/dev.xlsx"
+							"src": "./file/dev.xlsx"
 						}
 					]
 				},
@@ -752,7 +752,7 @@
 						{
 							"key": "UnitOwnerListExcel",
 							"type": "file",
-							"src": "../QA-AutoTest-Api/file/dev.xlsx"
+							"src": "./file/dev.xlsx"
 						}
 					]
 				},
@@ -972,7 +972,7 @@
 						{
 							"key": "UnitOwnerListExcel",
 							"type": "file",
-							"src": "../QA-AutoTest-Api/file/dev.xlsx"
+							"src": "./file/dev.xlsx"
 						}
 					]
 				},
@@ -1192,7 +1192,7 @@
 						{
 							"key": "UnitOwnerListExcel",
 							"type": "file",
-							"src": "../QA-AutoTest-Api/file/dev.xlsx"
+							"src": "./file/dev.xlsx"
 						}
 					]
 				},
@@ -1413,7 +1413,7 @@
 						{
 							"key": "UnitOwnerListExcel",
 							"type": "file",
-							"src": "../QA-AutoTest-Api/file/dev.xlsx"
+							"src": "./file/dev.xlsx"
 						}
 					]
 				},
@@ -1633,7 +1633,7 @@
 						{
 							"key": "UnitOwnerListExcel",
 							"type": "file",
-							"src": "../QA-AutoTest-Api/file/錯誤的excel.xlsx"
+							"src": "./file/錯誤的excel.xlsx"
 						}
 					]
 				},
@@ -1852,7 +1852,7 @@
 						{
 							"key": "UnitOwnerListExcel",
 							"type": "file",
-							"src": "../QA-AutoTest-Api/file/坪數未填.xlsx"
+							"src": "./file/坪數未填.xlsx"
 						}
 					]
 				},
@@ -2071,7 +2071,7 @@
 						{
 							"key": "UnitOwnerListExcel",
 							"type": "file",
-							"src": "../QA-AutoTest-Api/file/其他社區的excel.xlsx"
+							"src": "./file/其他社區的excel.xlsx"
 						}
 					]
 				},
