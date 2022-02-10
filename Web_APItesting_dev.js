@@ -1,7 +1,7 @@
-const newman = require('newman'); // require newman in your project
-const { lineNotify } = require("./api/lineNotify");
-// call newman.run to pass `options` object and wait for callback
-async function CrossClockIn() {
+const newman = require('newman');
+const { lineNotify } = require("./api/lineNotify"); // LineNotify API
+
+async function Web_APItesting_dev() {
 
     // 跨案場打卡API測試
     newman.run({
@@ -23,7 +23,6 @@ async function CrossClockIn() {
         if (err) { throw err; }
         console.log('collection run complete!');
     });
-    
 };
 
-CrossClockIn();
+Web_APItesting_dev();
