@@ -3067,12 +3067,10 @@
 							"pm.test(\"RegisterUnitOwner Success\", function () {\r",
 							"    pm.response.to.have.status(200);\r",
 							"});\r",
-							"const date = new Date()\r",
-							"const hours = date.getHours()\r",
-							"const minutes = date.getMinutes()\r",
+							"pm.sendRequest(\"http://worldtimeapi.org/api/timezone/Asia/Taipei\", function (err, res) {\r",
+							"    pm.collectionVariables.set(\"RegisterUnitOwnerTime\", res.json().datetime.substr(11,5));\r",
+							"});\r",
 							"\r",
-							"const RegisterUnitOwnerTime = hours+\":\"+minutes\r",
-							"pm.collectionVariables.set(\"RegisterUnitOwnerTime\", RegisterUnitOwnerTime)\r",
 							""
 						],
 						"type": "text/javascript"
@@ -3297,12 +3295,9 @@
 							"pm.test(\"UnregisterUnitOwner Success\", function () {\r",
 							"    pm.response.to.have.status(200);\r",
 							"});\r",
-							"const date = new Date()\r",
-							"const hours = date.getHours()\r",
-							"const minutes = date.getMinutes()\r",
-							"\r",
-							"const UnregisterUnitOwnerTime = hours+\":\"+minutes\r",
-							"pm.collectionVariables.set(\"UnregisterUnitOwnerTime\", UnregisterUnitOwnerTime)\r",
+							"pm.sendRequest(\"http://worldtimeapi.org/api/timezone/Asia/Taipei\", function (err, res) {\r",
+							"    pm.collectionVariables.set(\"UnregisterUnitOwnerTime\", res.json().datetime.substr(11,5));\r",
+							"});\r",
 							""
 						],
 						"type": "text/javascript"
