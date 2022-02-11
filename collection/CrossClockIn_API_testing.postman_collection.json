@@ -59,6 +59,7 @@
 							"};\r",
 							"var date = new Date();\r",
 							"pm.collectionVariables.set(\"Today\", date.yyyymmdd());\r",
+							"console.log(date.yyyymmdd());\r",
 							""
 						],
 						"type": "text/javascript"
@@ -119,7 +120,7 @@
 							"    pm.expect(jsonData.Data.ClockTime.substr(0,10)).to.include(Today);",
 							"});",
 							"const jsonResponse = pm.response.json();",
-							"pm.globals.set(\"ClockId\", jsonResponse.Data.ClockId);"
+							"pm.collectionVariables.set(\"ClockId\", jsonResponse.Data.ClockId);"
 						],
 						"type": "text/javascript"
 					}
@@ -483,7 +484,7 @@
 					"script": {
 						"exec": [
 							"",
-							"const ClockId = pm.globals.get(\"ClockId\");",
+							"const ClockId = pm.collectionVariables.get(\"ClockId\");",
 							"pm.test(\"Filter ClockInRecord Success \", function () {",
 							"    console.log(ClockId);",
 							"    var jsonData = pm.response.json();",
@@ -496,10 +497,7 @@
 							"const managerClock = jsonData.Data.ManagerClocks;",
 							"const length = managerClock.length",
 							"const a = []",
-							"const managerClockId = managerClock.forEach((item, index, arr) => a.push(arr[index].ClockId));",
-							"console.log(a);",
-							"console.log(a.sort((x,y) => x-y));",
-							"console.log(a.sort((x,y) => y-x));"
+							"const managerClockId = managerClock.forEach((item, index, arr) => a.push(arr[index].ClockId));"
 						],
 						"type": "text/javascript"
 					}
@@ -547,6 +545,308 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "匯出打卡紀錄excel",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"匯出打卡紀錄excel成功\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "authority",
+						"value": "local.kingnetsmart.com.tw"
+					},
+					{
+						"key": "sec-ch-ua",
+						"value": "\" Not A;Brand\";v=\"99\", \"Chromium\";v=\"98\", \"Google Chrome\";v=\"98\""
+					},
+					{
+						"key": "sec-ch-ua-mobile",
+						"value": "?0"
+					},
+					{
+						"key": "user-agent",
+						"value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/98.0.4758.82 Safari/537.36"
+					},
+					{
+						"key": "kingnetauth",
+						"value": "Cookies x4/h3t9g+2cGflxQRaGaIF68z1OUZS07yKnghDk/eXnkckEOgMkTkfUNDqC516LzKe8bmYlkf+mm4PLYZlQLvRWmg278WKvksmlITMea0ZSZHaegajR3G97BYj1QGsKfxFw0jIkCHdbVjdXdgoXlG55e3e38FvMbi3DQ+8xh8cqq/K8oMbmZTsfMYbdOKEAJHNKV+3e9ZaCG1JT/YAhgv7qyTm2qkWrZA/uu3P8LxXX7HJjbLLLEE/hCtGzmYEEaUCRDuGK223p0BX12VzYpVopv+ppI66vA2d/IjcrO9aaRDOoZ/Lcj3sGx0qgiLMSGYaefW8lqIFgcnOOAfYAZ3BtM302RE36CP7ytcC6IVqoivNLD3AxEdotJWWr6cfgTrzDIC4cXgMav1axpW6xuHP5xerdG/nMkCqtxirUj8fZ/A3YpYikaFOFER4x5ftw7kmHeHD/7hLS5BdV9IRTz1lwIt+Ji8G6n7nxd1lzkXpFK54w0yAFL2hM8MS7cq3QR5h2VLsYTwrm4O5K2bVdJm3zCtS87OqJ3GSVGalKH2jzskHar4LZ8drjQqRNJqB5Ts86RimU0Cp217a2Xr4Q6cA=="
+					},
+					{
+						"key": "sec-ch-ua-platform",
+						"value": "\"Windows\""
+					},
+					{
+						"key": "accept",
+						"value": "*/*"
+					},
+					{
+						"key": "sec-fetch-site",
+						"value": "same-origin"
+					},
+					{
+						"key": "sec-fetch-mode",
+						"value": "cors"
+					},
+					{
+						"key": "sec-fetch-dest",
+						"value": "empty"
+					},
+					{
+						"key": "referer",
+						"value": "https://local.kingnetsmart.com.tw/mgmt/"
+					},
+					{
+						"key": "accept-language",
+						"value": "zh-TW,zh;q=0.9,en-US;q=0.8,en;q=0.7,zh-CN;q=0.6,ig;q=0.5,th;q=0.4"
+					},
+					{
+						"key": "cookie",
+						"value": "_fbp=fb.2.1643074984219.1175757813; _gid=GA1.3.1151739418.1644198040; _ga=GA1.3.242900794.1642553721; _ga_XPZ46SHYMH=GS1.1.1644315703.9.0.1644315703.0; ASP.NET_SessionId=0uthzvt55zwpbkum4d4dhziz; comLoginToken=token=x4/h3t9g+2cGflxQRaGaIF68z1OUZS07yKnghDk/eXnkckEOgMkTkfUNDqC516LzKe8bmYlkf+mm4PLYZlQLvRWmg278WKvksmlITMea0ZSZHaegajR3G97BYj1QGsKfxFw0jIkCHdbVjdXdgoXlG55e3e38FvMbi3DQ+8xh8cqq/K8oMbmZTsfMYbdOKEAJHNKV+3e9ZaCG1JT/YAhgv7qyTm2qkWrZA/uu3P8LxXX7HJjbLLLEE/hCtGzmYEEaUCRDuGK223p0BX12VzYpVopv+ppI66vA2d/IjcrO9aaRDOoZ/Lcj3sGx0qgiLMSGYaefW8lqIFgcnOOAfYAZ3BtM302RE36CP7ytcC6IVqoivNLD3AxEdotJWWr6cfgTrzDIC4cXgMav1axpW6xuHP5xerdG/nMkCqtxirUj8fZ/A3YpYikaFOFER4x5ftw7kmHeHD/7hLS5BdV9IRTz1lwIt+Ji8G6n7nxd1lzkXpFK54w0yAFL2hM8MS7cq3QR5h2VLsYTwrm4O5K2bVdJm3zCtS87OqJ3GSVGalKH2jzskHar4LZ8drjQqRNJqB5Ts86RimU0Cp217a2Xr4Q6cA=="
+					}
+				],
+				"url": {
+					"raw": "{{local-devUrl}}/core/api/ManagerClock/Excel?DateAt.StartAt={{Today}}&DateAt.DueAt={{Today}}&NoClockOut=false",
+					"host": [
+						"{{local-devUrl}}"
+					],
+					"path": [
+						"core",
+						"api",
+						"ManagerClock",
+						"Excel"
+					],
+					"query": [
+						{
+							"key": "DateAt.StartAt",
+							"value": "{{Today}}"
+						},
+						{
+							"key": "DateAt.DueAt",
+							"value": "{{Today}}"
+						},
+						{
+							"key": "NoClockOut",
+							"value": "false"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "匯出打卡紀錄excel_未填起日",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"匯出excel未填起日錯誤提示正確\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.errors['DateAt.StartAt'][0]).to.include(\"The StartAt field is required.\")\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "authority",
+						"value": "local.kingnetsmart.com.tw"
+					},
+					{
+						"key": "sec-ch-ua",
+						"value": "\" Not A;Brand\";v=\"99\", \"Chromium\";v=\"98\", \"Google Chrome\";v=\"98\""
+					},
+					{
+						"key": "sec-ch-ua-mobile",
+						"value": "?0"
+					},
+					{
+						"key": "user-agent",
+						"value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/98.0.4758.82 Safari/537.36"
+					},
+					{
+						"key": "kingnetauth",
+						"value": "Cookies x4/h3t9g+2cGflxQRaGaIF68z1OUZS07yKnghDk/eXnkckEOgMkTkfUNDqC516LzKe8bmYlkf+mm4PLYZlQLvRWmg278WKvksmlITMea0ZSZHaegajR3G97BYj1QGsKfxFw0jIkCHdbVjdXdgoXlG55e3e38FvMbi3DQ+8xh8cqq/K8oMbmZTsfMYbdOKEAJHNKV+3e9ZaCG1JT/YAhgv7qyTm2qkWrZA/uu3P8LxXX7HJjbLLLEE/hCtGzmYEEaUCRDuGK223p0BX12VzYpVopv+ppI66vA2d/IjcrO9aaRDOoZ/Lcj3sGx0qgiLMSGYaefW8lqIFgcnOOAfYAZ3BtM302RE36CP7ytcC6IVqoivNLD3AxEdotJWWr6cfgTrzDIC4cXgMav1axpW6xuHP5xerdG/nMkCqtxirUj8fZ/A3YpYikaFOFER4x5ftw7kmHeHD/7hLS5BdV9IRTz1lwIt+Ji8G6n7nxd1lzkXpFK54w0yAFL2hM8MS7cq3QR5h2VLsYTwrm4O5K2bVdJm3zCtS87OqJ3GSVGalKH2jzskHar4LZ8drjQqRNJqB5Ts86RimU0Cp217a2Xr4Q6cA=="
+					},
+					{
+						"key": "sec-ch-ua-platform",
+						"value": "\"Windows\""
+					},
+					{
+						"key": "accept",
+						"value": "*/*"
+					},
+					{
+						"key": "sec-fetch-site",
+						"value": "same-origin"
+					},
+					{
+						"key": "sec-fetch-mode",
+						"value": "cors"
+					},
+					{
+						"key": "sec-fetch-dest",
+						"value": "empty"
+					},
+					{
+						"key": "referer",
+						"value": "https://local.kingnetsmart.com.tw/mgmt/"
+					},
+					{
+						"key": "accept-language",
+						"value": "zh-TW,zh;q=0.9,en-US;q=0.8,en;q=0.7,zh-CN;q=0.6,ig;q=0.5,th;q=0.4"
+					},
+					{
+						"key": "cookie",
+						"value": "_fbp=fb.2.1643074984219.1175757813; _gid=GA1.3.1151739418.1644198040; _ga=GA1.3.242900794.1642553721; _ga_XPZ46SHYMH=GS1.1.1644315703.9.0.1644315703.0; ASP.NET_SessionId=0uthzvt55zwpbkum4d4dhziz; comLoginToken=token=x4/h3t9g+2cGflxQRaGaIF68z1OUZS07yKnghDk/eXnkckEOgMkTkfUNDqC516LzKe8bmYlkf+mm4PLYZlQLvRWmg278WKvksmlITMea0ZSZHaegajR3G97BYj1QGsKfxFw0jIkCHdbVjdXdgoXlG55e3e38FvMbi3DQ+8xh8cqq/K8oMbmZTsfMYbdOKEAJHNKV+3e9ZaCG1JT/YAhgv7qyTm2qkWrZA/uu3P8LxXX7HJjbLLLEE/hCtGzmYEEaUCRDuGK223p0BX12VzYpVopv+ppI66vA2d/IjcrO9aaRDOoZ/Lcj3sGx0qgiLMSGYaefW8lqIFgcnOOAfYAZ3BtM302RE36CP7ytcC6IVqoivNLD3AxEdotJWWr6cfgTrzDIC4cXgMav1axpW6xuHP5xerdG/nMkCqtxirUj8fZ/A3YpYikaFOFER4x5ftw7kmHeHD/7hLS5BdV9IRTz1lwIt+Ji8G6n7nxd1lzkXpFK54w0yAFL2hM8MS7cq3QR5h2VLsYTwrm4O5K2bVdJm3zCtS87OqJ3GSVGalKH2jzskHar4LZ8drjQqRNJqB5Ts86RimU0Cp217a2Xr4Q6cA=="
+					}
+				],
+				"url": {
+					"raw": "{{local-devUrl}}/core/api/ManagerClock/Excel?DateAt.StartAt=&DateAt.DueAt={{Today}}&NoClockOut=false",
+					"host": [
+						"{{local-devUrl}}"
+					],
+					"path": [
+						"core",
+						"api",
+						"ManagerClock",
+						"Excel"
+					],
+					"query": [
+						{
+							"key": "DateAt.StartAt",
+							"value": ""
+						},
+						{
+							"key": "DateAt.DueAt",
+							"value": "{{Today}}"
+						},
+						{
+							"key": "NoClockOut",
+							"value": "false"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "匯出打卡紀錄excel_未填迄日",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"匯出excel未填迄日錯誤提示正確\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.errors['DateAt.DueAt'][0]).to.include(\"The DueAt field is required.\")\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "authority",
+						"value": "local.kingnetsmart.com.tw"
+					},
+					{
+						"key": "sec-ch-ua",
+						"value": "\" Not A;Brand\";v=\"99\", \"Chromium\";v=\"98\", \"Google Chrome\";v=\"98\""
+					},
+					{
+						"key": "sec-ch-ua-mobile",
+						"value": "?0"
+					},
+					{
+						"key": "user-agent",
+						"value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/98.0.4758.82 Safari/537.36"
+					},
+					{
+						"key": "kingnetauth",
+						"value": "Cookies x4/h3t9g+2cGflxQRaGaIF68z1OUZS07yKnghDk/eXnkckEOgMkTkfUNDqC516LzKe8bmYlkf+mm4PLYZlQLvRWmg278WKvksmlITMea0ZSZHaegajR3G97BYj1QGsKfxFw0jIkCHdbVjdXdgoXlG55e3e38FvMbi3DQ+8xh8cqq/K8oMbmZTsfMYbdOKEAJHNKV+3e9ZaCG1JT/YAhgv7qyTm2qkWrZA/uu3P8LxXX7HJjbLLLEE/hCtGzmYEEaUCRDuGK223p0BX12VzYpVopv+ppI66vA2d/IjcrO9aaRDOoZ/Lcj3sGx0qgiLMSGYaefW8lqIFgcnOOAfYAZ3BtM302RE36CP7ytcC6IVqoivNLD3AxEdotJWWr6cfgTrzDIC4cXgMav1axpW6xuHP5xerdG/nMkCqtxirUj8fZ/A3YpYikaFOFER4x5ftw7kmHeHD/7hLS5BdV9IRTz1lwIt+Ji8G6n7nxd1lzkXpFK54w0yAFL2hM8MS7cq3QR5h2VLsYTwrm4O5K2bVdJm3zCtS87OqJ3GSVGalKH2jzskHar4LZ8drjQqRNJqB5Ts86RimU0Cp217a2Xr4Q6cA=="
+					},
+					{
+						"key": "sec-ch-ua-platform",
+						"value": "\"Windows\""
+					},
+					{
+						"key": "accept",
+						"value": "*/*"
+					},
+					{
+						"key": "sec-fetch-site",
+						"value": "same-origin"
+					},
+					{
+						"key": "sec-fetch-mode",
+						"value": "cors"
+					},
+					{
+						"key": "sec-fetch-dest",
+						"value": "empty"
+					},
+					{
+						"key": "referer",
+						"value": "https://local.kingnetsmart.com.tw/mgmt/"
+					},
+					{
+						"key": "accept-language",
+						"value": "zh-TW,zh;q=0.9,en-US;q=0.8,en;q=0.7,zh-CN;q=0.6,ig;q=0.5,th;q=0.4"
+					},
+					{
+						"key": "cookie",
+						"value": "_fbp=fb.2.1643074984219.1175757813; _gid=GA1.3.1151739418.1644198040; _ga=GA1.3.242900794.1642553721; _ga_XPZ46SHYMH=GS1.1.1644315703.9.0.1644315703.0; ASP.NET_SessionId=0uthzvt55zwpbkum4d4dhziz; comLoginToken=token=x4/h3t9g+2cGflxQRaGaIF68z1OUZS07yKnghDk/eXnkckEOgMkTkfUNDqC516LzKe8bmYlkf+mm4PLYZlQLvRWmg278WKvksmlITMea0ZSZHaegajR3G97BYj1QGsKfxFw0jIkCHdbVjdXdgoXlG55e3e38FvMbi3DQ+8xh8cqq/K8oMbmZTsfMYbdOKEAJHNKV+3e9ZaCG1JT/YAhgv7qyTm2qkWrZA/uu3P8LxXX7HJjbLLLEE/hCtGzmYEEaUCRDuGK223p0BX12VzYpVopv+ppI66vA2d/IjcrO9aaRDOoZ/Lcj3sGx0qgiLMSGYaefW8lqIFgcnOOAfYAZ3BtM302RE36CP7ytcC6IVqoivNLD3AxEdotJWWr6cfgTrzDIC4cXgMav1axpW6xuHP5xerdG/nMkCqtxirUj8fZ/A3YpYikaFOFER4x5ftw7kmHeHD/7hLS5BdV9IRTz1lwIt+Ji8G6n7nxd1lzkXpFK54w0yAFL2hM8MS7cq3QR5h2VLsYTwrm4O5K2bVdJm3zCtS87OqJ3GSVGalKH2jzskHar4LZ8drjQqRNJqB5Ts86RimU0Cp217a2Xr4Q6cA=="
+					}
+				],
+				"url": {
+					"raw": "{{local-devUrl}}/core/api/ManagerClock/Excel?DateAt.StartAt={{Today}}&DateAt.DueAt=&NoClockOut=false",
+					"host": [
+						"{{local-devUrl}}"
+					],
+					"path": [
+						"core",
+						"api",
+						"ManagerClock",
+						"Excel"
+					],
+					"query": [
+						{
+							"key": "DateAt.StartAt",
+							"value": "{{Today}}"
+						},
+						{
+							"key": "DateAt.DueAt",
+							"value": ""
+						},
+						{
+							"key": "NoClockOut",
+							"value": "false"
+						}
+					]
+				}
+			},
+			"response": []
 		}
 	],
 	"event": [
@@ -584,6 +884,10 @@
 		},
 		{
 			"key": "comLoginToken",
+			"value": ""
+		},
+		{
+			"key": "ClockId",
 			"value": ""
 		}
 	]
