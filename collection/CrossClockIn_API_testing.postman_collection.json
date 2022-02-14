@@ -48,18 +48,21 @@
 							"    pm.collectionVariables.set(\"Com_id\", jsonResponse.Data.communities[1].Id);\r",
 							"});\r",
 							"\r",
-							"Date.prototype.yyyymmdd = function() {\r",
-							"  var mm = this.getMonth() + 1; // getMonth() is zero-based\r",
-							"  var dd = this.getDate();\r",
+							"pm.sendRequest(\"http://worldtimeapi.org/api/timezone/Asia/Taipei\", function (err, res) {\r",
+							"    pm.collectionVariables.set(\"Today\", res.json().datetime.substr(0,10));\r",
+							"});\r",
+							"// Date.prototype.yyyymmdd = function() {\r",
+							"//   var mm = this.getMonth() + 1; // getMonth() is zero-based\r",
+							"//   var dd = this.getDate();\r",
 							"\r",
-							"  return [this.getFullYear(),\r",
-							"          (mm>9 ? '' : '0') + mm,\r",
-							"          (dd>9 ? '' : '0') + dd\r",
-							"         ].join('-');\r",
-							"};\r",
-							"var date = new Date();\r",
-							"pm.collectionVariables.set(\"Today\", date.yyyymmdd());\r",
-							"console.log(date.yyyymmdd());\r",
+							"//   return [this.getFullYear(),\r",
+							"//           (mm>9 ? '' : '0') + mm,\r",
+							"//           (dd>9 ? '' : '0') + dd\r",
+							"//          ].join('-');\r",
+							"// };\r",
+							"// var date = new Date();\r",
+							"// pm.collectionVariables.set(\"Today\", date.yyyymmdd());\r",
+							"// console.log(date.yyyymmdd());\r",
 							""
 						],
 						"type": "text/javascript"
@@ -484,20 +487,21 @@
 					"script": {
 						"exec": [
 							"",
-							"const ClockId = pm.collectionVariables.get(\"ClockId\");",
+							"",
 							"pm.test(\"Filter ClockInRecord Success \", function () {",
-							"    console.log(ClockId);",
+							"    const ClockId = pm.collectionVariables.get(\"ClockId\");",
 							"    var jsonData = pm.response.json();",
+							"    console.log(ClockId)",
 							"    console.log(jsonData.Data.ManagerClocks[0].ClockId)",
 							"    pm.expect(jsonData.Data.ManagerClocks[0].ClockId).to.eql(ClockId);",
 							"});",
 							"",
 							"",
-							"const jsonData = pm.response.json();",
-							"const managerClock = jsonData.Data.ManagerClocks;",
-							"const length = managerClock.length",
-							"const a = []",
-							"const managerClockId = managerClock.forEach((item, index, arr) => a.push(arr[index].ClockId));"
+							"// const jsonData = pm.response.json();",
+							"// const managerClock = jsonData.Data.ManagerClocks;",
+							"// const length = managerClock.length",
+							"// const a = []",
+							"// const managerClockId = managerClock.forEach((item, index, arr) => a.push(arr[index].ClockId));"
 						],
 						"type": "text/javascript"
 					}
@@ -888,6 +892,10 @@
 		},
 		{
 			"key": "ClockId",
+			"value": ""
+		},
+		{
+			"key": "UnregisterUnitOwnerTime",
 			"value": ""
 		}
 	]
