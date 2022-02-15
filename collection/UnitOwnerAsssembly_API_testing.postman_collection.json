@@ -92,9 +92,9 @@
 					]
 				},
 				"url": {
-					"raw": "{{local-devUrl}}/api/Login/CommunityLogin",
+					"raw": "{{kingnetsmart}}/api/Login/CommunityLogin",
 					"host": [
-						"{{local-devUrl}}"
+						"{{kingnetsmart}}"
 					],
 					"path": [
 						"api",
@@ -313,9 +313,9 @@
 					]
 				},
 				"url": {
-					"raw": "{{uoa-devUrl}}/UnitOwnerAssembly/CreateAssembly",
+					"raw": "{{uoa}}/UnitOwnerAssembly/CreateAssembly",
 					"host": [
-						"{{uoa-devUrl}}"
+						"{{uoa}}"
 					],
 					"path": [
 						"UnitOwnerAssembly",
@@ -533,9 +533,9 @@
 					]
 				},
 				"url": {
-					"raw": "{{uoa-devUrl}}/UnitOwnerAssembly/CreateAssembly",
+					"raw": "{{uoa}}/UnitOwnerAssembly/CreateAssembly",
 					"host": [
-						"{{uoa-devUrl}}"
+						"{{uoa}}"
 					],
 					"path": [
 						"UnitOwnerAssembly",
@@ -753,9 +753,9 @@
 					]
 				},
 				"url": {
-					"raw": "{{uoa-devUrl}}/UnitOwnerAssembly/CreateAssembly",
+					"raw": "{{uoa}}/UnitOwnerAssembly/CreateAssembly",
 					"host": [
-						"{{uoa-devUrl}}"
+						"{{uoa}}"
 					],
 					"path": [
 						"UnitOwnerAssembly",
@@ -973,9 +973,9 @@
 					]
 				},
 				"url": {
-					"raw": "{{uoa-devUrl}}/UnitOwnerAssembly/CreateAssembly",
+					"raw": "{{uoa}}/UnitOwnerAssembly/CreateAssembly",
 					"host": [
-						"{{uoa-devUrl}}"
+						"{{uoa}}"
 					],
 					"path": [
 						"UnitOwnerAssembly",
@@ -1193,9 +1193,9 @@
 					]
 				},
 				"url": {
-					"raw": "{{uoa-devUrl}}/UnitOwnerAssembly/CreateAssembly",
+					"raw": "{{uoa}}/UnitOwnerAssembly/CreateAssembly",
 					"host": [
-						"{{uoa-devUrl}}"
+						"{{uoa}}"
 					],
 					"path": [
 						"UnitOwnerAssembly",
@@ -1414,9 +1414,9 @@
 					]
 				},
 				"url": {
-					"raw": "{{uoa-devUrl}}/UnitOwnerAssembly/CreateAssembly",
+					"raw": "{{uoa}}/UnitOwnerAssembly/CreateAssembly",
 					"host": [
-						"{{uoa-devUrl}}"
+						"{{uoa}}"
 					],
 					"path": [
 						"UnitOwnerAssembly",
@@ -1634,9 +1634,9 @@
 					]
 				},
 				"url": {
-					"raw": "{{uoa-devUrl}}/UnitOwnerAssembly/CreateAssembly",
+					"raw": "{{uoa}}/UnitOwnerAssembly/CreateAssembly",
 					"host": [
-						"{{uoa-devUrl}}"
+						"{{uoa}}"
 					],
 					"path": [
 						"UnitOwnerAssembly",
@@ -1853,9 +1853,9 @@
 					]
 				},
 				"url": {
-					"raw": "{{uoa-devUrl}}/UnitOwnerAssembly/CreateAssembly",
+					"raw": "{{uoa}}/UnitOwnerAssembly/CreateAssembly",
 					"host": [
-						"{{uoa-devUrl}}"
+						"{{uoa}}"
 					],
 					"path": [
 						"UnitOwnerAssembly",
@@ -2072,9 +2072,9 @@
 					]
 				},
 				"url": {
-					"raw": "{{uoa-devUrl}}/UnitOwnerAssembly/CreateAssembly",
+					"raw": "{{uoa}}/UnitOwnerAssembly/CreateAssembly",
 					"host": [
-						"{{uoa-devUrl}}"
+						"{{uoa}}"
 					],
 					"path": [
 						"UnitOwnerAssembly",
@@ -2179,9 +2179,9 @@
 					"raw": "{\"assemblyId\":\"{{AssemblyId}}\",\"topicDtos\":[{\"title\":\"API testing edit\",\"description\":\"API testing edit\",\"attendanceThreshold\":0.3,\"consentThreshold\":0.3},{\"title\":\"edit\",\"description\":\"edit\",\"attendanceThreshold\":0.5,\"consentThreshold\":0.5}]}"
 				},
 				"url": {
-					"raw": "{{uoa-devUrl}}/UnitOwnerAssembly/InsertTopics",
+					"raw": "{{uoa}}/UnitOwnerAssembly/InsertTopics",
 					"host": [
-						"{{uoa-devUrl}}"
+						"{{uoa}}"
 					],
 					"path": [
 						"UnitOwnerAssembly",
@@ -2278,11 +2278,12 @@
 					}
 				],
 				"url": {
-					"raw": "{{uoa-devUrl}}/UnitOwnerAssembly/GetRegistrationExport?AssemblyId={{AssemblyId}}",
+					"raw": "{{uoa}}/UnitOwnerAssembly/GetRegistrationExport?AssemblyId={{AssemblyId}}",
 					"host": [
-						"{{uoa-devUrl}}/UnitOwnerAssembly"
+						"{{uoa}}"
 					],
 					"path": [
+						"UnitOwnerAssembly",
 						"GetRegistrationExport"
 					],
 					"query": [
@@ -2382,9 +2383,9 @@
 					}
 				],
 				"url": {
-					"raw": "{{uoa-devUrl}}/UnitOwnerAssembly/GetAttendanceCardList?AssemblyId={{AssemblyId}}",
+					"raw": "{{uoa}}/UnitOwnerAssembly/GetAttendanceCardList?AssemblyId={{AssemblyId}}",
 					"host": [
-						"{{uoa-devUrl}}"
+						"{{uoa}}"
 					],
 					"path": [
 						"UnitOwnerAssembly",
@@ -2509,9 +2510,9 @@
 					}
 				],
 				"url": {
-					"raw": "{{uoa-devUrl}}/UnitOwnerAssembly/GetAssembly?AssemblyId={{AssemblyId}}",
+					"raw": "{{uoa}}/UnitOwnerAssembly/GetAssembly?AssemblyId={{AssemblyId}}",
 					"host": [
-						"{{uoa-devUrl}}"
+						"{{uoa}}"
 					],
 					"path": [
 						"UnitOwnerAssembly",
@@ -2709,9 +2710,9 @@
 					]
 				},
 				"url": {
-					"raw": "{{uoa-devUrl}}/UnitOwnerAssembly/EditAssembly",
+					"raw": "{{uoa}}/UnitOwnerAssembly/EditAssembly",
 					"host": [
-						"{{uoa-devUrl}}"
+						"{{uoa}}"
 					],
 					"path": [
 						"UnitOwnerAssembly",
@@ -2818,9 +2819,9 @@
 					}
 				],
 				"url": {
-					"raw": "{{uoa-devUrl}}/UnitOwnerAssembly/GetUnitOwnerList?AssemblyId={{AssemblyId}}",
+					"raw": "{{uoa}}/UnitOwnerAssembly/GetUnitOwnerList?AssemblyId={{AssemblyId}}",
 					"host": [
-						"{{uoa-devUrl}}"
+						"{{uoa}}"
 					],
 					"path": [
 						"UnitOwnerAssembly",
@@ -2933,9 +2934,9 @@
 					"raw": "{\"assemblyId\":\"{{AssemblyId}}\",\"unitOwnerId\":\"{{UnitOwnerId}}\"}"
 				},
 				"url": {
-					"raw": "{{uoa-devUrl}}/UnitOwnerAssembly/RegisterUnitOwner",
+					"raw": "{{uoa}}/UnitOwnerAssembly/RegisterUnitOwner",
 					"host": [
-						"{{uoa-devUrl}}"
+						"{{uoa}}"
 					],
 					"path": [
 						"UnitOwnerAssembly",
@@ -3040,9 +3041,9 @@
 					"raw": "{\"assemblyId\":\"{{AssemblyId}}\"}"
 				},
 				"url": {
-					"raw": "{{uoa-devUrl}}/UnitOwnerAssembly/PublishAssembly",
+					"raw": "{{uoa}}/UnitOwnerAssembly/PublishAssembly",
 					"host": [
-						"{{uoa-devUrl}}"
+						"{{uoa}}"
 					],
 					"path": [
 						"UnitOwnerAssembly",
@@ -3152,9 +3153,9 @@
 					"raw": "{\"assemblyId\":\"{{AssemblyId}}\",\"unitOwnerId\":\"{{UnitOwnerId}}\"}"
 				},
 				"url": {
-					"raw": "{{uoa-devUrl}}/UnitOwnerAssembly/RegisterUnitOwner",
+					"raw": "{{uoa}}/UnitOwnerAssembly/RegisterUnitOwner",
 					"host": [
-						"{{uoa-devUrl}}"
+						"{{uoa}}"
 					],
 					"path": [
 						"UnitOwnerAssembly",
@@ -3262,9 +3263,9 @@
 					}
 				],
 				"url": {
-					"raw": "{{uoa-devUrl}}/UnitOwnerAssembly/GetUnitOwnerList?AssemblyId={{AssemblyId}}",
+					"raw": "{{uoa}}/UnitOwnerAssembly/GetUnitOwnerList?AssemblyId={{AssemblyId}}",
 					"host": [
-						"{{uoa-devUrl}}"
+						"{{uoa}}"
 					],
 					"path": [
 						"UnitOwnerAssembly",
@@ -3379,9 +3380,9 @@
 					"raw": "{\"assemblyId\":\"{{AssemblyId}}\",\"unitOwnerId\":\"{{UnitOwnerId}}\"}"
 				},
 				"url": {
-					"raw": "{{uoa-devUrl}}/UnitOwnerAssembly/UnregisterUnitOwner",
+					"raw": "{{uoa}}/UnitOwnerAssembly/UnregisterUnitOwner",
 					"host": [
-						"{{uoa-devUrl}}"
+						"{{uoa}}"
 					],
 					"path": [
 						"UnitOwnerAssembly",
@@ -3489,9 +3490,9 @@
 					}
 				],
 				"url": {
-					"raw": "{{uoa-devUrl}}/UnitOwnerAssembly/GetUnitOwnerList?AssemblyId={{AssemblyId}}",
+					"raw": "{{uoa}}/UnitOwnerAssembly/GetUnitOwnerList?AssemblyId={{AssemblyId}}",
 					"host": [
-						"{{uoa-devUrl}}"
+						"{{uoa}}"
 					],
 					"path": [
 						"UnitOwnerAssembly",
@@ -3602,9 +3603,9 @@
 					}
 				],
 				"url": {
-					"raw": "{{uoa-devUrl}}/UnitOwnerAssembly/GetDashboardData?AssemblyId={{AssemblyId}}",
+					"raw": "{{uoa}}/UnitOwnerAssembly/GetDashboardData?AssemblyId={{AssemblyId}}",
 					"host": [
-						"{{uoa-devUrl}}"
+						"{{uoa}}"
 					],
 					"path": [
 						"UnitOwnerAssembly",
@@ -3715,9 +3716,9 @@
 					"raw": "{\"assemblyId\":\"{{AssemblyId}}\"}"
 				},
 				"url": {
-					"raw": "{{uoa-devUrl}}/UnitOwnerAssembly/DeleteAssembly",
+					"raw": "{{uoa}}/UnitOwnerAssembly/DeleteAssembly",
 					"host": [
-						"{{uoa-devUrl}}"
+						"{{uoa}}"
 					],
 					"path": [
 						"UnitOwnerAssembly",

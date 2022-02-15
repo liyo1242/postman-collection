@@ -94,9 +94,9 @@
 					]
 				},
 				"url": {
-					"raw": "{{local-devUrl}}/api/Login/CommunityLogin",
+					"raw": "{{kingnetsmart}}/api/Login/CommunityLogin",
 					"host": [
-						"{{local-devUrl}}"
+						"{{kingnetsmart}}"
 					],
 					"path": [
 						"api",
@@ -181,9 +181,9 @@
 					]
 				},
 				"url": {
-					"raw": "{{local-devUrl}}/core/api/ManagerClock/ClockIn",
+					"raw": "{{kingnetsmart}}/core/api/ManagerClock/ClockIn",
 					"host": [
-						"{{local-devUrl}}"
+						"{{kingnetsmart}}"
 					],
 					"path": [
 						"core",
@@ -230,9 +230,9 @@
 					"raw": "{\"Note\":\"ClockIn API testing\"}"
 				},
 				"url": {
-					"raw": "{{local-devUrl}}/core/api/ManagerClock/{{ClockId}}/ClockIn",
+					"raw": "{{kingnetsmart}}/core/api/ManagerClock/{{ClockId}}/ClockIn",
 					"host": [
-						"{{local-devUrl}}"
+						"{{kingnetsmart}}"
 					],
 					"path": [
 						"core",
@@ -295,9 +295,9 @@
 					]
 				},
 				"url": {
-					"raw": "{{local-devUrl}}/core/api/ManagerClock/{{ClockId}}/ClockOut",
+					"raw": "{{kingnetsmart}}/core/api/ManagerClock/{{ClockId}}/ClockOut",
 					"host": [
-						"{{local-devUrl}}"
+						"{{kingnetsmart}}"
 					],
 					"path": [
 						"core",
@@ -345,9 +345,9 @@
 					"raw": "{\"Note\":\"ClockOut API testing\"}"
 				},
 				"url": {
-					"raw": "{{local-devUrl}}/core/api/ManagerClock/{{ClockId}}/ClockOut",
+					"raw": "{{kingnetsmart}}/core/api/ManagerClock/{{ClockId}}/ClockOut",
 					"host": [
-						"{{local-devUrl}}"
+						"{{kingnetsmart}}"
 					],
 					"path": [
 						"core",
@@ -390,9 +390,9 @@
 					"raw": "{\"ClockInNote\":\"ClockIn API testing edit\",\"ClockOutNote\":\"ClockOut API testing edit\"}"
 				},
 				"url": {
-					"raw": "{{local-devUrl}}/core/api/ManagerClock/{{ClockId}}",
+					"raw": "{{kingnetsmart}}/core/api/ManagerClock/{{ClockId}}",
 					"host": [
-						"{{local-devUrl}}"
+						"{{kingnetsmart}}"
 					],
 					"path": [
 						"core",
@@ -465,9 +465,9 @@
 					]
 				},
 				"url": {
-					"raw": "{{local-devUrl}}/core/api/ManagerClock/ClockIn",
+					"raw": "{{kingnetsmart}}/core/api/ManagerClock/ClockIn",
 					"host": [
-						"{{local-devUrl}}"
+						"{{kingnetsmart}}"
 					],
 					"path": [
 						"core",
@@ -511,9 +511,9 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{local-devUrl}}/core/api/ManagerClock?Offset=0&MaxCount=10&Filter.ManagerName=羅恩圻&Filter.DateAt.StartAt={{Today}}&Filter.DateAt.DueAt={{Today}}&Filter.NoClockOut=false",
+					"raw": "{{kingnetsmart}}/core/api/ManagerClock?Offset=0&MaxCount=10&Filter.ManagerName=羅恩圻&Filter.DateAt.StartAt={{Today}}&Filter.DateAt.DueAt={{Today}}&Filter.NoClockOut=false",
 					"host": [
-						"{{local-devUrl}}"
+						"{{kingnetsmart}}"
 					],
 					"path": [
 						"core",
@@ -622,9 +622,9 @@
 					}
 				],
 				"url": {
-					"raw": "{{local-devUrl}}/core/api/ManagerClock/Excel?DateAt.StartAt={{Today}}&DateAt.DueAt={{Today}}&NoClockOut=false",
+					"raw": "{{kingnetsmart}}/core/api/ManagerClock/Excel?DateAt.StartAt={{Today}}&DateAt.DueAt={{Today}}&NoClockOut=false",
 					"host": [
-						"{{local-devUrl}}"
+						"{{kingnetsmart}}"
 					],
 					"path": [
 						"core",
@@ -723,9 +723,9 @@
 					}
 				],
 				"url": {
-					"raw": "{{local-devUrl}}/core/api/ManagerClock/Excel?DateAt.StartAt=&DateAt.DueAt={{Today}}&NoClockOut=false",
+					"raw": "{{kingnetsmart}}/core/api/ManagerClock/Excel?DateAt.StartAt=&DateAt.DueAt={{Today}}&NoClockOut=false",
 					"host": [
-						"{{local-devUrl}}"
+						"{{kingnetsmart}}"
 					],
 					"path": [
 						"core",
@@ -824,9 +824,9 @@
 					}
 				],
 				"url": {
-					"raw": "{{local-devUrl}}/core/api/ManagerClock/Excel?DateAt.StartAt={{Today}}&DateAt.DueAt=&NoClockOut=false",
+					"raw": "{{kingnetsmart}}/core/api/ManagerClock/Excel?DateAt.StartAt={{Today}}&DateAt.DueAt=&NoClockOut=false",
 					"host": [
-						"{{local-devUrl}}"
+						"{{kingnetsmart}}"
 					],
 					"path": [
 						"core",
