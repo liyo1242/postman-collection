@@ -510,7 +510,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{kingnetsmart}}/core/api/ManagerClock?Offset=0&MaxCount=10&Filter.ManagerName=羅恩圻&Filter.DateAt.StartAt={{Today}}&Filter.DateAt.DueAt={{Today}}&Filter.NoClockOut=false",
+					"raw": "{{kingnetsmart}}/core/api/ManagerClock?Offset=0&MaxCount=10&Filter.DateAt.StartAt={{Today}}&Filter.DateAt.DueAt={{Today}}&Filter.NoClockOut=false",
 					"host": [
 						"{{kingnetsmart}}"
 					],
@@ -530,7 +530,8 @@
 						},
 						{
 							"key": "Filter.ManagerName",
-							"value": "羅恩圻"
+							"value": "羅恩圻",
+							"disabled": true
 						},
 						{
 							"key": "Filter.DateAt.StartAt",
