@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "afcd55e7-b61d-4064-9546-6cf9e65f9dbc",
+		"_postman_id": "c92b5db1-8766-4c2e-83ed-32a4f975f60b",
 		"name": "CrossClockIn_API_testing",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -17,7 +17,6 @@
 							"});\r",
 							"var jsonData = pm.cookies.get('comLoginToken');\r",
 							"pm.collectionVariables.set('comLoginToken', jsonData)\r",
-							"\r",
 							""
 						],
 						"type": "text/javascript"
@@ -27,8 +26,9 @@
 					"listen": "prerequest",
 					"script": {
 						"exec": [
+							"const url = pm.environment.get('kingnetsmart')\r",
 							"pm.sendRequest({\r",
-							"    url: 'https://local.kingnetsmart.com.tw/mvc/api/Login/CheckAccountPassword',\r",
+							"    url: `${url}/mvc/api/Login/CheckAccountPassword`,\r",
 							"    method: 'POST',\r",
 							"    header: {\r",
 							"        'content-type': 'application/json',\r",
@@ -254,8 +254,7 @@
 						"exec": [
 							"pm.test(\"Status code is 200\", function () {",
 							"    pm.response.to.have.status(200);",
-							"});",
-							""
+							"});"
 						],
 						"type": "text/javascript"
 					}

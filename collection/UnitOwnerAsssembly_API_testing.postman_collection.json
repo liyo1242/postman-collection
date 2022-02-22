@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "892ac362-f68b-4d7f-91ee-ff687758f657",
+		"_postman_id": "cf9bb241-7175-4a3e-99cf-010e10a5bbe4",
 		"name": "UnitOwnerAsssembly_API_testing",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -9,28 +9,12 @@
 			"name": "取得ComLogingToken",
 			"event": [
 				{
-					"listen": "test",
-					"script": {
-						"exec": [
-							"pm.test(\"Get ComLoginToken Success\", function () {\r",
-							"    pm.response.to.have.status(200);\r",
-							"});\r",
-							"var jsonData1 = pm.cookies.get('comLoginToken');\r",
-							"var jsonData = jsonData1.substr(6)\r",
-							"pm.collectionVariables.set('comLoginToken', jsonData)\r",
-							"console.log(jsonData)\r",
-							"\r",
-							""
-						],
-						"type": "text/javascript"
-					}
-				},
-				{
 					"listen": "prerequest",
 					"script": {
 						"exec": [
+							"const url = pm.environment.get('kingnetsmart')\r",
 							"pm.sendRequest({\r",
-							"    url: 'https://local.kingnetsmart.com.tw/mvc/api/Login/CheckAccountPassword',\r",
+							"    url: `${url}/mvc/api/Login/CheckAccountPassword`,\r",
 							"    method: 'POST',\r",
 							"    header: {\r",
 							"        'content-type': 'application/json',\r",
@@ -61,6 +45,23 @@
 							"};\r",
 							"var date = new Date();\r",
 							"pm.collectionVariables.set(\"Today\", date.yyyymmdd());\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Get ComLoginToken Success\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"var jsonData1 = pm.cookies.get('comLoginToken');\r",
+							"var jsonData = jsonData1.substr(6)\r",
+							"pm.collectionVariables.set('comLoginToken', jsonData)\r",
+							"console.log(jsonData)\r",
+							"\r",
 							""
 						],
 						"type": "text/javascript"
@@ -1251,7 +1252,7 @@
 				"header": [
 					{
 						"key": "authority",
-						"value": "uoa-dev.kingnetsmart.com.tw"
+						"value": "uoa.kingnetsmart.com.tw"
 					},
 					{
 						"key": "sec-ch-ua",
@@ -1284,7 +1285,7 @@
 					},
 					{
 						"key": "origin",
-						"value": "https://local.kingnetsmart.com.tw"
+						"value": "https://www.kingnetsmart.com.tw"
 					},
 					{
 						"key": "sec-fetch-site",
@@ -1300,7 +1301,7 @@
 					},
 					{
 						"key": "referer",
-						"value": "https://local.kingnetsmart.com.tw/"
+						"value": "https://www.kingnetsmart.com.tw/"
 					},
 					{
 						"key": "accept-language",
@@ -3630,7 +3631,9 @@
 						"exec": [
 							"pm.test(\"Delete Assembly Success\", function () {\r",
 							"    pm.response.to.have.status(200);\r",
-							"});"
+							"});\r",
+							"\r",
+							"pm.collectionVariables.clear();"
 						],
 						"type": "text/javascript"
 					}
