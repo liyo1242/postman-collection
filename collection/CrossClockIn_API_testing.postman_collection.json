@@ -48,9 +48,9 @@
 							"    pm.collectionVariables.set(\"Com_id\", jsonResponse.Data.communities[1].Id);\r",
 							"});\r",
 							"\r",
-							"pm.sendRequest(\"http://worldtimeapi.org/api/timezone/Asia/Taipei\", function (err, res) {\r",
-							"    pm.collectionVariables.set(\"Today\", res.json().datetime.substr(0,10));\r",
-							"});\r",
+							"// pm.sendRequest(\"http://worldtimeapi.org/api/timezone/Asia/Taipei\", function (err, res) {\r",
+							"//     pm.collectionVariables.set(\"Today\", res.json().datetime.substr(0,10));\r",
+							"// });\r",
 							"// Date.prototype.yyyymmdd = function() {\r",
 							"//   var mm = this.getMonth() + 1; // getMonth() is zero-based\r",
 							"//   var dd = this.getDate();\r",
@@ -504,6 +504,17 @@
 						],
 						"type": "text/javascript"
 					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"pm.sendRequest(\"http://worldtimeapi.org/api/timezone/Asia/Taipei\", function (err, res) {\r",
+							"    pm.collectionVariables.set(\"Today\", res.json().datetime.substr(0,10));\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
 				}
 			],
 			"request": {
@@ -559,6 +570,17 @@
 						"exec": [
 							"pm.test(\"匯出打卡紀錄excel成功\", function () {\r",
 							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"pm.sendRequest(\"http://worldtimeapi.org/api/timezone/Asia/Taipei\", function (err, res) {\r",
+							"    pm.collectionVariables.set(\"Today\", res.json().datetime.substr(0,10));\r",
 							"});"
 						],
 						"type": "text/javascript"
@@ -664,6 +686,17 @@
 						],
 						"type": "text/javascript"
 					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"pm.sendRequest(\"http://worldtimeapi.org/api/timezone/Asia/Taipei\", function (err, res) {\r",
+							"    pm.collectionVariables.set(\"Today\", res.json().datetime.substr(0,10));\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
 				}
 			],
 			"request": {
@@ -761,6 +794,17 @@
 							"pm.test(\"匯出excel未填迄日錯誤提示正確\", function () {\r",
 							"    var jsonData = pm.response.json();\r",
 							"    pm.expect(jsonData.errors['DateAt.DueAt'][0]).to.include(\"The DueAt field is required.\")\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"pm.sendRequest(\"http://worldtimeapi.org/api/timezone/Asia/Taipei\", function (err, res) {\r",
+							"    pm.collectionVariables.set(\"Today\", res.json().datetime.substr(0,10));\r",
 							"});"
 						],
 						"type": "text/javascript"
@@ -875,6 +919,10 @@
 	],
 	"variable": [
 		{
+			"key": "Today",
+			"value": ""
+		},
+		{
 			"key": "housekeeperToken",
 			"value": ""
 		},
@@ -883,19 +931,7 @@
 			"value": ""
 		},
 		{
-			"key": "Today",
-			"value": ""
-		},
-		{
 			"key": "comLoginToken",
-			"value": ""
-		},
-		{
-			"key": "ClockId",
-			"value": ""
-		},
-		{
-			"key": "UnregisterUnitOwnerTime",
 			"value": ""
 		}
 	]

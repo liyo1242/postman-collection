@@ -44,6 +44,7 @@
 							"         ].join('-');\r",
 							"};\r",
 							"var date = new Date();\r",
+							"console.log(date.yyyymmdd())\r",
 							"pm.collectionVariables.set(\"Today\", date.yyyymmdd());\r",
 							""
 						],
@@ -54,7 +55,7 @@
 					"listen": "test",
 					"script": {
 						"exec": [
-							"pm.test(\"Get ComLoginToken Success\", function () {\r",
+							"pm.test(\"取得社區TOKEN成功\", function () {\r",
 							"    pm.response.to.have.status(200);\r",
 							"});\r",
 							"var jsonData1 = pm.cookies.get('comLoginToken');\r",
@@ -113,7 +114,7 @@
 					"listen": "test",
 					"script": {
 						"exec": [
-							"pm.test(\"Title is empty Accurate Error Message\", function () {\r",
+							"pm.test(\"建立會議會議Title空白報錯文案正確\", function () {\r",
 							"    var jsonData = pm.response.json();\r",
 							"    console.log(jsonData)\r",
 							"    pm.expect(jsonData.errors.Title).to.include(\"The Title field is required.\");\r",
@@ -333,7 +334,7 @@
 					"listen": "test",
 					"script": {
 						"exec": [
-							"pm.test(\"AssemblyStartAt is empty Error Message Correct\", function () {\r",
+							"pm.test(\"建立會議會議AssemblyStartAt空白報錯文案正確\", function () {\r",
 							"    var jsonData = pm.response.json();\r",
 							"    console.log(jsonData)\r",
 							"    pm.expect(jsonData.errors.AssemblyStartAt).to.include(\"The value '' is invalid.\");\r",
@@ -553,7 +554,7 @@
 					"listen": "test",
 					"script": {
 						"exec": [
-							"pm.test(\"PlaceName is empty Error Message Correct\", function () {\r",
+							"pm.test(\"建立會議會議PlaceName空白報錯文案正確\", function () {\r",
 							"    var jsonData = pm.response.json();\r",
 							"    console.log(jsonData)\r",
 							"    pm.expect(jsonData.errors.PlaceName).to.include(\"The PlaceName field is required.\");\r",
@@ -773,7 +774,7 @@
 					"listen": "test",
 					"script": {
 						"exec": [
-							"pm.test(\"PlaceName is empty Error Message Correct\", function () {\r",
+							"pm.test(\"建立會議會議HostRole空白報錯文案正確\", function () {\r",
 							"    var jsonData = pm.response.json();\r",
 							"    console.log(jsonData)\r",
 							"    pm.expect(jsonData.errors.HostRole).to.include(\"The value '' is invalid.\");\r",
@@ -993,7 +994,7 @@
 					"listen": "test",
 					"script": {
 						"exec": [
-							"pm.test(\"PlaceName is empty Error Message Correct\", function () {\r",
+							"pm.test(\"建立會議會議PlaceName空白報錯文案正確\", function () {\r",
 							"    var jsonData = pm.response.json();\r",
 							"    console.log(jsonData)\r",
 							"    pm.expect(jsonData.errors.HostName).to.include(\"The HostName field is required.\");\r",
@@ -1213,7 +1214,7 @@
 					"listen": "test",
 					"script": {
 						"exec": [
-							"pm.test(\"Create Assembly Success\", function () {\r",
+							"pm.test(\"建立會議成功\", function () {\r",
 							"    pm.response.to.have.status(200);\r",
 							"});\r",
 							"const jsonData = pm.response.json();\r",
@@ -1436,7 +1437,7 @@
 						"exec": [
 							"const textData = pm.response.text();\r",
 							"\r",
-							"pm.test(\"Verify Not applicable Excel errormessage\", function () {\r",
+							"pm.test(\"建立會議錯誤的excel報錯正確\", function () {\r",
 							"    pm.expect(textData).to.include(\"Excel當中找不到有效戶別，請確認檔案內容是否正確\");\r",
 							"});\r",
 							""
@@ -1505,7 +1506,7 @@
 					},
 					{
 						"key": "origin",
-						"value": "https://local.kingnetsmart.com.tw"
+						"value": "https://www.kingnetsmart.com.tw"
 					},
 					{
 						"key": "sec-fetch-site",
@@ -1521,7 +1522,7 @@
 					},
 					{
 						"key": "referer",
-						"value": "https://local.kingnetsmart.com.tw/"
+						"value": "https://www.kingnetsmart.com.tw/"
 					},
 					{
 						"key": "accept-language",
@@ -1656,7 +1657,7 @@
 						"exec": [
 							"const textData = pm.response.text();\r",
 							"\r",
-							"pm.test(\"Verify Excel sq is empty errormessage\", function () {\r",
+							"pm.test(\"建立會議坪數未填的excel報錯正確\", function () {\r",
 							"    pm.expect(textData).to.include(\"區權人名單有坪數資料未填寫\");\r",
 							"});"
 						],
@@ -1875,7 +1876,7 @@
 						"exec": [
 							"const textData = pm.response.text();\r",
 							"\r",
-							"pm.test(\"Verify error community Excel errormessage\", function () {\r",
+							"pm.test(\"建立會議錯誤社區的excel報錯正確\", function () {\r",
 							"    pm.expect(textData).to.include(\"區權人名單含有不正確的戶別資料(可能是不同社區資料)\");\r",
 							"});"
 						],
@@ -2092,7 +2093,7 @@
 					"listen": "test",
 					"script": {
 						"exec": [
-							"pm.test(\"InsertTopics Success\", function () {\r",
+							"pm.test(\"編輯議案功能成功\", function () {\r",
 							"    pm.response.to.have.status(200);\r",
 							"});"
 						],
@@ -2199,7 +2200,7 @@
 					"listen": "test",
 					"script": {
 						"exec": [
-							"pm.test(\"GetRegistrationExport Success\", function () {\r",
+							"pm.test(\"輸出以建立的出席名單成功\", function () {\r",
 							"    pm.response.to.have.status(200);\r",
 							"});"
 						],
@@ -2304,7 +2305,7 @@
 					"listen": "test",
 					"script": {
 						"exec": [
-							"pm.test(\"GetAttendanceCardList Success\", function () {\r",
+							"pm.test(\"取得出席證成功\", function () {\r",
 							"    pm.response.to.have.status(200);\r",
 							"});"
 						],
@@ -2410,7 +2411,7 @@
 					"script": {
 						"exec": [
 							"const jsonData = pm.response.json();\r",
-							"pm.test(\"Verify AssemblyId correct\", function () {\r",
+							"pm.test(\"編輯會議成功\", function () {\r",
 							"    const AssemblyId = pm.collectionVariables.get(\"AssemblyId\");\r",
 							"    pm.expect(jsonData.id).to.include(AssemblyId);\r",
 							"});\r",
@@ -2536,7 +2537,7 @@
 					"listen": "test",
 					"script": {
 						"exec": [
-							"pm.test(\"EditAssembly Success\", function () {\r",
+							"pm.test(\"編輯議案成功\", function () {\r",
 							"    pm.response.to.have.status(200);\r",
 							"});"
 						],
@@ -2732,13 +2733,14 @@
 						"exec": [
 							"const jsonData = pm.response.json();\r",
 							"// console.log(jsonData.length)\r",
-							"pm.test(\"Get UnitOwnerList Success\", function () {\r",
+							"pm.test(\"取得所建立會議的區權人成功\", function () {\r",
 							"    pm.response.to.have.status(200);\r",
 							"});\r",
 							"pm.test(\"UnitOwnerList01 NotRegistered\", function () {\r",
 							"    pm.expect(jsonData[0].registrationStatus).to.include(\"NotRegistered\");\r",
 							"});\r",
 							"pm.collectionVariables.set(\"UnitOwnerId\", jsonData[0].id)\r",
+							"pm.collectionVariables.set(\"UnitOwnerId1\", jsonData[1].id)\r",
 							"\r",
 							"\r",
 							"\r",
@@ -2846,7 +2848,7 @@
 					"script": {
 						"exec": [
 							"const textData = pm.response.text();\r",
-							"pm.test(\"Assembly Not Published Can't RegisterUnitOwner\", function () {\r",
+							"pm.test(\"會議未發布無法進行報到報錯文案正確\", function () {\r",
 							"    pm.expect(textData).to.include(\"此狀態下不能報到\");\r",
 							"});\r",
 							""
@@ -2954,7 +2956,7 @@
 					"listen": "test",
 					"script": {
 						"exec": [
-							"pm.test(\"PublishAssembly Success\", function () {\r",
+							"pm.test(\"發佈會議成功\", function () {\r",
 							"    pm.response.to.have.status(200);\r",
 							"});"
 						],
@@ -3061,7 +3063,7 @@
 					"listen": "test",
 					"script": {
 						"exec": [
-							"pm.test(\"RegisterUnitOwner Success\", function () {\r",
+							"pm.test(\"報到區權人1成功\", function () {\r",
 							"    pm.response.to.have.status(200);\r",
 							"});\r",
 							"pm.sendRequest(\"http://worldtimeapi.org/api/timezone/Asia/Taipei\", function (err, res) {\r",
@@ -3167,6 +3169,118 @@
 			"response": []
 		},
 		{
+			"name": "報到區權人2",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"報到區權人2成功\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.sendRequest(\"http://worldtimeapi.org/api/timezone/Asia/Taipei\", function (err, res) {\r",
+							"    pm.collectionVariables.set(\"RegisterUnitOwnerTime\", res.json().datetime.substr(11,5));\r",
+							"});\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{comLoginToken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "authority",
+						"value": "uoa-dev.kingnetsmart.com.tw"
+					},
+					{
+						"key": "sec-ch-ua",
+						"value": "\" Not A;Brand\";v=\"99\", \"Chromium\";v=\"98\", \"Google Chrome\";v=\"98\""
+					},
+					{
+						"key": "authenticationscheme",
+						"value": "SmartlifeBackstageAuthenticationHandler"
+					},
+					{
+						"key": "content-type",
+						"value": "application/json;charset=UTF-8"
+					},
+					{
+						"key": "authorization",
+						"value": "Bearer x4/h3t9g+2cGflxQRaGaIF68z1OUZS07yKnghDk/eXnkckEOgMkTkfUNDqC516LzKe8bmYlkf+mm4PLYZlQLvRWmg278WKvksmlITMea0ZSZHaegajR3G97BYj1QGsKfxFw0jIkCHdbVjdXdgoXlG55e3e38FvMbi3DQ+8xh8cp8q2uGaSyql9LV9GwzYbfGBQlTd7vY5QgfYUwiYbufl9jUBm877Mdc9D3CRNuHPHUwDE60FHSsKF2sbS9VrinAyJiqlXn0nUbVGU8lXP7Xj0MFeAjncmM+GNYMxwnpURVvuhZN6OjQVVujE9hKt2qgQfo2E/kgkLBOPTkCLMNLPMWocAav4rGd1e0l5WlrJ/EjhZKgu4iR1+BgUCxIKjpWW4IamUNYz93qoJYRoHktw1L373oq4Kn/ieocGiT2Em96nGSA2wtE/CmWJqvw+fyG7neOK6EbU7/8Ly+pwbHj7lyUon4tJdhQdpszn0EhEaWkAUg8JxFd3uJazuDV1WVgPs0OLUmRh/wTJCEhLri7gQHUtLKM27lNzl8IIyf0XF7iAh+v8c7HUCgWUA2Cr6zO3vYTDLk2BgF8uFTnmlklow==",
+						"disabled": true
+					},
+					{
+						"key": "sec-ch-ua-mobile",
+						"value": "?0"
+					},
+					{
+						"key": "user-agent",
+						"value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/98.0.4758.81 Safari/537.36"
+					},
+					{
+						"key": "sec-ch-ua-platform",
+						"value": "\"Windows\""
+					},
+					{
+						"key": "accept",
+						"value": "*/*"
+					},
+					{
+						"key": "origin",
+						"value": "https://local.kingnetsmart.com.tw"
+					},
+					{
+						"key": "sec-fetch-site",
+						"value": "same-site"
+					},
+					{
+						"key": "sec-fetch-mode",
+						"value": "cors"
+					},
+					{
+						"key": "sec-fetch-dest",
+						"value": "empty"
+					},
+					{
+						"key": "referer",
+						"value": "https://local.kingnetsmart.com.tw/"
+					},
+					{
+						"key": "accept-language",
+						"value": "zh-TW,zh;q=0.9,en-US;q=0.8,en;q=0.7,zh-CN;q=0.6,ig;q=0.5,th;q=0.4"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"assemblyId\":\"{{AssemblyId}}\",\"unitOwnerId\":\"{{UnitOwnerId1}}\"}"
+				},
+				"url": {
+					"raw": "{{uoa}}/UnitOwnerAssembly/RegisterUnitOwner",
+					"host": [
+						"{{uoa}}"
+					],
+					"path": [
+						"UnitOwnerAssembly",
+						"RegisterUnitOwner"
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "驗證所報到的區權人狀態",
 			"event": [
 				{
@@ -3176,10 +3290,10 @@
 							"const jsonData = pm.response.json();\r",
 							"const RegisterUnitOwnerTime = pm.collectionVariables.get(\"RegisterUnitOwnerTime\")\r",
 							"// console.log(jsonData.length)\r",
-							"pm.test(\"Verity UnitOwnerList01 Registered\", function () {\r",
+							"pm.test(\"驗證區權人1報到狀態正確\", function () {\r",
 							"    pm.expect(jsonData[0].registrationStatus).to.include(\"Registered\");\r",
 							"});\r",
-							"pm.test(\"Verity UnitOwnerList01 Registered Time\", function () {\r",
+							"pm.test(\"驗證區權人1報到時間正確\", function () {\r",
 							"    pm.expect(jsonData[0].registerAt).to.include(RegisterUnitOwnerTime);\r",
 							"    console.log(jsonData[0].registerAt)\r",
 							"    console.log(RegisterUnitOwnerTime)\r",
@@ -3289,7 +3403,7 @@
 					"listen": "test",
 					"script": {
 						"exec": [
-							"pm.test(\"UnregisterUnitOwner Success\", function () {\r",
+							"pm.test(\"簽退區權人1成功\", function () {\r",
 							"    pm.response.to.have.status(200);\r",
 							"});\r",
 							"pm.sendRequest(\"http://worldtimeapi.org/api/timezone/Asia/Taipei\", function (err, res) {\r",
@@ -3403,10 +3517,10 @@
 							"const jsonData = pm.response.json();\r",
 							"const UnregisterUnitOwnerTime = pm.collectionVariables.get(\"UnregisterUnitOwnerTime\")\r",
 							"// console.log(jsonData.length)\r",
-							"pm.test(\"Verity UnitOwnerList01 Unregistered\", function () {\r",
+							"pm.test(\"驗證區權人1被簽退的報到狀態正確\", function () {\r",
 							"    pm.expect(jsonData[0].registrationStatus).to.include(\"Unregistered\");\r",
 							"});\r",
-							"pm.test(\"Verity UnitOwnerList01 Unregistered Time\", function () {\r",
+							"pm.test(\"驗證區權人1被簽退的簽退時間正確\", function () {\r",
 							"    pm.expect(jsonData[0].unregisterAt).to.include(UnregisterUnitOwnerTime);\r",
 							"    console.log(jsonData[0].unregisterAt)\r",
 							"    console.log(UnregisterUnitOwnerTime)\r",
@@ -3517,14 +3631,577 @@
 					"script": {
 						"exec": [
 							"const jsonData = pm.response.json();\r",
-							"pm.test(\"Verity Assembly Title\", function () {\r",
-							"    pm.expect(jsonData.title).to.include(\"API testin\");\r",
+							"console.log(jsonData)\r",
+							"pm.test(\"驗證dashboard會議title正確\", function () {\r",
+							"    pm.expect(jsonData.title).to.include(\"API testing\");\r",
 							"});\r",
-							"pm.test(\"Verity Register quantity\", function () {\r",
+							"pm.test(\"驗證dashboard會議報到人數正確\", function () {\r",
+							"    pm.expect(jsonData.tabletValue).to.equal(2);\r",
+							"});\r",
+							"pm.test(\"驗證dashboard會議簽退人數正確\", function () {\r",
+							"    pm.expect(jsonData.unregisterValue).to.equal(1);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{comLoginToken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "authority",
+						"value": "uoa-dev.kingnetsmart.com.tw"
+					},
+					{
+						"key": "sec-ch-ua",
+						"value": "\" Not A;Brand\";v=\"99\", \"Chromium\";v=\"98\", \"Google Chrome\";v=\"98\""
+					},
+					{
+						"key": "authenticationscheme",
+						"value": "SmartlifeBackstageAuthenticationHandler"
+					},
+					{
+						"key": "authorization",
+						"value": "Bearer x4/h3t9g+2cGflxQRaGaIF68z1OUZS07yKnghDk/eXnkckEOgMkTkfUNDqC516LzKe8bmYlkf+mm4PLYZlQLvRWmg278WKvksmlITMea0ZSZHaegajR3G97BYj1QGsKfxFw0jIkCHdbVjdXdgoXlG55e3e38FvMbi3DQ+8xh8cp8q2uGaSyql9LV9GwzYbfGBQlTd7vY5QgfYUwiYbufl9jUBm877Mdc9D3CRNuHPHUwDE60FHSsKF2sbS9VrinAyJiqlXn0nUbVGU8lXP7Xj0MFeAjncmM+GNYMxwnpURVvuhZN6OjQVVujE9hKt2qgQfo2E/kgkLBOPTkCLMNLPMWocAav4rGd1e0l5WlrJ/EjhZKgu4iR1+BgUCxIKjpWW4IamUNYz93qoJYRoHktw1L373oq4Kn/ieocGiT2Em96nGSA2wtE/CmWJqvw+fyG7neOK6EbU7/8Ly+pwbHj7lyUon4tJdhQdpszn0EhEaWkAUg8JxFd3uJazuDV1WVgPs0OLUmRh/wTJCEhLri7gQHUtLKM27lNzl8IIyf0XF7iAh+v8c7HUCgWUA2Cr6zO3vYTDLk2BgF8uFTnmlklow==",
+						"disabled": true
+					},
+					{
+						"key": "sec-ch-ua-mobile",
+						"value": "?0"
+					},
+					{
+						"key": "user-agent",
+						"value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/98.0.4758.81 Safari/537.36"
+					},
+					{
+						"key": "sec-ch-ua-platform",
+						"value": "\"Windows\""
+					},
+					{
+						"key": "accept",
+						"value": "*/*"
+					},
+					{
+						"key": "origin",
+						"value": "https://local.kingnetsmart.com.tw"
+					},
+					{
+						"key": "sec-fetch-site",
+						"value": "same-site"
+					},
+					{
+						"key": "sec-fetch-mode",
+						"value": "cors"
+					},
+					{
+						"key": "sec-fetch-dest",
+						"value": "empty"
+					},
+					{
+						"key": "referer",
+						"value": "https://local.kingnetsmart.com.tw/"
+					},
+					{
+						"key": "accept-language",
+						"value": "zh-TW,zh;q=0.9,en-US;q=0.8,en;q=0.7,zh-CN;q=0.6,ig;q=0.5,th;q=0.4"
+					}
+				],
+				"url": {
+					"raw": "{{uoa}}/UnitOwnerAssembly/GetDashboardData?AssemblyId={{AssemblyId}}",
+					"host": [
+						"{{uoa}}"
+					],
+					"path": [
+						"UnitOwnerAssembly",
+						"GetDashboardData"
+					],
+					"query": [
+						{
+							"key": "AssemblyId",
+							"value": "{{AssemblyId}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "取消簽退區權人1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"取消簽退區權人1成功\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{comLoginToken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "authority",
+						"value": "uoa-dev.kingnetsmart.com.tw"
+					},
+					{
+						"key": "sec-ch-ua",
+						"value": "\" Not A;Brand\";v=\"99\", \"Chromium\";v=\"98\", \"Google Chrome\";v=\"98\""
+					},
+					{
+						"key": "authenticationscheme",
+						"value": "SmartlifeBackstageAuthenticationHandler"
+					},
+					{
+						"key": "content-type",
+						"value": "application/json;charset=UTF-8"
+					},
+					{
+						"key": "authorization",
+						"value": "Bearer x4/h3t9g+2cGflxQRaGaIF68z1OUZS07yKnghDk/eXnkckEOgMkTkfUNDqC516LzKe8bmYlkf+mm4PLYZlQLvRWmg278WKvksmlITMea0ZSZHaegajR3G97BYj1QGsKfxFw0jIkCHdbVjdXdgoXlG55e3e38FvMbi3DQ+8xh8cp8q2uGaSyql9LV9GwzYbfGBQlTd7vY5QgfYUwiYbufl9jUBm877Mdc9D3CRNuHPHUwDE60FHSsKF2sbS9VrinAyJiqlXn0nUbVGU8lXP7Xj6r4JxDw8VpZz+t1vr4fN1oNS4Yw7MRIs8LSNPzGADUN7tTLcq8rLuExzdIxvf4XoltZHvJwHcozkbvGD/gslWTaRz3hmLB/ufM3oBS1xaKZHJ2I60Ey29sUQaSX5md508ZGOUmHhJtJ9VC07mLOQRV0FlFmYjS2c4N2SDnQMrlMqDkeLrXDUCD10oM87lIghDJTsu7vxTWfIbV8C2WfoB8g5RTLGaZVtrU6bxDe4C8maQ/QOyKBvkZbikIWRSu3wTriNBD+aRiPdDaigb9bpJ2UrPSZM0yWhRdxZt6DEVtdSyxPzJ/G3OLBYbkkCCbHrA==",
+						"disabled": true
+					},
+					{
+						"key": "sec-ch-ua-mobile",
+						"value": "?0"
+					},
+					{
+						"key": "user-agent",
+						"value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/98.0.4758.102 Safari/537.36"
+					},
+					{
+						"key": "sec-ch-ua-platform",
+						"value": "\"Windows\""
+					},
+					{
+						"key": "accept",
+						"value": "*/*"
+					},
+					{
+						"key": "origin",
+						"value": "https://local.kingnetsmart.com.tw"
+					},
+					{
+						"key": "sec-fetch-site",
+						"value": "same-site"
+					},
+					{
+						"key": "sec-fetch-mode",
+						"value": "cors"
+					},
+					{
+						"key": "sec-fetch-dest",
+						"value": "empty"
+					},
+					{
+						"key": "referer",
+						"value": "https://local.kingnetsmart.com.tw/"
+					},
+					{
+						"key": "accept-language",
+						"value": "zh-TW,zh;q=0.9,en-US;q=0.8,en;q=0.7,zh-CN;q=0.6,ig;q=0.5,th;q=0.4"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"assemblyId\":\"{{AssemblyId}}\",\"unitOwnerId\":\"{{UnitOwnerId}}\"}"
+				},
+				"url": {
+					"raw": "https://uoa-dev.kingnetsmart.com.tw/UnitOwnerAssembly/CancelUnitOwnerUnregistration",
+					"protocol": "https",
+					"host": [
+						"uoa-dev",
+						"kingnetsmart",
+						"com",
+						"tw"
+					],
+					"path": [
+						"UnitOwnerAssembly",
+						"CancelUnitOwnerUnregistration"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "驗證取消簽退的區權人狀態",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"const jsonData = pm.response.json();\r",
+							"// console.log(jsonData.length)\r",
+							"pm.test(\"驗證區權人1取消簽退狀態為已報到\", function () {\r",
+							"    pm.expect(jsonData[0].registrationStatus).to.include(\"Registered\");\r",
+							"});\r",
+							"pm.test(\"驗證區權人取消簽退簽退時間變為空正確\", function () {\r",
+							"    pm.expect(jsonData[0].unregisterAt).to.eql(\"\");\r",
+							"});\r",
+							"\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{comLoginToken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "authority",
+						"value": "uoa-dev.kingnetsmart.com.tw"
+					},
+					{
+						"key": "sec-ch-ua",
+						"value": "\" Not A;Brand\";v=\"99\", \"Chromium\";v=\"98\", \"Google Chrome\";v=\"98\""
+					},
+					{
+						"key": "authenticationscheme",
+						"value": "SmartlifeBackstageAuthenticationHandler"
+					},
+					{
+						"key": "authorization",
+						"value": "Bearer x4/h3t9g+2cGflxQRaGaIF68z1OUZS07yKnghDk/eXnkckEOgMkTkfUNDqC516LzKe8bmYlkf+mm4PLYZlQLvRWmg278WKvksmlITMea0ZSZHaegajR3G97BYj1QGsKfxFw0jIkCHdbVjdXdgoXlG55e3e38FvMbi3DQ+8xh8cp8q2uGaSyql9LV9GwzYbfGBQlTd7vY5QgfYUwiYbufl9jUBm877Mdc9D3CRNuHPHUwDE60FHSsKF2sbS9VrinAyJiqlXn0nUbVGU8lXP7Xj0MFeAjncmM+GNYMxwnpURVvuhZN6OjQVVujE9hKt2qgQfo2E/kgkLBOPTkCLMNLPMWocAav4rGd1e0l5WlrJ/EjhZKgu4iR1+BgUCxIKjpWW4IamUNYz93qoJYRoHktw1L373oq4Kn/ieocGiT2Em96nGSA2wtE/CmWJqvw+fyG7neOK6EbU7/8Ly+pwbHj7lyUon4tJdhQdpszn0EhEaWkAUg8JxFd3uJazuDV1WVgPs0OLUmRh/wTJCEhLri7gQHUtLKM27lNzl8IIyf0XF7iAh+v8c7HUCgWUA2Cr6zO3vYTDLk2BgF8uFTnmlklow==",
+						"disabled": true
+					},
+					{
+						"key": "sec-ch-ua-mobile",
+						"value": "?0"
+					},
+					{
+						"key": "user-agent",
+						"value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/98.0.4758.81 Safari/537.36"
+					},
+					{
+						"key": "sec-ch-ua-platform",
+						"value": "\"Windows\""
+					},
+					{
+						"key": "accept",
+						"value": "*/*"
+					},
+					{
+						"key": "origin",
+						"value": "https://local.kingnetsmart.com.tw"
+					},
+					{
+						"key": "sec-fetch-site",
+						"value": "same-site"
+					},
+					{
+						"key": "sec-fetch-mode",
+						"value": "cors"
+					},
+					{
+						"key": "sec-fetch-dest",
+						"value": "empty"
+					},
+					{
+						"key": "referer",
+						"value": "https://local.kingnetsmart.com.tw/"
+					},
+					{
+						"key": "accept-language",
+						"value": "zh-TW,zh;q=0.9,en-US;q=0.8,en;q=0.7,zh-CN;q=0.6,ig;q=0.5,th;q=0.4"
+					}
+				],
+				"url": {
+					"raw": "{{uoa}}/UnitOwnerAssembly/GetUnitOwnerList?AssemblyId={{AssemblyId}}",
+					"host": [
+						"{{uoa}}"
+					],
+					"path": [
+						"UnitOwnerAssembly",
+						"GetUnitOwnerList"
+					],
+					"query": [
+						{
+							"key": "AssemblyId",
+							"value": "{{AssemblyId}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "取消報到區權人2",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"取消報到區權人2成功\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{comLoginToken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "authority",
+						"value": "uoa-dev.kingnetsmart.com.tw"
+					},
+					{
+						"key": "sec-ch-ua",
+						"value": "\" Not A;Brand\";v=\"99\", \"Chromium\";v=\"98\", \"Google Chrome\";v=\"98\""
+					},
+					{
+						"key": "authenticationscheme",
+						"value": "SmartlifeBackstageAuthenticationHandler"
+					},
+					{
+						"key": "content-type",
+						"value": "application/json;charset=UTF-8"
+					},
+					{
+						"key": "authorization",
+						"value": "Bearer x4/h3t9g+2cGflxQRaGaIF68z1OUZS07yKnghDk/eXnkckEOgMkTkfUNDqC516LzKe8bmYlkf+mm4PLYZlQLvRWmg278WKvksmlITMea0ZSZHaegajR3G97BYj1QGsKfxFw0jIkCHdbVjdXdgoXlG55e3e38FvMbi3DQ+8xh8cp8q2uGaSyql9LV9GwzYbfGBQlTd7vY5QgfYUwiYbufl9jUBm877Mdc9D3CRNuHPHUwDE60FHSsKF2sbS9VrinAyJiqlXn0nUbVGU8lXP7Xj6r4JxDw8VpZz+t1vr4fN1oNS4Yw7MRIs8LSNPzGADUN7tTLcq8rLuExzdIxvf4XoltZHvJwHcozkbvGD/gslWTaRz3hmLB/ufM3oBS1xaKZHJ2I60Ey29sUQaSX5md508ZGOUmHhJtJ9VC07mLOQRV0FlFmYjS2c4N2SDnQMrlMqDkeLrXDUCD10oM87lIghDJTsu7vxTWfIbV8C2WfoB8g5RTLGaZVtrU6bxDe4C8maQ/QOyKBvkZbikIWRSu3wTriNBD+aRiPdDaigb9bpJ2UrPSZM0yWhRdxZt6DEVtdSyxPzJ/G3OLBYbkkCCbHrA==",
+						"disabled": true
+					},
+					{
+						"key": "sec-ch-ua-mobile",
+						"value": "?0"
+					},
+					{
+						"key": "user-agent",
+						"value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/98.0.4758.102 Safari/537.36"
+					},
+					{
+						"key": "sec-ch-ua-platform",
+						"value": "\"Windows\""
+					},
+					{
+						"key": "accept",
+						"value": "*/*"
+					},
+					{
+						"key": "origin",
+						"value": "https://local.kingnetsmart.com.tw"
+					},
+					{
+						"key": "sec-fetch-site",
+						"value": "same-site"
+					},
+					{
+						"key": "sec-fetch-mode",
+						"value": "cors"
+					},
+					{
+						"key": "sec-fetch-dest",
+						"value": "empty"
+					},
+					{
+						"key": "referer",
+						"value": "https://local.kingnetsmart.com.tw/"
+					},
+					{
+						"key": "accept-language",
+						"value": "zh-TW,zh;q=0.9,en-US;q=0.8,en;q=0.7,zh-CN;q=0.6,ig;q=0.5,th;q=0.4"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"assemblyId\":\"{{AssemblyId}}\",\"unitOwnerId\":\"{{UnitOwnerId1}}\"}"
+				},
+				"url": {
+					"raw": "https://uoa-dev.kingnetsmart.com.tw/UnitOwnerAssembly/CancelUnitOwnerRegistration",
+					"protocol": "https",
+					"host": [
+						"uoa-dev",
+						"kingnetsmart",
+						"com",
+						"tw"
+					],
+					"path": [
+						"UnitOwnerAssembly",
+						"CancelUnitOwnerRegistration"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "驗證取消報到的區權人狀態",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"const jsonData = pm.response.json();\r",
+							"// console.log(jsonData.length)\r",
+							"pm.test(\"驗證區權人2取消報到狀態為未報到\", function () {\r",
+							"    pm.expect(jsonData[1].registrationStatus).to.include(\"NotRegistered\");\r",
+							"});\r",
+							"pm.test(\"驗證區權人2取消報到報到時間變為空正確\", function () {\r",
+							"    pm.expect(jsonData[1].registerAt).to.eql(\"\");\r",
+							"});\r",
+							"\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{comLoginToken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "authority",
+						"value": "uoa-dev.kingnetsmart.com.tw"
+					},
+					{
+						"key": "sec-ch-ua",
+						"value": "\" Not A;Brand\";v=\"99\", \"Chromium\";v=\"98\", \"Google Chrome\";v=\"98\""
+					},
+					{
+						"key": "authenticationscheme",
+						"value": "SmartlifeBackstageAuthenticationHandler"
+					},
+					{
+						"key": "authorization",
+						"value": "Bearer x4/h3t9g+2cGflxQRaGaIF68z1OUZS07yKnghDk/eXnkckEOgMkTkfUNDqC516LzKe8bmYlkf+mm4PLYZlQLvRWmg278WKvksmlITMea0ZSZHaegajR3G97BYj1QGsKfxFw0jIkCHdbVjdXdgoXlG55e3e38FvMbi3DQ+8xh8cp8q2uGaSyql9LV9GwzYbfGBQlTd7vY5QgfYUwiYbufl9jUBm877Mdc9D3CRNuHPHUwDE60FHSsKF2sbS9VrinAyJiqlXn0nUbVGU8lXP7Xj0MFeAjncmM+GNYMxwnpURVvuhZN6OjQVVujE9hKt2qgQfo2E/kgkLBOPTkCLMNLPMWocAav4rGd1e0l5WlrJ/EjhZKgu4iR1+BgUCxIKjpWW4IamUNYz93qoJYRoHktw1L373oq4Kn/ieocGiT2Em96nGSA2wtE/CmWJqvw+fyG7neOK6EbU7/8Ly+pwbHj7lyUon4tJdhQdpszn0EhEaWkAUg8JxFd3uJazuDV1WVgPs0OLUmRh/wTJCEhLri7gQHUtLKM27lNzl8IIyf0XF7iAh+v8c7HUCgWUA2Cr6zO3vYTDLk2BgF8uFTnmlklow==",
+						"disabled": true
+					},
+					{
+						"key": "sec-ch-ua-mobile",
+						"value": "?0"
+					},
+					{
+						"key": "user-agent",
+						"value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/98.0.4758.81 Safari/537.36"
+					},
+					{
+						"key": "sec-ch-ua-platform",
+						"value": "\"Windows\""
+					},
+					{
+						"key": "accept",
+						"value": "*/*"
+					},
+					{
+						"key": "origin",
+						"value": "https://local.kingnetsmart.com.tw"
+					},
+					{
+						"key": "sec-fetch-site",
+						"value": "same-site"
+					},
+					{
+						"key": "sec-fetch-mode",
+						"value": "cors"
+					},
+					{
+						"key": "sec-fetch-dest",
+						"value": "empty"
+					},
+					{
+						"key": "referer",
+						"value": "https://local.kingnetsmart.com.tw/"
+					},
+					{
+						"key": "accept-language",
+						"value": "zh-TW,zh;q=0.9,en-US;q=0.8,en;q=0.7,zh-CN;q=0.6,ig;q=0.5,th;q=0.4"
+					}
+				],
+				"url": {
+					"raw": "{{uoa}}/UnitOwnerAssembly/GetUnitOwnerList?AssemblyId={{AssemblyId}}",
+					"host": [
+						"{{uoa}}"
+					],
+					"path": [
+						"UnitOwnerAssembly",
+						"GetUnitOwnerList"
+					],
+					"query": [
+						{
+							"key": "AssemblyId",
+							"value": "{{AssemblyId}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "驗證取消報到與簽退後的DashBoard資料",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"const jsonData = pm.response.json();\r",
+							"console.log(jsonData)\r",
+							"pm.test(\"驗證dashboard會議title正確\", function () {\r",
+							"    pm.expect(jsonData.title).to.include(\"API testing\");\r",
+							"});\r",
+							"pm.test(\"驗證dashboard會議報到人數正確\", function () {\r",
 							"    pm.expect(jsonData.tabletValue).to.equal(1);\r",
 							"});\r",
-							"pm.test(\"Verity Unregister quantity\", function () {\r",
-							"    pm.expect(jsonData.unregisterValue).to.equal(1);\r",
+							"pm.test(\"驗證dashboard會議簽退人數正確\", function () {\r",
+							"    pm.expect(jsonData.unregisterValue).to.equal(0);\r",
 							"});\r",
 							""
 						],
@@ -3629,7 +4306,7 @@
 					"listen": "test",
 					"script": {
 						"exec": [
-							"pm.test(\"Delete Assembly Success\", function () {\r",
+							"pm.test(\"刪除會議成功\", function () {\r",
 							"    pm.response.to.have.status(200);\r",
 							"});\r",
 							"\r",
@@ -3750,40 +4427,6 @@
 					""
 				]
 			}
-		}
-	],
-	"variable": [
-		{
-			"key": "comLoginToken",
-			"value": ""
-		},
-		{
-			"key": "housekeeperToken",
-			"value": ""
-		},
-		{
-			"key": "Com_id",
-			"value": ""
-		},
-		{
-			"key": "AssemblyId",
-			"value": ""
-		},
-		{
-			"key": "Today",
-			"value": ""
-		},
-		{
-			"key": "UnitOwnerId",
-			"value": ""
-		},
-		{
-			"key": "UnregisterUnitOwnerTime",
-			"value": ""
-		},
-		{
-			"key": "RegisterUnitOwnerTime",
-			"value": ""
 		}
 	]
 }
