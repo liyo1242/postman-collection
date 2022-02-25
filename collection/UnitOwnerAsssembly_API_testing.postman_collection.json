@@ -3832,13 +3832,9 @@
 					"raw": "{\"assemblyId\":\"{{AssemblyId}}\",\"unitOwnerId\":\"{{UnitOwnerId}}\"}"
 				},
 				"url": {
-					"raw": "https://uoa-dev.kingnetsmart.com.tw/UnitOwnerAssembly/CancelUnitOwnerUnregistration",
-					"protocol": "https",
+					"raw": "{{uoa}}/UnitOwnerAssembly/CancelUnitOwnerUnregistration",
 					"host": [
-						"uoa-dev",
-						"kingnetsmart",
-						"com",
-						"tw"
+						"{{uoa}}"
 					],
 					"path": [
 						"UnitOwnerAssembly",
@@ -4056,13 +4052,9 @@
 					"raw": "{\"assemblyId\":\"{{AssemblyId}}\",\"unitOwnerId\":\"{{UnitOwnerId1}}\"}"
 				},
 				"url": {
-					"raw": "https://uoa-dev.kingnetsmart.com.tw/UnitOwnerAssembly/CancelUnitOwnerRegistration",
-					"protocol": "https",
+					"raw": "{{uoa}}/UnitOwnerAssembly/CancelUnitOwnerRegistration",
 					"host": [
-						"uoa-dev",
-						"kingnetsmart",
-						"com",
-						"tw"
+						"{{uoa}}"
 					],
 					"path": [
 						"UnitOwnerAssembly",

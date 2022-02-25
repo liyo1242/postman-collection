@@ -1877,7 +1877,7 @@
 							"const textData = pm.response.text();\r",
 							"\r",
 							"pm.test(\"建立會議錯誤社區的excel報錯正確\", function () {\r",
-							"    pm.expect(textData).to.include(\"區權人名單含有不正確的戶別資料(可能是不同社區資料)\");\r",
+							"    pm.expect(textData).to.include(\"Excel當中找不到有效戶別，請確認檔案內容是否正確\");\r",
 							"});"
 						],
 						"type": "text/javascript"
@@ -2069,7 +2069,7 @@
 						{
 							"key": "UnitOwnerListExcel",
 							"type": "file",
-							"src": "./file/其他社區的excel.xlsx"
+							"src": "./file/錯誤的excel.xlsx"
 						}
 					]
 				},
@@ -3832,13 +3832,13 @@
 					"raw": "{\"assemblyId\":\"{{AssemblyId}}\",\"unitOwnerId\":\"{{UnitOwnerId}}\"}"
 				},
 				"url": {
-					"raw": "https://uoa-dev.kingnetsmart.com.tw/UnitOwnerAssembly/CancelUnitOwnerUnregistration",
-					"protocol": "https",
+					"raw": "{{uoa}}/UnitOwnerAssembly/CancelUnitOwnerUnregistration",
+				
 					"host": [
-						"uoa-dev",
-						"kingnetsmart",
-						"com",
-						"tw"
+						"{{uoa}}"
+
+
+
 					],
 					"path": [
 						"UnitOwnerAssembly",
@@ -4056,13 +4056,13 @@
 					"raw": "{\"assemblyId\":\"{{AssemblyId}}\",\"unitOwnerId\":\"{{UnitOwnerId1}}\"}"
 				},
 				"url": {
-					"raw": "https://uoa-dev.kingnetsmart.com.tw/UnitOwnerAssembly/CancelUnitOwnerRegistration",
-					"protocol": "https",
+					"raw": "{{uoa}}/UnitOwnerAssembly/CancelUnitOwnerRegistration",
+					
 					"host": [
-						"uoa-dev",
-						"kingnetsmart",
-						"com",
-						"tw"
+						"{{uoa}}"
+
+
+						
 					],
 					"path": [
 						"UnitOwnerAssembly",
