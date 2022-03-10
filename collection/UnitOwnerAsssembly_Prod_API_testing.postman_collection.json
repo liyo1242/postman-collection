@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "cf9bb241-7175-4a3e-99cf-010e10a5bbe4",
+		"_postman_id": "892ac362-f68b-4d7f-91ee-ff687758f657",
 		"name": "UnitOwnerAsssembly_API_testing",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -9,12 +9,28 @@
 			"name": "取得ComLogingToken",
 			"event": [
 				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"取得社區token成功\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"var jsonData1 = pm.cookies.get('comLoginToken');\r",
+							"var jsonData = jsonData1.substr(6)\r",
+							"pm.collectionVariables.set('comLoginToken', jsonData)\r",
+							"console.log(jsonData)\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
 					"listen": "prerequest",
 					"script": {
 						"exec": [
-							"const url = pm.environment.get('kingnetsmart')\r",
 							"pm.sendRequest({\r",
-							"    url: `${url}/mvc/api/Login/CheckAccountPassword`,\r",
+							"    url: 'https://local.kingnetsmart.com.tw/mvc/api/Login/CheckAccountPassword',\r",
 							"    method: 'POST',\r",
 							"    header: {\r",
 							"        'content-type': 'application/json',\r",
@@ -44,25 +60,7 @@
 							"         ].join('-');\r",
 							"};\r",
 							"var date = new Date();\r",
-							"console.log(date.yyyymmdd())\r",
 							"pm.collectionVariables.set(\"Today\", date.yyyymmdd());\r",
-							""
-						],
-						"type": "text/javascript"
-					}
-				},
-				{
-					"listen": "test",
-					"script": {
-						"exec": [
-							"pm.test(\"取得社區TOKEN成功\", function () {\r",
-							"    pm.response.to.have.status(200);\r",
-							"});\r",
-							"var jsonData1 = pm.cookies.get('comLoginToken');\r",
-							"var jsonData = jsonData1.substr(6)\r",
-							"pm.collectionVariables.set('comLoginToken', jsonData)\r",
-							"console.log(jsonData)\r",
-							"\r",
 							""
 						],
 						"type": "text/javascript"
@@ -108,13 +106,13 @@
 			"response": []
 		},
 		{
-			"name": "建立會議_Title is empty",
+			"name": "區權會建立_Title is empty",
 			"event": [
 				{
 					"listen": "test",
 					"script": {
 						"exec": [
-							"pm.test(\"建立會議會議Title空白報錯文案正確\", function () {\r",
+							"pm.test(\"標題必填錯誤提示正確\", function () {\r",
 							"    var jsonData = pm.response.json();\r",
 							"    console.log(jsonData)\r",
 							"    pm.expect(jsonData.errors.Title).to.include(\"The Title field is required.\");\r",
@@ -328,13 +326,13 @@
 			"response": []
 		},
 		{
-			"name": "建立會議_StartTime is empty",
+			"name": "區權會建立_StartTime is empty",
 			"event": [
 				{
 					"listen": "test",
 					"script": {
 						"exec": [
-							"pm.test(\"建立會議會議AssemblyStartAt空白報錯文案正確\", function () {\r",
+							"pm.test(\"區權會會議起日必填錯誤提示正確\", function () {\r",
 							"    var jsonData = pm.response.json();\r",
 							"    console.log(jsonData)\r",
 							"    pm.expect(jsonData.errors.AssemblyStartAt).to.include(\"The value '' is invalid.\");\r",
@@ -548,13 +546,13 @@
 			"response": []
 		},
 		{
-			"name": "建立會議_PlaceName is empty",
+			"name": "區權會建立_PlaceName is empty",
 			"event": [
 				{
 					"listen": "test",
 					"script": {
 						"exec": [
-							"pm.test(\"建立會議會議PlaceName空白報錯文案正確\", function () {\r",
+							"pm.test(\"PlaceName必填錯誤提示正確\", function () {\r",
 							"    var jsonData = pm.response.json();\r",
 							"    console.log(jsonData)\r",
 							"    pm.expect(jsonData.errors.PlaceName).to.include(\"The PlaceName field is required.\");\r",
@@ -768,13 +766,13 @@
 			"response": []
 		},
 		{
-			"name": "建立會議_HostRole is empty",
+			"name": "區權會建立_HostRole is empty",
 			"event": [
 				{
 					"listen": "test",
 					"script": {
 						"exec": [
-							"pm.test(\"建立會議會議HostRole空白報錯文案正確\", function () {\r",
+							"pm.test(\"HostRole必填錯誤提示正確\", function () {\r",
 							"    var jsonData = pm.response.json();\r",
 							"    console.log(jsonData)\r",
 							"    pm.expect(jsonData.errors.HostRole).to.include(\"The value '' is invalid.\");\r",
@@ -988,13 +986,13 @@
 			"response": []
 		},
 		{
-			"name": "建立會議_HostName is empty",
+			"name": "區權會建立_HostName is empty",
 			"event": [
 				{
 					"listen": "test",
 					"script": {
 						"exec": [
-							"pm.test(\"建立會議會議PlaceName空白報錯文案正確\", function () {\r",
+							"pm.test(\"HostName必填錯誤提示正確\", function () {\r",
 							"    var jsonData = pm.response.json();\r",
 							"    console.log(jsonData)\r",
 							"    pm.expect(jsonData.errors.HostName).to.include(\"The HostName field is required.\");\r",
@@ -1208,13 +1206,13 @@
 			"response": []
 		},
 		{
-			"name": "建立會議_Success",
+			"name": "區權會建立_Success",
 			"event": [
 				{
 					"listen": "test",
 					"script": {
 						"exec": [
-							"pm.test(\"建立會議成功\", function () {\r",
+							"pm.test(\"區權會建立成功 200\", function () {\r",
 							"    pm.response.to.have.status(200);\r",
 							"});\r",
 							"const jsonData = pm.response.json();\r",
@@ -1253,7 +1251,7 @@
 				"header": [
 					{
 						"key": "authority",
-						"value": "uoa.kingnetsmart.com.tw"
+						"value": "uoa-dev.kingnetsmart.com.tw"
 					},
 					{
 						"key": "sec-ch-ua",
@@ -1286,7 +1284,7 @@
 					},
 					{
 						"key": "origin",
-						"value": "https://www.kingnetsmart.com.tw"
+						"value": "https://local.kingnetsmart.com.tw"
 					},
 					{
 						"key": "sec-fetch-site",
@@ -1302,7 +1300,7 @@
 					},
 					{
 						"key": "referer",
-						"value": "https://www.kingnetsmart.com.tw/"
+						"value": "https://local.kingnetsmart.com.tw/"
 					},
 					{
 						"key": "accept-language",
@@ -1429,7 +1427,7 @@
 			"response": []
 		},
 		{
-			"name": "建立會議_錯誤的Excel",
+			"name": "區權會建立_錯誤的Excel",
 			"event": [
 				{
 					"listen": "test",
@@ -1437,8 +1435,8 @@
 						"exec": [
 							"const textData = pm.response.text();\r",
 							"\r",
-							"pm.test(\"建立會議錯誤的excel報錯正確\", function () {\r",
-							"    pm.expect(textData).to.include(\"Excel當中找不到有效戶別，請確認檔案內容是否正確\");\r",
+							"pm.test(\"區權會建立上傳錯誤的excel錯誤提示正確\", function () {\r",
+							"    pm.expect(textData).to.include(\"Object reference not set to an instance of an object.\");\r",
 							"});\r",
 							""
 						],
@@ -1506,7 +1504,7 @@
 					},
 					{
 						"key": "origin",
-						"value": "https://www.kingnetsmart.com.tw"
+						"value": "https://local.kingnetsmart.com.tw"
 					},
 					{
 						"key": "sec-fetch-site",
@@ -1522,7 +1520,7 @@
 					},
 					{
 						"key": "referer",
-						"value": "https://www.kingnetsmart.com.tw/"
+						"value": "https://local.kingnetsmart.com.tw/"
 					},
 					{
 						"key": "accept-language",
@@ -1649,7 +1647,7 @@
 			"response": []
 		},
 		{
-			"name": "建立會議_坪數未填的Excel",
+			"name": "區權會建立_坪數未填的Excel",
 			"event": [
 				{
 					"listen": "test",
@@ -1657,8 +1655,8 @@
 						"exec": [
 							"const textData = pm.response.text();\r",
 							"\r",
-							"pm.test(\"建立會議坪數未填的excel報錯正確\", function () {\r",
-							"    pm.expect(textData).to.include(\"區權人名單有坪數資料未填寫\");\r",
+							"pm.test(\"區權會建立上傳坪數未填的excel錯誤提示正確\", function () {\r",
+							"    pm.expect(textData).to.include(\"Object reference not set to an instance of an object.\");\r",
 							"});"
 						],
 						"type": "text/javascript"
@@ -1868,7 +1866,7 @@
 			"response": []
 		},
 		{
-			"name": "建立會議_錯誤社區的excel",
+			"name": "區權會建立_錯誤社區的excel",
 			"event": [
 				{
 					"listen": "test",
@@ -1876,8 +1874,8 @@
 						"exec": [
 							"const textData = pm.response.text();\r",
 							"\r",
-							"pm.test(\"建立會議錯誤社區的excel報錯正確\", function () {\r",
-							"    pm.expect(textData).to.include(\"Excel當中找不到有效戶別，請確認檔案內容是否正確\");\r",
+							"pm.test(\"區權會建立上傳其他社區的excel錯誤提示正確\", function () {\r",
+							"    pm.expect(textData).to.include(\"區權人名單含有不正確的戶別資料(可能是不同社區資料)\");\r",
 							"});"
 						],
 						"type": "text/javascript"
@@ -2069,7 +2067,7 @@
 						{
 							"key": "UnitOwnerListExcel",
 							"type": "file",
-							"src": "./file/錯誤的excel.xlsx"
+							"src": "./file/其他社區的excel.xlsx"
 						}
 					]
 				},
@@ -2087,13 +2085,13 @@
 			"response": []
 		},
 		{
-			"name": "編輯議案",
+			"name": "區權會議案建立",
 			"event": [
 				{
 					"listen": "test",
 					"script": {
 						"exec": [
-							"pm.test(\"編輯議案功能成功\", function () {\r",
+							"pm.test(\"建立區權會議案成功 200\", function () {\r",
 							"    pm.response.to.have.status(200);\r",
 							"});"
 						],
@@ -2178,7 +2176,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\"assemblyId\":\"{{AssemblyId}}\",\"topicDtos\":[{\"title\":\"API testing edit\",\"description\":\"API testing edit\",\"attendanceThreshold\":0.3,\"consentThreshold\":0.3},{\"title\":\"edit\",\"description\":\"edit\",\"attendanceThreshold\":0.5,\"consentThreshold\":0.5}]}"
+					"raw": "{\"assemblyId\":\"{{AssemblyId}}\",\"topicDtos\":[{\"title\":\"API testing\",\"description\":\"API testing\",\"attendanceThreshold\":0.5,\"consentThreshold\":0.5},{\"title\":\"API testing2\",\"description\":\"API testing2\",\"attendanceThreshold\":0.5,\"consentThreshold\":0.5}]}"
 				},
 				"url": {
 					"raw": "{{uoa}}/UnitOwnerAssembly/InsertTopics",
@@ -2194,13 +2192,200 @@
 			"response": []
 		},
 		{
-			"name": "輸出已建立的出席名單",
+			"name": "區權人確認卡片取得(By戶別Id)_三采企業大樓A1F1",
 			"event": [
 				{
 					"listen": "test",
 					"script": {
 						"exec": [
-							"pm.test(\"輸出以建立的出席名單成功\", function () {\r",
+							"pm.test(\"區權人確認卡片取得(By戶別Id) 成功 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{comLoginToken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "accept",
+						"value": "text/plain"
+					},
+					{
+						"key": "AuthenticationScheme",
+						"value": "SmartlifeBackstageAuthenticationHandler"
+					}
+				],
+				"url": {
+					"raw": "{{uoa}}/UnitOwnerAssembly/GetUnitOwnerCardByTabletId?AssemblyId={{AssemblyId}}&TabletId=1507220077",
+					"host": [
+						"{{uoa}}"
+					],
+					"path": [
+						"UnitOwnerAssembly",
+						"GetUnitOwnerCardByTabletId"
+					],
+					"query": [
+						{
+							"key": "AssemblyId",
+							"value": "{{AssemblyId}}"
+						},
+						{
+							"key": "TabletId",
+							"value": "1507220077"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "匯入區權人模板(Excel)取得",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"區權會Excel取得成功 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{comLoginToken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "accept",
+						"value": "*/*"
+					},
+					{
+						"key": "AuthenticationScheme",
+						"value": "SmartlifeBackstageAuthenticationHandler"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer x4/h3t9g+2cGflxQRaGaIF68z1OUZS07yKnghDk/eXnkckEOgMkTkfUNDqC516LzKe8bmYlkf+mm4PLYZlQLvRWmg278WKvksmlITMea0ZSZHaegajR3G97BYj1QGsKfxFw0jIkCHdbVjdXdgoXlG55e3e38FvMbi3DQ+8xh8cp8q2uGaSyql9LV9GwzYbfGBQlTd7vY5QgfYUwiYbufl9jUBm877Mdc9D3CRNuHPHUwDE60FHSsKF2sbS9VrinAyJiqlXn0nUbVGU8lXP7Xj6r4JxDw8VpZz+t1vr4fN1oNS4Yw7MRIs8LSNPzGADUN7tTLcq8rLuExzdIxvf4XoltZHvJwHcozkbvGD/gslWTaRz3hmLB/ufM3oBS1xaKZHJ2I60Ey29sUQaSX5md506iMnDbl1nHZTeFjy2T3eDOInUE5930NKut3/AvIGRqjvKglQQPcOHKgkGY8cQ3cpnpjxhWca1rzAXF5snjA7hLbZ663+FMD/dnLLv0mqYaC1AhjjQ+8JtsmPQsjJcxFoCDw5D7cQiGYb8ZwhGQ9ajJTe09QG3+eU4r5uz+RltP8FGXAXie973ggWzaiMUUiSA==",
+						"disabled": true
+					}
+				],
+				"url": {
+					"raw": "{{uoa}}/UnitOwnerAssembly/GetImportationTemplate",
+					"host": [
+						"{{uoa}}"
+					],
+					"path": [
+						"UnitOwnerAssembly",
+						"GetImportationTemplate"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "區權會議案列表取得",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"const jsonData = pm.response.json();\r",
+							"pm.test(\"區權會取得議案列表成功 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"議案1名稱正確\", function () {\r",
+							"    pm.expect(jsonData[0].title).to.eql(\"API testing\");\r",
+							"});\r",
+							"pm.test(\"議案1出席標準正確\", function () {\r",
+							"    pm.expect(jsonData[0].attendanceThreshold).to.eql(0.5);\r",
+							"});\r",
+							"pm.test(\"議案1投票標準正確\", function () {\r",
+							"    pm.expect(jsonData[0].consentThreshold).to.eql(0.5);\r",
+							"});\r",
+							"pm.collectionVariables.set(\"TopicId\", jsonData[0].id)"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{comLoginToken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "accept",
+						"value": "text/plain"
+					},
+					{
+						"key": "AuthenticationScheme",
+						"value": "SmartlifeBackstageAuthenticationHandler"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer x4/h3t9g+2cGflxQRaGaIF68z1OUZS07yKnghDk/eXnkckEOgMkTkfUNDqC516LzKe8bmYlkf+mm4PLYZlQLvRWmg278WKvksmlITMea0ZSZHaegajR3G97BYj1QGsKfxFw0jIkCHdbVjdXdgoXlG55e3e38FvMbi3DQ+8xh8cp8q2uGaSyql9LV9GwzYbfGBQlTd7vY5QgfYUwiYbufl9jUBm877Mdc9D3CRNuHPHUwDE60FHSsKF2sbS9VrinAyJiqlXn0nUbVGU8lXP7Xj6r4JxDw8VpZz+t1vr4fN1oNS4Yw7MRIs8LSNPzGADUN7tTLcq8rLuExzdIxvf4XoltZHvJwHcozkbvGD/gslWTaRz3hmLB/ufM3oBS1xaKZHJ2I60Ey29sUQaSX5md506iMnDbl1nHZTeFjy2T3eDOInUE5930NKut3/AvIGRqjvKglQQPcOHKgkGY8cQ3cpnpjxhWca1rzAXF5snjA7hLbZ663+FMD/dnLLv0mqYaC1AhjjQ+8JtsmPQsjJcxFoCDw5D7cQiGYb8ZwhGQ9ajJTe09QG3+eU4r5uz+RltP8FGXAXie973ggWzaiMUUiSA==",
+						"disabled": true
+					}
+				],
+				"url": {
+					"raw": "{{uoa}}/UnitOwnerAssembly/GetTopicList?AssemblyId={{AssemblyId}}",
+					"host": [
+						"{{uoa}}"
+					],
+					"path": [
+						"UnitOwnerAssembly",
+						"GetTopicList"
+					],
+					"query": [
+						{
+							"key": "AssemblyId",
+							"value": "{{AssemblyId}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "區權人報到狀況列表(Excel)取得",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"取得區權會區權人報到狀態列表excel成功 200\", function () {\r",
 							"    pm.response.to.have.status(200);\r",
 							"});"
 						],
@@ -2299,15 +2484,17 @@
 			"response": []
 		},
 		{
-			"name": "取得已建立的出席證",
+			"name": "出席證列表取得",
 			"event": [
 				{
 					"listen": "test",
 					"script": {
 						"exec": [
-							"pm.test(\"取得出席證成功\", function () {\r",
+							"pm.test(\"出席證列表取得成功 200\", function () {\r",
 							"    pm.response.to.have.status(200);\r",
-							"});"
+							"});\r",
+							"const jsonData = pm.response.json();\r",
+							"pm.collectionVariables.set(\"UnitOwner01barcode\", jsonData[0].barcode)"
 						],
 						"type": "text/javascript"
 					}
@@ -2404,35 +2591,99 @@
 			"response": []
 		},
 		{
-			"name": "驗證所建立的會議",
+			"name": "區權人確認卡片取得(By出席證條碼)_三采企業大樓B1F2",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"區權人確認卡片取得(By出席證條碼) 成功 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"區權人確認卡片取得(By出席證條碼) 戶別正確為 B1F2\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.tabletName).to.eql(\"B1F2\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{comLoginToken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "accept",
+						"value": "text/plain"
+					},
+					{
+						"key": "AuthenticationScheme",
+						"value": "SmartlifeBackstageAuthenticationHandler"
+					}
+				],
+				"url": {
+					"raw": "{{uoa}}/UnitOwnerAssembly/GetUnitOwnerCardByBarcode?AssemblyId={{AssemblyId}}&Barcode={{UnitOwner01barcode}}",
+					"host": [
+						"{{uoa}}"
+					],
+					"path": [
+						"UnitOwnerAssembly",
+						"GetUnitOwnerCardByBarcode"
+					],
+					"query": [
+						{
+							"key": "AssemblyId",
+							"value": "{{AssemblyId}}"
+						},
+						{
+							"key": "Barcode",
+							"value": "{{UnitOwner01barcode}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "區權會資料取得",
 			"event": [
 				{
 					"listen": "test",
 					"script": {
 						"exec": [
 							"const jsonData = pm.response.json();\r",
-							"pm.test(\"編輯會議成功\", function () {\r",
+							"pm.test(\"區權會資料取得_驗證會議id正確\", function () {\r",
 							"    const AssemblyId = pm.collectionVariables.get(\"AssemblyId\");\r",
 							"    pm.expect(jsonData.id).to.include(AssemblyId);\r",
 							"});\r",
-							"pm.test(\"Verify StartTime correct\", function () {\r",
+							"pm.test(\"區權會資料取得_驗證會議開始時間正確\", function () {\r",
 							"    const Today = pm.collectionVariables.get(\"Today\");\r",
 							"    pm.expect(jsonData.assemblyStartAt).to.include(`${Today}T06:00:00`);\r",
 							"});\r",
-							"pm.test(\"Verify DueTime correct\", function () {\r",
+							"pm.test(\"區權會資料取得_驗證會議結束時間正確\", function () {\r",
 							"    const Today = pm.collectionVariables.get(\"Today\");\r",
 							"    pm.expect(jsonData.assemblyDueAt).to.include(`${Today}T23:00:00`);\r",
 							"});\r",
-							"pm.test(\"Verify PlaceName correct\", function () {\r",
+							"pm.test(\"區權會資料取得_驗證PlaceName正確\", function () {\r",
 							"    pm.expect(jsonData.place.name).to.include(\"API testing\");\r",
 							"});\r",
-							"pm.test(\"Verify HostName correct\", function () {\r",
+							"pm.test(\"區權會資料取得_驗證HostName正確\", function () {\r",
 							"    pm.expect(jsonData.host.name).to.include(\"API testing\");\r",
 							"});\r",
-							"pm.test(\"Verify Title correct\", function () {\r",
+							"pm.test(\"區權會資料取得_驗證Titel正確\", function () {\r",
 							"    pm.expect(jsonData.title).to.include(\"API testing\");\r",
 							"});\r",
-							"pm.test(\"Verify Status correct\", function () {\r",
+							"pm.test(\"區權會資料取得_驗證Status正確\", function () {\r",
 							"    pm.expect(jsonData.status).to.include(\"Created\");\r",
 							"});"
 						],
@@ -2531,13 +2782,13 @@
 			"response": []
 		},
 		{
-			"name": "編輯會議",
+			"name": "區權會編輯",
 			"event": [
 				{
 					"listen": "test",
 					"script": {
 						"exec": [
-							"pm.test(\"編輯議案成功\", function () {\r",
+							"pm.test(\"編輯會議成功 200\", function () {\r",
 							"    pm.response.to.have.status(200);\r",
 							"});"
 						],
@@ -2725,7 +2976,7 @@
 			"response": []
 		},
 		{
-			"name": "驗證所建立的會議區權人",
+			"name": "區權人列表取得",
 			"event": [
 				{
 					"listen": "test",
@@ -2733,15 +2984,15 @@
 						"exec": [
 							"const jsonData = pm.response.json();\r",
 							"// console.log(jsonData.length)\r",
-							"pm.test(\"取得所建立會議的區權人成功\", function () {\r",
+							"pm.test(\"取得區權人列表成功 200\", function () {\r",
 							"    pm.response.to.have.status(200);\r",
 							"});\r",
-							"pm.test(\"UnitOwnerList01 NotRegistered\", function () {\r",
+							"pm.test(\"驗證區權人 1 號為未報到狀態\", function () {\r",
 							"    pm.expect(jsonData[0].registrationStatus).to.include(\"NotRegistered\");\r",
 							"});\r",
 							"pm.collectionVariables.set(\"UnitOwnerId\", jsonData[0].id)\r",
 							"pm.collectionVariables.set(\"UnitOwnerId1\", jsonData[1].id)\r",
-							"\r",
+							"pm.collectionVariables.set(\"UnitOwnerId2\", jsonData[2].id)\r",
 							"\r",
 							"\r",
 							"console.log(jsonData[0].id)"
@@ -2841,14 +3092,72 @@
 			"response": []
 		},
 		{
-			"name": "報到區權人_會議未發佈",
+			"name": "區權人批次編輯",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"區權人批次編輯成功 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{comLoginToken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [
+					{
+						"key": "accept",
+						"value": "text/plain"
+					},
+					{
+						"key": "AuthenticationScheme",
+						"value": "SmartlifeBackstageAuthenticationHandler"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json-patch+json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"assemblyId\":\"{{AssemblyId}}\",\"editUnitOwnerDtos\":[{\"unitOwnerId\":\"{{UnitOwnerId}}\",\"unitOwnerName\":\"API testing\",\"tabletArea\":100},{\"unitOwnerId\":\"{{UnitOwnerId1}}\",\"unitOwnerName\":\"API testing2\",\"tabletArea\":200}]}"
+				},
+				"url": {
+					"raw": "{{uoa}}/UnitOwnerAssembly/EditUnitOwners",
+					"host": [
+						"{{uoa}}"
+					],
+					"path": [
+						"UnitOwnerAssembly",
+						"EditUnitOwners"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "區權人報到_會議未發佈",
 			"event": [
 				{
 					"listen": "test",
 					"script": {
 						"exec": [
 							"const textData = pm.response.text();\r",
-							"pm.test(\"會議未發布無法進行報到報錯文案正確\", function () {\r",
+							"pm.test(\"驗證會議在未發佈的狀態無法進行報到\", function () {\r",
 							"    pm.expect(textData).to.include(\"此狀態下不能報到\");\r",
 							"});\r",
 							""
@@ -2950,13 +3259,13 @@
 			"response": []
 		},
 		{
-			"name": "發佈所建立的會議",
+			"name": "區權會發佈",
 			"event": [
 				{
 					"listen": "test",
 					"script": {
 						"exec": [
-							"pm.test(\"發佈會議成功\", function () {\r",
+							"pm.test(\"區權會發佈成功 200\", function () {\r",
 							"    pm.response.to.have.status(200);\r",
 							"});"
 						],
@@ -3057,13 +3366,73 @@
 			"response": []
 		},
 		{
-			"name": "報到區權人",
+			"name": "區權會列表取得",
 			"event": [
 				{
 					"listen": "test",
 					"script": {
 						"exec": [
-							"pm.test(\"報到區權人1成功\", function () {\r",
+							"const jsonData = pm.response.json();\r",
+							"pm.test(\"區權會取得列表成功 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"所發佈的會議狀態正確是以發佈\", function () {\r",
+							"    pm.expect(jsonData[0].status).to.eql(\"Published\");\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{comLoginToken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "accept",
+						"value": "text/plain"
+					},
+					{
+						"key": "AuthenticationScheme",
+						"value": "SmartlifeBackstageAuthenticationHandler"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer x4/h3t9g+2cGflxQRaGaIF68z1OUZS07yKnghDk/eXnkckEOgMkTkfUNDqC516LzKe8bmYlkf+mm4PLYZlQLvRWmg278WKvksmlITMea0ZSZHaegajR3G97BYj1QGsKfxFw0jIkCHdbVjdXdgoXlG55e3e38FvMbi3DQ+8xh8cp8q2uGaSyql9LV9GwzYbfGBQlTd7vY5QgfYUwiYbufl9jUBm877Mdc9D3CRNuHPHUwDE60FHSsKF2sbS9VrinAyJiqlXn0nUbVGU8lXP7Xj6r4JxDw8VpZz+t1vr4fN1oNS4Yw7MRIs8LSNPzGADUN7tTLcq8rLuExzdIxvf4XoltZHvJwHcozkbvGD/gslWTaRz3hmLB/ufM3oBS1xaKZHJ2I60Ey29sUQaSX5md506iMnDbl1nHZTeFjy2T3eDOInUE5930NKut3/AvIGRqjvKglQQPcOHKgkGY8cQ3cpnpjxhWca1rzAXF5snjA7hLbZ663+FMD/dnLLv0mqYaC1AhjjQ+8JtsmPQsjJcxFoCDw5D7cQiGYb8ZwhGQ9ajJTe09QG3+eU4r5uz+RltP8FGXAXie973ggWzaiMUUiSA==",
+						"disabled": true
+					}
+				],
+				"url": {
+					"raw": "{{uoa}}/UnitOwnerAssembly/GetAssemblyList",
+					"host": [
+						"{{uoa}}"
+					],
+					"path": [
+						"UnitOwnerAssembly",
+						"GetAssemblyList"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "區權人報到",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"報到區權人 01 成功 200\", function () {\r",
 							"    pm.response.to.have.status(200);\r",
 							"});\r",
 							"pm.sendRequest(\"http://worldtimeapi.org/api/timezone/Asia/Taipei\", function (err, res) {\r",
@@ -3169,13 +3538,13 @@
 			"response": []
 		},
 		{
-			"name": "報到區權人2",
+			"name": "區權人報到_本人 02",
 			"event": [
 				{
 					"listen": "test",
 					"script": {
 						"exec": [
-							"pm.test(\"報到區權人2成功\", function () {\r",
+							"pm.test(\"報到區權人本人 02 成功 200\", function () {\r",
 							"    pm.response.to.have.status(200);\r",
 							"});\r",
 							"pm.sendRequest(\"http://worldtimeapi.org/api/timezone/Asia/Taipei\", function (err, res) {\r",
@@ -3281,7 +3650,119 @@
 			"response": []
 		},
 		{
-			"name": "驗證所報到的區權人狀態",
+			"name": "區權人報到_代理 03",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"報到區權人代理 03 成功 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.sendRequest(\"http://worldtimeapi.org/api/timezone/Asia/Taipei\", function (err, res) {\r",
+							"    pm.collectionVariables.set(\"RegisterUnitOwnerTime\", res.json().datetime.substr(11,5));\r",
+							"});\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{comLoginToken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "authority",
+						"value": "uoa-dev.kingnetsmart.com.tw"
+					},
+					{
+						"key": "sec-ch-ua",
+						"value": "\" Not A;Brand\";v=\"99\", \"Chromium\";v=\"98\", \"Google Chrome\";v=\"98\""
+					},
+					{
+						"key": "authenticationscheme",
+						"value": "SmartlifeBackstageAuthenticationHandler"
+					},
+					{
+						"key": "content-type",
+						"value": "application/json;charset=UTF-8"
+					},
+					{
+						"key": "authorization",
+						"value": "Bearer x4/h3t9g+2cGflxQRaGaIF68z1OUZS07yKnghDk/eXnkckEOgMkTkfUNDqC516LzKe8bmYlkf+mm4PLYZlQLvRWmg278WKvksmlITMea0ZSZHaegajR3G97BYj1QGsKfxFw0jIkCHdbVjdXdgoXlG55e3e38FvMbi3DQ+8xh8cp8q2uGaSyql9LV9GwzYbfGBQlTd7vY5QgfYUwiYbufl9jUBm877Mdc9D3CRNuHPHUwDE60FHSsKF2sbS9VrinAyJiqlXn0nUbVGU8lXP7Xj0MFeAjncmM+GNYMxwnpURVvuhZN6OjQVVujE9hKt2qgQfo2E/kgkLBOPTkCLMNLPMWocAav4rGd1e0l5WlrJ/EjhZKgu4iR1+BgUCxIKjpWW4IamUNYz93qoJYRoHktw1L373oq4Kn/ieocGiT2Em96nGSA2wtE/CmWJqvw+fyG7neOK6EbU7/8Ly+pwbHj7lyUon4tJdhQdpszn0EhEaWkAUg8JxFd3uJazuDV1WVgPs0OLUmRh/wTJCEhLri7gQHUtLKM27lNzl8IIyf0XF7iAh+v8c7HUCgWUA2Cr6zO3vYTDLk2BgF8uFTnmlklow==",
+						"disabled": true
+					},
+					{
+						"key": "sec-ch-ua-mobile",
+						"value": "?0"
+					},
+					{
+						"key": "user-agent",
+						"value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/98.0.4758.81 Safari/537.36"
+					},
+					{
+						"key": "sec-ch-ua-platform",
+						"value": "\"Windows\""
+					},
+					{
+						"key": "accept",
+						"value": "*/*"
+					},
+					{
+						"key": "origin",
+						"value": "https://local.kingnetsmart.com.tw"
+					},
+					{
+						"key": "sec-fetch-site",
+						"value": "same-site"
+					},
+					{
+						"key": "sec-fetch-mode",
+						"value": "cors"
+					},
+					{
+						"key": "sec-fetch-dest",
+						"value": "empty"
+					},
+					{
+						"key": "referer",
+						"value": "https://local.kingnetsmart.com.tw/"
+					},
+					{
+						"key": "accept-language",
+						"value": "zh-TW,zh;q=0.9,en-US;q=0.8,en;q=0.7,zh-CN;q=0.6,ig;q=0.5,th;q=0.4"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"assemblyId\":\"{{AssemblyId}}\",\"unitOwnerId\":\"{{UnitOwnerId2}}\"}"
+				},
+				"url": {
+					"raw": "{{uoa}}/UnitOwnerAssembly/RegisterAgent",
+					"host": [
+						"{{uoa}}"
+					],
+					"path": [
+						"UnitOwnerAssembly",
+						"RegisterAgent"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "區權人列表取得_驗證所報到的區權人狀態",
 			"event": [
 				{
 					"listen": "test",
@@ -3290,13 +3771,20 @@
 							"const jsonData = pm.response.json();\r",
 							"const RegisterUnitOwnerTime = pm.collectionVariables.get(\"RegisterUnitOwnerTime\")\r",
 							"// console.log(jsonData.length)\r",
-							"pm.test(\"驗證區權人1報到狀態正確\", function () {\r",
+							"pm.test(\"驗證區權人 01 是已報到狀態\", function () {\r",
 							"    pm.expect(jsonData[0].registrationStatus).to.include(\"Registered\");\r",
 							"});\r",
-							"pm.test(\"驗證區權人1報到時間正確\", function () {\r",
+							"pm.test(\"驗證區權人 01 報到時間正確\", function () {\r",
 							"    pm.expect(jsonData[0].registerAt).to.include(RegisterUnitOwnerTime);\r",
 							"    console.log(jsonData[0].registerAt)\r",
 							"    console.log(RegisterUnitOwnerTime)\r",
+							"});\r",
+							"\r",
+							"pm.test(\"驗證區權人 1 號 區權人姓名有正確被批次修改\", function () {\r",
+							"    pm.expect(jsonData[0].unitOwnerName).to.eql(\"API testing\");\r",
+							"});\r",
+							"pm.test(\"驗證區權人 1 號 區權人姓名有正確被批次修改\", function () {\r",
+							"    pm.expect(jsonData[0].tabletArea).to.eql(100);\r",
 							"});\r",
 							"\r",
 							"\r",
@@ -3397,13 +3885,13 @@
 			"response": []
 		},
 		{
-			"name": "簽退區權人",
+			"name": "區權人簽退",
 			"event": [
 				{
 					"listen": "test",
 					"script": {
 						"exec": [
-							"pm.test(\"簽退區權人1成功\", function () {\r",
+							"pm.test(\"區權人 01 簽退成功 200\", function () {\r",
 							"    pm.response.to.have.status(200);\r",
 							"});\r",
 							"pm.sendRequest(\"http://worldtimeapi.org/api/timezone/Asia/Taipei\", function (err, res) {\r",
@@ -3508,7 +3996,7 @@
 			"response": []
 		},
 		{
-			"name": "驗證所簽退的區權人狀態",
+			"name": "區權人列表取得_驗證所簽退的區權人狀態",
 			"event": [
 				{
 					"listen": "test",
@@ -3517,10 +4005,10 @@
 							"const jsonData = pm.response.json();\r",
 							"const UnregisterUnitOwnerTime = pm.collectionVariables.get(\"UnregisterUnitOwnerTime\")\r",
 							"// console.log(jsonData.length)\r",
-							"pm.test(\"驗證區權人1被簽退的報到狀態正確\", function () {\r",
+							"pm.test(\"驗證區權人 01 是已簽退狀態\", function () {\r",
 							"    pm.expect(jsonData[0].registrationStatus).to.include(\"Unregistered\");\r",
 							"});\r",
-							"pm.test(\"驗證區權人1被簽退的簽退時間正確\", function () {\r",
+							"pm.test(\"驗證區權人 01 的簽退狀態正確\", function () {\r",
 							"    pm.expect(jsonData[0].unregisterAt).to.include(UnregisterUnitOwnerTime);\r",
 							"    console.log(jsonData[0].unregisterAt)\r",
 							"    console.log(UnregisterUnitOwnerTime)\r",
@@ -3624,21 +4112,81 @@
 			"response": []
 		},
 		{
-			"name": "驗證DashBoard資料",
+			"name": "區權人報到狀況列表(Excel)取得",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"區權人報到狀況列表(Excel) 取得成功\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{comLoginToken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "accept",
+						"value": "*/*"
+					},
+					{
+						"key": "AuthenticationScheme",
+						"value": "SmartlifeBackstageAuthenticationHandler"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer x4/h3t9g+2cGflxQRaGaIF68z1OUZS07yKnghDk/eXnkckEOgMkTkfUNDqC516LzKe8bmYlkf+mm4PLYZlQLvRWmg278WKvksmlITMea0ZSZHaegajR3G97BYj1QGsKfxFw0jIkCHdbVjdXdgoXlG55e3e38FvMbi3DQ+8xh8cp8q2uGaSyql9LV9GwzYbfGBQlTd7vY5QgfYUwiYbufl9jUBm877Mdc9D3CRNuHPHUwDE60FHSsKF2sbS9VrinAyJiqlXn0nUbVGU8lXP7Xj6r4JxDw8VpZz+t1vr4fN1oNS4Yw7MRIs8LSNPzGADUN7tTLcq8rLuExzdIxvf4XoltZHvJwHcozkbvGD/gslWTaRz3hmLB/ufM3oBS1xaKZHJ2I60Ey29sUQaSX5md506iMnDbl1nHZTeFjy2T3eDOInUE5930NKut3/AvIGRqjvKglQQPcOHKgkGY8cQ3cpnpjxhWca1rzAXF5snjA7hLbZ663+FMD/dnLLv0mqYaC1AhjjQ+8JtsmPQsjJcxFoCDw5D7cQiGYb8ZwhGQ9ajJTe09QG3+eU4r5uz+RltP8FGXAXie973ggWzaiMUUiSA==",
+						"disabled": true
+					}
+				],
+				"url": {
+					"raw": "{{uoa}}/UnitOwnerAssembly/GetRegistrationExport?AssemblyId={{AssemblyId}}",
+					"host": [
+						"{{uoa}}"
+					],
+					"path": [
+						"UnitOwnerAssembly",
+						"GetRegistrationExport"
+					],
+					"query": [
+						{
+							"key": "AssemblyId",
+							"value": "{{AssemblyId}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "儀表板資料取得",
 			"event": [
 				{
 					"listen": "test",
 					"script": {
 						"exec": [
 							"const jsonData = pm.response.json();\r",
-							"console.log(jsonData)\r",
-							"pm.test(\"驗證dashboard會議title正確\", function () {\r",
-							"    pm.expect(jsonData.title).to.include(\"API testing\");\r",
+							"pm.test(\"儀表板_驗證會議名稱正確\", function () {\r",
+							"    pm.expect(jsonData.title).to.include(\"API testin\");\r",
 							"});\r",
-							"pm.test(\"驗證dashboard會議報到人數正確\", function () {\r",
-							"    pm.expect(jsonData.tabletValue).to.equal(2);\r",
+							"pm.test(\"儀表板_驗證報到人數正確\", function () {\r",
+							"    pm.expect(jsonData.tabletValue).to.equal(3);\r",
 							"});\r",
-							"pm.test(\"驗證dashboard會議簽退人數正確\", function () {\r",
+							"pm.test(\"儀表板_驗證簽退人數正確\", function () {\r",
 							"    pm.expect(jsonData.unregisterValue).to.equal(1);\r",
 							"});\r",
 							""
@@ -3738,13 +4286,13 @@
 			"response": []
 		},
 		{
-			"name": "取消簽退區權人1",
+			"name": "區權人取消簽退_區權人 01",
 			"event": [
 				{
 					"listen": "test",
 					"script": {
 						"exec": [
-							"pm.test(\"取消簽退區權人1成功\", function () {\r",
+							"pm.test(\"取消簽退區權人 01 成功 200\", function () {\r",
 							"    pm.response.to.have.status(200);\r",
 							"});"
 						],
@@ -3804,7 +4352,7 @@
 					},
 					{
 						"key": "origin",
-						"value": "https://local.kingnetsmart.com.tw"
+						"value": "https://test.kingnetsmart.com.tw"
 					},
 					{
 						"key": "sec-fetch-site",
@@ -3820,7 +4368,7 @@
 					},
 					{
 						"key": "referer",
-						"value": "https://local.kingnetsmart.com.tw/"
+						"value": "https://test.kingnetsmart.com.tw/"
 					},
 					{
 						"key": "accept-language",
@@ -3833,12 +4381,8 @@
 				},
 				"url": {
 					"raw": "{{uoa}}/UnitOwnerAssembly/CancelUnitOwnerUnregistration",
-				
 					"host": [
 						"{{uoa}}"
-
-
-
 					],
 					"path": [
 						"UnitOwnerAssembly",
@@ -3849,7 +4393,7 @@
 			"response": []
 		},
 		{
-			"name": "驗證取消簽退的區權人狀態",
+			"name": "區權人列表取得_驗證取消簽退的區權人",
 			"event": [
 				{
 					"listen": "test",
@@ -3857,10 +4401,10 @@
 						"exec": [
 							"const jsonData = pm.response.json();\r",
 							"// console.log(jsonData.length)\r",
-							"pm.test(\"驗證區權人1取消簽退狀態為已報到\", function () {\r",
+							"pm.test(\"驗證區權人 01 取消簽退狀態為已報到\", function () {\r",
 							"    pm.expect(jsonData[0].registrationStatus).to.include(\"Registered\");\r",
 							"});\r",
-							"pm.test(\"驗證區權人取消簽退簽退時間變為空正確\", function () {\r",
+							"pm.test(\"驗證區權人 01 取消簽退後簽退時間變為空正確\", function () {\r",
 							"    pm.expect(jsonData[0].unregisterAt).to.eql(\"\");\r",
 							"});\r",
 							"\r",
@@ -3962,13 +4506,13 @@
 			"response": []
 		},
 		{
-			"name": "取消報到區權人2",
+			"name": "區權人取消報到_區權人 02",
 			"event": [
 				{
 					"listen": "test",
 					"script": {
 						"exec": [
-							"pm.test(\"取消報到區權人2成功\", function () {\r",
+							"pm.test(\"取消報到區權人 02 成功 200\", function () {\r",
 							"    pm.response.to.have.status(200);\r",
 							"});"
 						],
@@ -4057,12 +4601,8 @@
 				},
 				"url": {
 					"raw": "{{uoa}}/UnitOwnerAssembly/CancelUnitOwnerRegistration",
-					
 					"host": [
 						"{{uoa}}"
-
-
-						
 					],
 					"path": [
 						"UnitOwnerAssembly",
@@ -4073,7 +4613,7 @@
 			"response": []
 		},
 		{
-			"name": "驗證取消報到的區權人狀態",
+			"name": "區權人列表取得_驗證取消報到的區權人",
 			"event": [
 				{
 					"listen": "test",
@@ -4081,10 +4621,10 @@
 						"exec": [
 							"const jsonData = pm.response.json();\r",
 							"// console.log(jsonData.length)\r",
-							"pm.test(\"驗證區權人2取消報到狀態為未報到\", function () {\r",
+							"pm.test(\"驗證區權人 02 取消報到狀態為未報到\", function () {\r",
 							"    pm.expect(jsonData[1].registrationStatus).to.include(\"NotRegistered\");\r",
 							"});\r",
-							"pm.test(\"驗證區權人2取消報到報到時間變為空正確\", function () {\r",
+							"pm.test(\"驗證區權人 02 取消報到後報到時間變為空正確\", function () {\r",
 							"    pm.expect(jsonData[1].registerAt).to.eql(\"\");\r",
 							"});\r",
 							"\r",
@@ -4186,7 +4726,7 @@
 			"response": []
 		},
 		{
-			"name": "驗證取消報到與簽退後的DashBoard資料",
+			"name": "儀表板資料取得",
 			"event": [
 				{
 					"listen": "test",
@@ -4194,13 +4734,13 @@
 						"exec": [
 							"const jsonData = pm.response.json();\r",
 							"console.log(jsonData)\r",
-							"pm.test(\"驗證dashboard會議title正確\", function () {\r",
+							"pm.test(\"儀表板_驗證會議名稱正確\", function () {\r",
 							"    pm.expect(jsonData.title).to.include(\"API testing\");\r",
 							"});\r",
-							"pm.test(\"驗證dashboard會議報到人數正確\", function () {\r",
-							"    pm.expect(jsonData.tabletValue).to.equal(1);\r",
+							"pm.test(\"儀表板_驗證報到人數正確\", function () {\r",
+							"    pm.expect(jsonData.tabletValue).to.equal(2);\r",
 							"});\r",
-							"pm.test(\"驗證dashboard會議簽退人數正確\", function () {\r",
+							"pm.test(\"儀表板_驗證簽退人數正確\", function () {\r",
 							"    pm.expect(jsonData.unregisterValue).to.equal(0);\r",
 							"});\r",
 							""
@@ -4300,17 +4840,73 @@
 			"response": []
 		},
 		{
-			"name": "刪除會議",
+			"name": "區權人批次刪除(規則上還有問題)",
 			"event": [
 				{
 					"listen": "test",
 					"script": {
 						"exec": [
-							"pm.test(\"刪除會議成功\", function () {\r",
+							"pm.test(\"區權人批次刪除成功 200\", function () {\r",
 							"    pm.response.to.have.status(200);\r",
-							"});\r",
-							"\r",
-							"pm.collectionVariables.clear();"
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{comLoginToken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "accept",
+						"value": "text/plain"
+					},
+					{
+						"key": "AuthenticationScheme",
+						"value": "SmartlifeBackstageAuthenticationHandler"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json-patch+json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"assemblyId\":\"{{AssemblyId}}\",\"unitOwnerIds\":[\"{{UnitOwnerId}}\",\"{{UnitOwnerId1}}\"]}"
+				},
+				"url": {
+					"raw": "{{uoa}}/UnitOwnerAssembly/DeleteUnitOwners",
+					"host": [
+						"{{uoa}}"
+					],
+					"path": [
+						"UnitOwnerAssembly",
+						"DeleteUnitOwners"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "區權會刪除",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Delete Assembly Success\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
 						],
 						"type": "text/javascript"
 					}
@@ -4427,6 +5023,56 @@
 					""
 				]
 			}
+		}
+	],
+	"variable": [
+		{
+			"key": "comLoginToken",
+			"value": ""
+		},
+		{
+			"key": "housekeeperToken",
+			"value": ""
+		},
+		{
+			"key": "Com_id",
+			"value": ""
+		},
+		{
+			"key": "AssemblyId",
+			"value": ""
+		},
+		{
+			"key": "Today",
+			"value": ""
+		},
+		{
+			"key": "UnitOwnerId",
+			"value": ""
+		},
+		{
+			"key": "UnregisterUnitOwnerTime",
+			"value": ""
+		},
+		{
+			"key": "RegisterUnitOwnerTime",
+			"value": ""
+		},
+		{
+			"key": "TopicId",
+			"value": ""
+		},
+		{
+			"key": "UnitOwnerId1",
+			"value": ""
+		},
+		{
+			"key": "UnitOwnerId2",
+			"value": ""
+		},
+		{
+			"key": "UnitOwner01barcode",
+			"value": ""
 		}
 	]
 }
