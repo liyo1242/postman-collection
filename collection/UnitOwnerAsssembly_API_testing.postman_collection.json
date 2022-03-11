@@ -2192,6 +2192,384 @@
 			"response": []
 		},
 		{
+			"name": "上傳檔案",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"上傳檔案成功 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"const textData = pm.response.text()\r",
+							"pm.collectionVariables.set(\"UploadFileName\", textData.substr(67,36))\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{comLoginToken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "accept",
+						"value": "text/plain"
+					},
+					{
+						"key": "AuthenticationScheme",
+						"value": "SmartlifeBackstageAuthenticationHandler"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "AssemblyId",
+							"value": "{{AssemblyId}}",
+							"type": "text"
+						},
+						{
+							"key": "File",
+							"type": "file",
+							"src": "./file/jpg.jpg"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{uoa}}/UnitOwnerAssembly/UploadFile",
+					"host": [
+						"{{uoa}}"
+					],
+					"path": [
+						"UnitOwnerAssembly",
+						"UploadFile"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "區權會附檔列表取得_確認上傳的檔案",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"const jsonData = pm.response.json();\r",
+							"const UploadFileName = pm.collectionVariables.get(\"UploadFileName\")\r",
+							"\r",
+							"pm.test(\"驗證有出現上傳的檔案\", function () {\r",
+							"    pm.expect(jsonData[0].path.substr(67,36)).to.eql(UploadFileName);\r",
+							"});\r",
+							"pm.collectionVariables.set(\"UploadFileId\", jsonData[0].id)\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{comLoginToken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "accept",
+						"value": "text/plain"
+					},
+					{
+						"key": "AuthenticationScheme",
+						"value": "SmartlifeBackstageAuthenticationHandler"
+					}
+				],
+				"url": {
+					"raw": "{{uoa}}/UnitOwnerAssembly/GetFileList?AssemblyId={{AssemblyId}}",
+					"host": [
+						"{{uoa}}"
+					],
+					"path": [
+						"UnitOwnerAssembly",
+						"GetFileList"
+					],
+					"query": [
+						{
+							"key": "AssemblyId",
+							"value": "{{AssemblyId}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "替換檔案",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"替換檔案成功 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"const textData = pm.response.text()\r",
+							"pm.collectionVariables.set(\"ReplaceFileName\", textData.substr(67,36))"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{comLoginToken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [
+					{
+						"key": "accept",
+						"value": "text/plain"
+					},
+					{
+						"key": "AuthenticationScheme",
+						"value": "SmartlifeBackstageAuthenticationHandler"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "AssemblyId",
+							"value": "{{AssemblyId}}",
+							"type": "text"
+						},
+						{
+							"key": "File",
+							"type": "file",
+							"src": "./file/pdf.pdf"
+						},
+						{
+							"key": "FileId",
+							"value": "{{UploadFileId}}",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{uoa}}/UnitOwnerAssembly/ReplaceFile",
+					"host": [
+						"{{uoa}}"
+					],
+					"path": [
+						"UnitOwnerAssembly",
+						"ReplaceFile"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "區權會附檔列表取得_確認替換的檔案",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"const jsonData = pm.response.json();\r",
+							"const ReplaceFileName = pm.collectionVariables.get(\"ReplaceFileName\")\r",
+							"\r",
+							"pm.test(\"驗證有出現上傳的檔案\", function () {\r",
+							"    pm.expect(jsonData[0].path.substr(67,36)).to.eql(ReplaceFileName);\r",
+							"});\r",
+							"pm.collectionVariables.set(\"ReplaceFileId\", jsonData[0].id)"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{comLoginToken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "accept",
+						"value": "text/plain"
+					},
+					{
+						"key": "AuthenticationScheme",
+						"value": "SmartlifeBackstageAuthenticationHandler"
+					}
+				],
+				"url": {
+					"raw": "{{uoa}}/UnitOwnerAssembly/GetFileList?AssemblyId={{AssemblyId}}",
+					"host": [
+						"{{uoa}}"
+					],
+					"path": [
+						"UnitOwnerAssembly",
+						"GetFileList"
+					],
+					"query": [
+						{
+							"key": "AssemblyId",
+							"value": "{{AssemblyId}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "刪除檔案",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"刪除檔案成功 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{comLoginToken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "accept",
+						"value": "text/plain"
+					},
+					{
+						"key": "AuthenticationScheme",
+						"value": "SmartlifeBackstageAuthenticationHandler"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json-patch+json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"assemblyId\":\"{{AssemblyId}}\",\"fileId\":\"{{ReplaceFileId}}\"}"
+				},
+				"url": {
+					"raw": "{{uoa}}/UnitOwnerAssembly/DeleteFile",
+					"host": [
+						"{{uoa}}"
+					],
+					"path": [
+						"UnitOwnerAssembly",
+						"DeleteFile"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "區權會附檔列表取得_確認刪除的檔案",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"const jsonData = pm.response.json();\r",
+							"pm.test(\"驗證有出現上傳的檔案\", function () {\r",
+							"    pm.expect(jsonData).to.eql([]);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{comLoginToken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "accept",
+						"value": "text/plain"
+					},
+					{
+						"key": "AuthenticationScheme",
+						"value": "SmartlifeBackstageAuthenticationHandler"
+					}
+				],
+				"url": {
+					"raw": "{{uoa}}/UnitOwnerAssembly/GetFileList?AssemblyId={{AssemblyId}}",
+					"host": [
+						"{{uoa}}"
+					],
+					"path": [
+						"UnitOwnerAssembly",
+						"GetFileList"
+					],
+					"query": [
+						{
+							"key": "AssemblyId",
+							"value": "{{AssemblyId}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "區權人確認卡片取得(By戶別Id)_三采企業大樓A1F1",
 			"event": [
 				{
@@ -4840,6 +5218,70 @@
 			"response": []
 		},
 		{
+			"name": "簽到退異動資料取得(By區權人Id)_驗證區權人 01",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"查詢簽到退異動資料取得(By區權人Id)_驗證區權人 01 成功 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{comLoginToken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "accept",
+						"value": "text/plain"
+					},
+					{
+						"key": "AuthenticationScheme",
+						"value": "SmartlifeBackstageAuthenticationHandler"
+					}
+				],
+				"url": {
+					"raw": "https://uoa-dev.kingnetsmart.com.tw/UnitOwnerAssembly/GetOperationListByUnitOwnerId?AssemblyId={{AssemblyId}}&UnitOwnerId={{UnitOwnerId}}",
+					"protocol": "https",
+					"host": [
+						"uoa-dev",
+						"kingnetsmart",
+						"com",
+						"tw"
+					],
+					"path": [
+						"UnitOwnerAssembly",
+						"GetOperationListByUnitOwnerId"
+					],
+					"query": [
+						{
+							"key": "AssemblyId",
+							"value": "{{AssemblyId}}"
+						},
+						{
+							"key": "UnitOwnerId",
+							"value": "{{UnitOwnerId}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "區權人批次刪除(規則上還有問題)",
 			"event": [
 				{
@@ -5072,6 +5514,34 @@
 		},
 		{
 			"key": "UnitOwner01barcode",
+			"value": ""
+		},
+		{
+			"key": "File1",
+			"value": ""
+		},
+		{
+			"key": "UploadFile",
+			"value": ""
+		},
+		{
+			"key": "ReplaceFile",
+			"value": ""
+		},
+		{
+			"key": "UploadFileName",
+			"value": ""
+		},
+		{
+			"key": "UploadFileId",
+			"value": ""
+		},
+		{
+			"key": "ReplaceFileName",
+			"value": ""
+		},
+		{
+			"key": "ReplaceFileId",
 			"value": ""
 		}
 	]
