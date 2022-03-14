@@ -29,8 +29,9 @@
 					"listen": "prerequest",
 					"script": {
 						"exec": [
+							"const url = pm.environment.get('kingnetsmart')\r",
 							"pm.sendRequest({\r",
-							"    url: 'https://local.kingnetsmart.com.tw/mvc/api/Login/CheckAccountPassword',\r",
+							"    url: `${url}/mvc/api/Login/CheckAccountPassword`,\r",
 							"    method: 'POST',\r",
 							"    header: {\r",
 							"        'content-type': 'application/json',\r",
@@ -308,7 +309,7 @@
 						{
 							"key": "UnitOwnerListExcel",
 							"type": "file",
-							"src": "./file/開發期測試區prod.xlsx"
+							"src": "./file/dev.xlsx"
 						}
 					]
 				},
@@ -528,7 +529,7 @@
 						{
 							"key": "UnitOwnerListExcel",
 							"type": "file",
-							"src": "./file/開發期測試區prod.xlsx"
+							"src": "./file/dev.xlsx"
 						}
 					]
 				},
@@ -748,7 +749,7 @@
 						{
 							"key": "UnitOwnerListExcel",
 							"type": "file",
-							"src": "./file/開發期測試區prod.xlsx"
+							"src": "./file/dev.xlsx"
 						}
 					]
 				},
@@ -968,7 +969,7 @@
 						{
 							"key": "UnitOwnerListExcel",
 							"type": "file",
-							"src": "./file/開發期測試區prod.xlsx"
+							"src": "./file/dev.xlsx"
 						}
 					]
 				},
@@ -1188,7 +1189,7 @@
 						{
 							"key": "UnitOwnerListExcel",
 							"type": "file",
-							"src": "./file/開發期測試區prod.xlsx"
+							"src": "./file/dev.xlsx"
 						}
 					]
 				},
@@ -1409,7 +1410,7 @@
 						{
 							"key": "UnitOwnerListExcel",
 							"type": "file",
-							"src": "./file/開發期測試區prod.xlsx"
+							"src": "./file/dev.xlsx"
 						}
 					]
 				},
@@ -1848,7 +1849,7 @@
 						{
 							"key": "UnitOwnerListExcel",
 							"type": "file",
-							"src": "./file/開發期測試區坪數未填prod.xlsx"
+							"src": "./file/坪數未填.xlsx"
 						}
 					]
 				},
