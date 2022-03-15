@@ -24,6 +24,17 @@ async function Web_APItesting_prod() {
         if (err) { throw err; }
         console.log('collection run complete!');
     });
+
+    // 實名制帳號綁定卡號API測試
+    newman.run({
+        collection: require('./collection/AuthorizationCarrier_API_testing.postman_collection.json'),
+        environment: require('./environment/Prod.postman_environment.json'),
+        reporters: ['junit', 'cli'],
+        reporter: { junit: { export: "./newman/AuthorizationCarrier.xml" } }
+    }, function (err) {
+        if (err) { throw err; }
+        console.log('collection run complete!');
+    });
 };
 
 Web_APItesting_prod();
