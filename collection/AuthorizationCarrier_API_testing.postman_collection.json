@@ -38,7 +38,7 @@
 							"    body: {\r",
 							"        mode: 'raw',\r",
 							"        raw: JSON.stringify({\r",
-							"            \"Account\": \"0921229318\",\r",
+							"            \"Account\": \"092122931_\",\r",
 							"            \"Password\": \"850404\",\r",
 							"            \"Latitude\": 0,\r",
 							"            \"Longitude\": 0\r",
@@ -116,27 +116,7 @@
 					"listen": "prerequest",
 					"script": {
 						"exec": [
-							"const url = pm.environment.get('kingnetsmart')\r",
-							"pm.sendRequest({\r",
-							"    url: `${url}/mvc/api/Login/CheckAccountPassword`,\r",
-							"    method: 'POST',\r",
-							"    header: {\r",
-							"        'content-type': 'application/json',\r",
-							"    },\r",
-							"    body: {\r",
-							"        mode: 'raw',\r",
-							"        raw: JSON.stringify({\r",
-							"            \"Account\": \"0921229318\",\r",
-							"            \"Password\": \"850404\",\r",
-							"            \"Latitude\": 0,\r",
-							"            \"Longitude\": 0\r",
-							"        })\r",
-							"    }\r",
-							"}, function (err, response) {\r",
-							"    const jsonResponse = response.json();\r",
-							"    pm.collectionVariables.set(\"housekeeperToken\", jsonResponse.Data.Token);\r",
-							"    pm.collectionVariables.set(\"Com_id\", jsonResponse.Data.communities[1].Id);\r",
-							"});"
+							""
 						],
 						"type": "text/javascript"
 					}
