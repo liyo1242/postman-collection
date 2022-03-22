@@ -8,7 +8,7 @@ async function Web_APItesting_dev() {
         collection: require('./collection/ManagerClock_API_testing.postman_collection'),
         environment: require('./environment/Dev.postman_environment.json'),
         reporters: ['junit', 'cli'],
-        reporter: { junit: { export: "./newman/CrossClockIn.xml" } }
+        reporter: { junit: { export: "./newman/ManagerClock.xml" } }
     }, function (err) {
         if (err) { throw err; }
         console.log('collection run complete!');

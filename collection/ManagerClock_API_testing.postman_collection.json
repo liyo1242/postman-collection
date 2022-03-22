@@ -518,6 +518,19 @@
 		},
 		{
 			"name": "異動上下班打卡備註(實名制有綁企業雲)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"異動上下班打卡備註(實名制有綁企業雲)成功 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"request": {
 				"method": "PUT",
 				"header": [
@@ -882,6 +895,19 @@
 		},
 		{
 			"name": "異動上下班打卡備註(實名制沒有綁企業雲)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"異動上下班打卡備註(實名制沒有綁企業雲)成功 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"request": {
 				"method": "PUT",
 				"header": [
@@ -1317,6 +1343,19 @@
 		},
 		{
 			"name": "異動上下班打卡備註(一次性打卡已註冊實名制)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"異動上下班打卡備註(一次性打卡已註冊實名制)成功 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"request": {
 				"method": "PUT",
 				"header": [
@@ -1686,6 +1725,19 @@
 		},
 		{
 			"name": "異動上下班打卡備註(一次性打卡未註冊實名制)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"異動上下班打卡備註(一次性打卡未註冊實名制)成功 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"request": {
 				"method": "PUT",
 				"header": [
