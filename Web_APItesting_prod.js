@@ -3,9 +3,9 @@ const { lineNotify } = require("./api/lineNotify"); // LineNotify API
 
 async function Web_APItesting_prod() {
 
-    // 跨案場打卡API測試
+    // 跨案場打卡_異常打卡API測試
     newman.run({
-        collection: require('./collection/CrossClockIn_API_testing.postman_collection.json'),
+        collection: require('./collection/ManagerClock_API_testing.postman_collection'),
         environment: require('./environment/Prod.postman_environment.json'),
         reporters: ['junit', 'cli'],
         reporter: { junit: { export: "./newman/CrossClockIn.xml" } }
