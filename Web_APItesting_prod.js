@@ -1,5 +1,6 @@
 const newman = require('newman');
 const { lineNotify } = require("./api/lineNotify"); // LineNotify API
+const today = Date.now()
 
 async function Web_APItesting_prod() {
 
@@ -7,8 +8,8 @@ async function Web_APItesting_prod() {
     newman.run({
         collection: require('./collection/ManagerClock_API_testing.postman_collection'),
         environment: require('./environment/Prod.postman_environment.json'),
-        reporters: ['junit', 'cli'],
-        reporter: { junit: { export: "./newman/ManagerClock.xml" } }
+        reporters: ['junit', 'cli', 'htmlextra'],
+        reporter: { junit: { export: `./newman/${today}-ManagerClock.xml` } }
     }, function (err) {
         if (err) { throw err; }
         console.log('collection run complete!');
@@ -18,8 +19,8 @@ async function Web_APItesting_prod() {
     newman.run({
         collection: require('./collection/UnitOwnerAssembly_Prod_API_testing.postman_collection.json'),
         environment: require('./environment/Prod.postman_environment.json'),
-        reporters: ['junit', 'cli'],
-        reporter: { junit: { export: "./newman/UnitOwnerAssembly.xml" } }
+        reporters: ['junit', 'cli', 'htmlextra'],
+        reporter: { junit: { export: `./newman/${today}-UnitOwnerAssembly.xml` } }
     }, function (err) {
         if (err) { throw err; }
         console.log('collection run complete!');
@@ -29,8 +30,8 @@ async function Web_APItesting_prod() {
     newman.run({
         collection: require('./collection/AuthorizationCarrier_API_testing.postman_collection.json'),
         environment: require('./environment/Prod.postman_environment.json'),
-        reporters: ['junit', 'cli'],
-        reporter: { junit: { export: "./newman/AuthorizationCarrier.xml" } }
+        reporters: ['junit', 'cli', 'htmlextra'],
+        reporter: { junit: { export: `./newman/${today}-AuthorizationCarrier.xml` } }
     }, function (err) {
         if (err) { throw err; }
         console.log('collection run complete!');

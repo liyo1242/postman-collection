@@ -15,6 +15,7 @@
   "dependencies": {
     "axios": "^0.25.0",
     "form-data": "^4.0.0",
-    "newman": "^5.3.1"
+    "newman": "^5.3.1",
+    "newman-reporter-htmlextra": "^1.22.8"
   }
 }

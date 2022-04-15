@@ -30,7 +30,7 @@
 						"exec": [
 							"const url = pm.environment.get('kingnetsmart')\r",
 							"pm.sendRequest({\r",
-							"    url: `${url}/mvc/api/Login/CheckAccountPassword`,\r",
+							"    url: `${url}/api/Login/CheckAccountPassword`,\r",
 							"    method: 'POST',\r",
 							"    header: {\r",
 							"        'content-type': 'application/json',\r",
@@ -38,8 +38,8 @@
 							"    body: {\r",
 							"        mode: 'raw',\r",
 							"        raw: JSON.stringify({\r",
-							"            \"Account\": \"092122931_\",\r",
-							"            \"Password\": \"850404\",\r",
+							"            \"Account\": \"0944444401\",\r",
+							"            \"Password\": \"888888\",\r",
 							"            \"Latitude\": 0,\r",
 							"            \"Longitude\": 0\r",
 							"        })\r",
@@ -47,7 +47,7 @@
 							"}, function (err, response) {\r",
 							"    const jsonResponse = response.json();\r",
 							"    pm.collectionVariables.set(\"housekeeperToken\", jsonResponse.Data.Token);\r",
-							"    pm.collectionVariables.set(\"Com_id\", jsonResponse.Data.communities[1].Id);\r",
+							"    pm.collectionVariables.set(\"Com_id\", jsonResponse.Data.communities[0].Id);\r",
 							"});\r",
 							"\r",
 							"pm.sendRequest(\"http://worldtimeapi.org/api/timezone/Asia/Taipei\", function (err, res) {\r",
@@ -96,11 +96,12 @@
 					]
 				},
 				"url": {
-					"raw": "{{kingnetsmart}}/api/Login/CommunityLogin",
+					"raw": "{{kingnetsmart}}/mvc/api/Login/CommunityLogin",
 					"host": [
 						"{{kingnetsmart}}"
 					],
 					"path": [
+						"mvc",
 						"api",
 						"Login",
 						"CommunityLogin"
@@ -126,7 +127,7 @@
 					"script": {
 						"exec": [
 							"const jsonData = pm.response.json();\r",
-							"pm.test(\"確認卡號_證此卡已經有人使用\", function () {\r",
+							"pm.test(\"確認卡號_驗證此卡已經有人使用\", function () {\r",
 							"    pm.expect(jsonData.ErrorMessage.Description).to.eql(\"此卡已有人使用，請更換其他卡片。\");\r",
 							"});"
 						],
@@ -143,7 +144,7 @@
 					}
 				],
 				"url": {
-					"raw": "{{kingnetsmart}}/core/api/AuthorizationCarrier/Bind/Validation?Code=123",
+					"raw": "{{kingnetsmart}}/core/api/AuthorizationCarrier/Bind/Validation?Code=123123",
 					"host": [
 						"{{kingnetsmart}}"
 					],
@@ -157,7 +158,7 @@
 					"query": [
 						{
 							"key": "Code",
-							"value": "123"
+							"value": "123123"
 						}
 					]
 				}
@@ -371,7 +372,7 @@
 					}
 				],
 				"url": {
-					"raw": "{{kingnetsmart}}/core/api/AuthorizationCarrier/Exist?Code=123",
+					"raw": "{{kingnetsmart}}/core/api/AuthorizationCarrier/Exist?Code=0921229318",
 					"host": [
 						"{{kingnetsmart}}"
 					],
@@ -384,7 +385,7 @@
 					"query": [
 						{
 							"key": "Code",
-							"value": "123"
+							"value": "0921229318"
 						}
 					]
 				}

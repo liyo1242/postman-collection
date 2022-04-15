@@ -1,7 +1,7 @@
 {
 	"info": {
-		"_postman_id": "892ac362-f68b-4d7f-91ee-ff687758f657",
-		"name": "UnitOwnerAsssembly_API_testing",
+		"_postman_id": "caa1e494-3e13-414d-8cd4-9f3b105a14df",
+		"name": "UnitOwnerAssembly_API_testing",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
@@ -18,7 +18,7 @@
 							"var jsonData1 = pm.cookies.get('comLoginToken');\r",
 							"var jsonData = jsonData1.substr(6)\r",
 							"pm.collectionVariables.set('comLoginToken', jsonData)\r",
-							"console.log(jsonData)\r",
+							"\r",
 							"\r",
 							""
 						],
@@ -39,8 +39,8 @@
 							"    body: {\r",
 							"        mode: 'raw',\r",
 							"        raw: JSON.stringify({\r",
-							"            \"Account\": \"092122931_\",\r",
-							"            \"Password\": \"850404\",\r",
+							"            \"Account\": \"0944444404\",\r",
+							"            \"Password\": \"888888\",\r",
 							"            \"Latitude\": 0,\r",
 							"            \"Longitude\": 0\r",
 							"        })\r",
@@ -107,13 +107,13 @@
 			"response": []
 		},
 		{
-			"name": "區權會建立_Title is empty",
+			"name": "區權會建立時會議標題為空，無法建立會議",
 			"event": [
 				{
 					"listen": "test",
 					"script": {
 						"exec": [
-							"pm.test(\"標題必填錯誤提示正確\", function () {\r",
+							"pm.test(\"區權會建立時會議標題為空，錯誤提示正確\", function () {\r",
 							"    var jsonData = pm.response.json();\r",
 							"    console.log(jsonData)\r",
 							"    pm.expect(jsonData.errors.Title).to.include(\"The Title field is required.\");\r",
@@ -327,13 +327,13 @@
 			"response": []
 		},
 		{
-			"name": "區權會建立_StartTime is empty",
+			"name": "區權會建立時會議開始時間為空，無法建立會議",
 			"event": [
 				{
 					"listen": "test",
 					"script": {
 						"exec": [
-							"pm.test(\"區權會會議起日必填錯誤提示正確\", function () {\r",
+							"pm.test(\"區權會建立時會議開始時間為空，錯誤提示正確\", function () {\r",
 							"    var jsonData = pm.response.json();\r",
 							"    console.log(jsonData)\r",
 							"    pm.expect(jsonData.errors.AssemblyStartAt).to.include(\"The value '' is invalid.\");\r",
@@ -547,13 +547,13 @@
 			"response": []
 		},
 		{
-			"name": "區權會建立_PlaceName is empty",
+			"name": "區權會建立時會議地點為空，無法建立會議",
 			"event": [
 				{
 					"listen": "test",
 					"script": {
 						"exec": [
-							"pm.test(\"PlaceName必填錯誤提示正確\", function () {\r",
+							"pm.test(\"區權會建立時會議地點為空，錯誤提示正確\", function () {\r",
 							"    var jsonData = pm.response.json();\r",
 							"    console.log(jsonData)\r",
 							"    pm.expect(jsonData.errors.PlaceName).to.include(\"The PlaceName field is required.\");\r",
@@ -767,13 +767,13 @@
 			"response": []
 		},
 		{
-			"name": "區權會建立_HostRole is empty",
+			"name": "區權會建立時會議主辦人職稱為空，無法建立會議",
 			"event": [
 				{
 					"listen": "test",
 					"script": {
 						"exec": [
-							"pm.test(\"HostRole必填錯誤提示正確\", function () {\r",
+							"pm.test(\"區權會建立時會議主辦人職稱為空，錯誤提示正確\", function () {\r",
 							"    var jsonData = pm.response.json();\r",
 							"    console.log(jsonData)\r",
 							"    pm.expect(jsonData.errors.HostRole).to.include(\"The value '' is invalid.\");\r",
@@ -987,7 +987,7 @@
 			"response": []
 		},
 		{
-			"name": "區權會建立_HostName is empty",
+			"name": "區權會建立時會議主辦人為空，無法建立會議",
 			"event": [
 				{
 					"listen": "test",
@@ -1207,13 +1207,671 @@
 			"response": []
 		},
 		{
-			"name": "區權會建立_Success",
+			"name": "區權會建立時區權人檔案錯誤，無法建立會議",
 			"event": [
 				{
 					"listen": "test",
 					"script": {
 						"exec": [
-							"pm.test(\"區權會建立成功 200\", function () {\r",
+							"const textData = pm.response.text();\r",
+							"\r",
+							"pm.test(\"區權會建立時區權人檔案錯誤，錯誤提示正確\", function () {\r",
+							"    pm.expect(textData).to.include(\"Object reference not set to an instance of an\");\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{comLoginToken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "authority",
+						"value": "uoa-dev.kingnetsmart.com.tw"
+					},
+					{
+						"key": "sec-ch-ua",
+						"value": "\" Not A;Brand\";v=\"99\", \"Chromium\";v=\"98\", \"Google Chrome\";v=\"98\""
+					},
+					{
+						"key": "authenticationscheme",
+						"value": "SmartlifeBackstageAuthenticationHandler"
+					},
+					{
+						"key": "authorization",
+						"value": "Bearer x4/h3t9g+2cGflxQRaGaIF68z1OUZS07yKnghDk/eXnkckEOgMkTkfUNDqC516LzKe8bmYlkf+mm4PLYZlQLvRWmg278WKvksmlITMea0ZSZHaegajR3G97BYj1QGsKfxFw0jIkCHdbVjdXdgoXlG55e3e38FvMbi3DQ+8xh8cp8q2uGaSyql9LV9GwzYbfGBQlTd7vY5QgfYUwiYbufl9jUBm877Mdc9D3CRNuHPHUwDE60FHSsKF2sbS9VrinAyJiqlXn0nUbVGU8lXP7Xj0MFeAjncmM+GNYMxwnpURVvuhZN6OjQVVujE9hKt2qgQfo2E/kgkLBOPTkCLMNLPMWocAav4rGd1e0l5WlrJ/EjhZKgu4iR1+BgUCxIKjpWW4IamUNYz93qoJYRoHktw/Nk8hCch5i4TXXtzeipPhFWKK42f2ypfUkly3DX96MahmvJLPClz0yKRbbJ2DNZBFGQ/WTbu9aGeR3rC5N3Ro3Sm2iChMWYEhQKCkaE3NbOYjCCVlFka7LvTsUzON7NeefwR4bCEfNiYlR8HLDCCvQ/xKyQ2bG/TGKvOOR5xTWON1N6nQ7XNrF/eSXU4XNALQ==",
+						"disabled": true
+					},
+					{
+						"key": "sec-ch-ua-mobile",
+						"value": "?0"
+					},
+					{
+						"key": "user-agent",
+						"value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/98.0.4758.81 Safari/537.36"
+					},
+					{
+						"key": "sec-ch-ua-platform",
+						"value": "\"Windows\""
+					},
+					{
+						"key": "accept",
+						"value": "*/*"
+					},
+					{
+						"key": "origin",
+						"value": "https://local.kingnetsmart.com.tw"
+					},
+					{
+						"key": "sec-fetch-site",
+						"value": "same-site"
+					},
+					{
+						"key": "sec-fetch-mode",
+						"value": "cors"
+					},
+					{
+						"key": "sec-fetch-dest",
+						"value": "empty"
+					},
+					{
+						"key": "referer",
+						"value": "https://local.kingnetsmart.com.tw/"
+					},
+					{
+						"key": "accept-language",
+						"value": "zh-TW,zh;q=0.9,en-US;q=0.8,en;q=0.7,zh-CN;q=0.6,ig;q=0.5,th;q=0.4"
+					},
+					{
+						"key": "Cookie",
+						"value": "",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "Title",
+							"value": "API testing",
+							"type": "text"
+						},
+						{
+							"key": "IssueTextNumber",
+							"value": "",
+							"type": "text"
+						},
+						{
+							"key": "Category",
+							"value": "Regular",
+							"type": "text"
+						},
+						{
+							"key": "AssemblyStartAt",
+							"value": "{{Today}} 06:00",
+							"type": "text"
+						},
+						{
+							"key": "CommunityId",
+							"value": "15072201",
+							"type": "text"
+						},
+						{
+							"key": "PlaceName",
+							"value": "API testing",
+							"type": "text"
+						},
+						{
+							"key": "PlaceAddress",
+							"value": "",
+							"type": "text"
+						},
+						{
+							"key": "HostRole",
+							"value": "Chairperson",
+							"type": "text"
+						},
+						{
+							"key": "HostName",
+							"value": "API testing",
+							"type": "text"
+						},
+						{
+							"key": "ContactPersonRole",
+							"value": "",
+							"type": "text"
+						},
+						{
+							"key": "ContactPersonName",
+							"value": "",
+							"type": "text"
+						},
+						{
+							"key": "Note",
+							"value": "",
+							"type": "text"
+						},
+						{
+							"key": "TabletThreshold",
+							"value": "0.5",
+							"type": "text"
+						},
+						{
+							"key": "AreaThreshold",
+							"value": "0",
+							"type": "text"
+						},
+						{
+							"key": "Description",
+							"value": "",
+							"type": "text"
+						},
+						{
+							"key": "NotificationType",
+							"value": "App",
+							"type": "text"
+						},
+						{
+							"key": "AssemblyDueAt",
+							"value": "{{Today}} 23:00",
+							"type": "text"
+						},
+						{
+							"key": "TopicDtoJsonStrings",
+							"value": "[{\"title\":\"API testing\",\"description\":\"API testing\",\"attendanceThreshold\":0.5,\"consentThreshold\":0.5}]",
+							"type": "text"
+						},
+						{
+							"key": "UnitOwnerListExcel",
+							"type": "file",
+							"src": "./file/錯誤的excel.xlsx"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{uoa}}/UnitOwnerAssembly/CreateAssembly",
+					"host": [
+						"{{uoa}}"
+					],
+					"path": [
+						"UnitOwnerAssembly",
+						"CreateAssembly"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "區權會建立時區權人檔案坪數未填，無法建立會議",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"const textData = pm.response.text();\r",
+							"\r",
+							"pm.test(\"區權會建立時區權人檔案坪數未填，錯誤提示正確\", function () {\r",
+							"    pm.expect(textData).to.include(\"Object reference not set to an instance of an object.\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{comLoginToken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "authority",
+						"value": "uoa-dev.kingnetsmart.com.tw"
+					},
+					{
+						"key": "sec-ch-ua",
+						"value": "\" Not A;Brand\";v=\"99\", \"Chromium\";v=\"98\", \"Google Chrome\";v=\"98\""
+					},
+					{
+						"key": "authenticationscheme",
+						"value": "SmartlifeBackstageAuthenticationHandler"
+					},
+					{
+						"key": "authorization",
+						"value": "Bearer x4/h3t9g+2cGflxQRaGaIF68z1OUZS07yKnghDk/eXnkckEOgMkTkfUNDqC516LzKe8bmYlkf+mm4PLYZlQLvRWmg278WKvksmlITMea0ZSZHaegajR3G97BYj1QGsKfxFw0jIkCHdbVjdXdgoXlG55e3e38FvMbi3DQ+8xh8cp8q2uGaSyql9LV9GwzYbfGBQlTd7vY5QgfYUwiYbufl9jUBm877Mdc9D3CRNuHPHUwDE60FHSsKF2sbS9VrinAyJiqlXn0nUbVGU8lXP7Xj0MFeAjncmM+GNYMxwnpURVvuhZN6OjQVVujE9hKt2qgQfo2E/kgkLBOPTkCLMNLPMWocAav4rGd1e0l5WlrJ/EjhZKgu4iR1+BgUCxIKjpWW4IamUNYz93qoJYRoHktw/Nk8hCch5i4TXXtzeipPhFWKK42f2ypfUkly3DX96MahmvJLPClz0yKRbbJ2DNZBFGQ/WTbu9aGeR3rC5N3Ro3Sm2iChMWYEhQKCkaE3NbOYjCCVlFka7LvTsUzON7NeefwR4bCEfNiYlR8HLDCCvQ/xKyQ2bG/TGKvOOR5xTWON1N6nQ7XNrF/eSXU4XNALQ==",
+						"disabled": true
+					},
+					{
+						"key": "sec-ch-ua-mobile",
+						"value": "?0"
+					},
+					{
+						"key": "user-agent",
+						"value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/98.0.4758.81 Safari/537.36"
+					},
+					{
+						"key": "sec-ch-ua-platform",
+						"value": "\"Windows\""
+					},
+					{
+						"key": "accept",
+						"value": "*/*"
+					},
+					{
+						"key": "origin",
+						"value": "https://local.kingnetsmart.com.tw"
+					},
+					{
+						"key": "sec-fetch-site",
+						"value": "same-site"
+					},
+					{
+						"key": "sec-fetch-mode",
+						"value": "cors"
+					},
+					{
+						"key": "sec-fetch-dest",
+						"value": "empty"
+					},
+					{
+						"key": "referer",
+						"value": "https://local.kingnetsmart.com.tw/"
+					},
+					{
+						"key": "accept-language",
+						"value": "zh-TW,zh;q=0.9,en-US;q=0.8,en;q=0.7,zh-CN;q=0.6,ig;q=0.5,th;q=0.4"
+					},
+					{
+						"key": "Cookie",
+						"value": "",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "Title",
+							"value": "API testing",
+							"type": "text"
+						},
+						{
+							"key": "IssueTextNumber",
+							"value": "",
+							"type": "text"
+						},
+						{
+							"key": "Category",
+							"value": "Regular",
+							"type": "text"
+						},
+						{
+							"key": "AssemblyStartAt",
+							"value": "{{Today}} 06:00",
+							"type": "text"
+						},
+						{
+							"key": "CommunityId",
+							"value": "15072201",
+							"type": "text"
+						},
+						{
+							"key": "PlaceName",
+							"value": "API testing",
+							"type": "text"
+						},
+						{
+							"key": "PlaceAddress",
+							"value": "",
+							"type": "text"
+						},
+						{
+							"key": "HostRole",
+							"value": "Chairperson",
+							"type": "text"
+						},
+						{
+							"key": "HostName",
+							"value": "API testing",
+							"type": "text"
+						},
+						{
+							"key": "ContactPersonRole",
+							"value": "",
+							"type": "text"
+						},
+						{
+							"key": "ContactPersonName",
+							"value": "",
+							"type": "text"
+						},
+						{
+							"key": "Note",
+							"value": "",
+							"type": "text"
+						},
+						{
+							"key": "TabletThreshold",
+							"value": "0.5",
+							"type": "text"
+						},
+						{
+							"key": "AreaThreshold",
+							"value": "0",
+							"type": "text"
+						},
+						{
+							"key": "Description",
+							"value": "",
+							"type": "text"
+						},
+						{
+							"key": "NotificationType",
+							"value": "App",
+							"type": "text"
+						},
+						{
+							"key": "AssemblyDueAt",
+							"value": "{{Today}} 23:00",
+							"type": "text"
+						},
+						{
+							"key": "TopicDtoJsonStrings",
+							"value": "[{\"title\":\"API testing\",\"description\":\"API testing\",\"attendanceThreshold\":0.5,\"consentThreshold\":0.5}]",
+							"type": "text"
+						},
+						{
+							"key": "UnitOwnerListExcel",
+							"type": "file",
+							"src": "./file/開發期測試區坪數未填prod.xlsx"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{uoa}}/UnitOwnerAssembly/CreateAssembly",
+					"host": [
+						"{{uoa}}"
+					],
+					"path": [
+						"UnitOwnerAssembly",
+						"CreateAssembly"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "區權會建立時使用錯誤社區的區權人資料，無法建立會議",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"const textData = pm.response.text();\r",
+							"\r",
+							"pm.test(\"區權會建立時使用錯誤社區的區權人資料，錯誤提示正確\", function () {\r",
+							"    pm.expect(textData).to.include(\"區權人名單含有不正確的戶別資料(可能是不同社區資料)\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{comLoginToken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "authority",
+						"value": "uoa-dev.kingnetsmart.com.tw"
+					},
+					{
+						"key": "sec-ch-ua",
+						"value": "\" Not A;Brand\";v=\"99\", \"Chromium\";v=\"98\", \"Google Chrome\";v=\"98\""
+					},
+					{
+						"key": "authenticationscheme",
+						"value": "SmartlifeBackstageAuthenticationHandler"
+					},
+					{
+						"key": "authorization",
+						"value": "Bearer x4/h3t9g+2cGflxQRaGaIF68z1OUZS07yKnghDk/eXnkckEOgMkTkfUNDqC516LzKe8bmYlkf+mm4PLYZlQLvRWmg278WKvksmlITMea0ZSZHaegajR3G97BYj1QGsKfxFw0jIkCHdbVjdXdgoXlG55e3e38FvMbi3DQ+8xh8cp8q2uGaSyql9LV9GwzYbfGBQlTd7vY5QgfYUwiYbufl9jUBm877Mdc9D3CRNuHPHUwDE60FHSsKF2sbS9VrinAyJiqlXn0nUbVGU8lXP7Xj0MFeAjncmM+GNYMxwnpURVvuhZN6OjQVVujE9hKt2qgQfo2E/kgkLBOPTkCLMNLPMWocAav4rGd1e0l5WlrJ/EjhZKgu4iR1+BgUCxIKjpWW4IamUNYz93qoJYRoHktw/Nk8hCch5i4TXXtzeipPhFWKK42f2ypfUkly3DX96MahmvJLPClz0yKRbbJ2DNZBFGQ/WTbu9aGeR3rC5N3Ro3Sm2iChMWYEhQKCkaE3NbOYjCCVlFka7LvTsUzON7NeefwR4bCEfNiYlR8HLDCCvQ/xKyQ2bG/TGKvOOR5xTWON1N6nQ7XNrF/eSXU4XNALQ==",
+						"disabled": true
+					},
+					{
+						"key": "sec-ch-ua-mobile",
+						"value": "?0"
+					},
+					{
+						"key": "user-agent",
+						"value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/98.0.4758.81 Safari/537.36"
+					},
+					{
+						"key": "sec-ch-ua-platform",
+						"value": "\"Windows\""
+					},
+					{
+						"key": "accept",
+						"value": "*/*"
+					},
+					{
+						"key": "origin",
+						"value": "https://local.kingnetsmart.com.tw"
+					},
+					{
+						"key": "sec-fetch-site",
+						"value": "same-site"
+					},
+					{
+						"key": "sec-fetch-mode",
+						"value": "cors"
+					},
+					{
+						"key": "sec-fetch-dest",
+						"value": "empty"
+					},
+					{
+						"key": "referer",
+						"value": "https://local.kingnetsmart.com.tw/"
+					},
+					{
+						"key": "accept-language",
+						"value": "zh-TW,zh;q=0.9,en-US;q=0.8,en;q=0.7,zh-CN;q=0.6,ig;q=0.5,th;q=0.4"
+					},
+					{
+						"key": "Cookie",
+						"value": "",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "Title",
+							"value": "API testing",
+							"type": "text"
+						},
+						{
+							"key": "IssueTextNumber",
+							"value": "",
+							"type": "text"
+						},
+						{
+							"key": "Category",
+							"value": "Regular",
+							"type": "text"
+						},
+						{
+							"key": "AssemblyStartAt",
+							"value": "{{Today}} 06:00",
+							"type": "text"
+						},
+						{
+							"key": "CommunityId",
+							"value": "15072201",
+							"type": "text"
+						},
+						{
+							"key": "PlaceName",
+							"value": "API testing",
+							"type": "text"
+						},
+						{
+							"key": "PlaceAddress",
+							"value": "",
+							"type": "text"
+						},
+						{
+							"key": "HostRole",
+							"value": "Chairperson",
+							"type": "text"
+						},
+						{
+							"key": "HostName",
+							"value": "API testing",
+							"type": "text"
+						},
+						{
+							"key": "ContactPersonRole",
+							"value": "",
+							"type": "text"
+						},
+						{
+							"key": "ContactPersonName",
+							"value": "",
+							"type": "text"
+						},
+						{
+							"key": "Note",
+							"value": "",
+							"type": "text"
+						},
+						{
+							"key": "TabletThreshold",
+							"value": "0.5",
+							"type": "text"
+						},
+						{
+							"key": "AreaThreshold",
+							"value": "0",
+							"type": "text"
+						},
+						{
+							"key": "Description",
+							"value": "",
+							"type": "text"
+						},
+						{
+							"key": "NotificationType",
+							"value": "App",
+							"type": "text"
+						},
+						{
+							"key": "AssemblyDueAt",
+							"value": "{{Today}} 23:00",
+							"type": "text"
+						},
+						{
+							"key": "TopicDtoJsonStrings",
+							"value": "[{\"title\":\"API testing\",\"description\":\"API testing\",\"attendanceThreshold\":0.5,\"consentThreshold\":0.5}]",
+							"type": "text"
+						},
+						{
+							"key": "UnitOwnerListExcel",
+							"type": "file",
+							"src": "./file/dev.xlsx"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{uoa}}/UnitOwnerAssembly/CreateAssembly",
+					"host": [
+						"{{uoa}}"
+					],
+					"path": [
+						"UnitOwnerAssembly",
+						"CreateAssembly"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "區權會建立可正確執行",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"區權會建立成功，狀態200\", function () {\r",
 							"    pm.response.to.have.status(200);\r",
 							"});\r",
 							"const jsonData = pm.response.json();\r",
@@ -1428,671 +2086,13 @@
 			"response": []
 		},
 		{
-			"name": "區權會建立_錯誤的Excel",
+			"name": "區權會議案建立正確執行",
 			"event": [
 				{
 					"listen": "test",
 					"script": {
 						"exec": [
-							"const textData = pm.response.text();\r",
-							"\r",
-							"pm.test(\"區權會建立上傳錯誤的excel錯誤提示正確\", function () {\r",
-							"    pm.expect(textData).to.include(\"Object reference not set to an instance of an object.\");\r",
-							"});\r",
-							""
-						],
-						"type": "text/javascript"
-					}
-				},
-				{
-					"listen": "prerequest",
-					"script": {
-						"exec": [
-							""
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
-			"protocolProfileBehavior": {
-				"disabledSystemHeaders": {}
-			},
-			"request": {
-				"auth": {
-					"type": "bearer",
-					"bearer": [
-						{
-							"key": "token",
-							"value": "{{comLoginToken}}",
-							"type": "string"
-						}
-					]
-				},
-				"method": "POST",
-				"header": [
-					{
-						"key": "authority",
-						"value": "uoa-dev.kingnetsmart.com.tw"
-					},
-					{
-						"key": "sec-ch-ua",
-						"value": "\" Not A;Brand\";v=\"99\", \"Chromium\";v=\"98\", \"Google Chrome\";v=\"98\""
-					},
-					{
-						"key": "authenticationscheme",
-						"value": "SmartlifeBackstageAuthenticationHandler"
-					},
-					{
-						"key": "authorization",
-						"value": "Bearer x4/h3t9g+2cGflxQRaGaIF68z1OUZS07yKnghDk/eXnkckEOgMkTkfUNDqC516LzKe8bmYlkf+mm4PLYZlQLvRWmg278WKvksmlITMea0ZSZHaegajR3G97BYj1QGsKfxFw0jIkCHdbVjdXdgoXlG55e3e38FvMbi3DQ+8xh8cp8q2uGaSyql9LV9GwzYbfGBQlTd7vY5QgfYUwiYbufl9jUBm877Mdc9D3CRNuHPHUwDE60FHSsKF2sbS9VrinAyJiqlXn0nUbVGU8lXP7Xj0MFeAjncmM+GNYMxwnpURVvuhZN6OjQVVujE9hKt2qgQfo2E/kgkLBOPTkCLMNLPMWocAav4rGd1e0l5WlrJ/EjhZKgu4iR1+BgUCxIKjpWW4IamUNYz93qoJYRoHktw/Nk8hCch5i4TXXtzeipPhFWKK42f2ypfUkly3DX96MahmvJLPClz0yKRbbJ2DNZBFGQ/WTbu9aGeR3rC5N3Ro3Sm2iChMWYEhQKCkaE3NbOYjCCVlFka7LvTsUzON7NeefwR4bCEfNiYlR8HLDCCvQ/xKyQ2bG/TGKvOOR5xTWON1N6nQ7XNrF/eSXU4XNALQ==",
-						"disabled": true
-					},
-					{
-						"key": "sec-ch-ua-mobile",
-						"value": "?0"
-					},
-					{
-						"key": "user-agent",
-						"value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/98.0.4758.81 Safari/537.36"
-					},
-					{
-						"key": "sec-ch-ua-platform",
-						"value": "\"Windows\""
-					},
-					{
-						"key": "accept",
-						"value": "*/*"
-					},
-					{
-						"key": "origin",
-						"value": "https://local.kingnetsmart.com.tw"
-					},
-					{
-						"key": "sec-fetch-site",
-						"value": "same-site"
-					},
-					{
-						"key": "sec-fetch-mode",
-						"value": "cors"
-					},
-					{
-						"key": "sec-fetch-dest",
-						"value": "empty"
-					},
-					{
-						"key": "referer",
-						"value": "https://local.kingnetsmart.com.tw/"
-					},
-					{
-						"key": "accept-language",
-						"value": "zh-TW,zh;q=0.9,en-US;q=0.8,en;q=0.7,zh-CN;q=0.6,ig;q=0.5,th;q=0.4"
-					},
-					{
-						"key": "Cookie",
-						"value": "",
-						"type": "text",
-						"disabled": true
-					}
-				],
-				"body": {
-					"mode": "formdata",
-					"formdata": [
-						{
-							"key": "Title",
-							"value": "API testing",
-							"type": "text"
-						},
-						{
-							"key": "IssueTextNumber",
-							"value": "",
-							"type": "text"
-						},
-						{
-							"key": "Category",
-							"value": "Regular",
-							"type": "text"
-						},
-						{
-							"key": "AssemblyStartAt",
-							"value": "{{Today}} 06:00",
-							"type": "text"
-						},
-						{
-							"key": "CommunityId",
-							"value": "15072201",
-							"type": "text"
-						},
-						{
-							"key": "PlaceName",
-							"value": "API testing",
-							"type": "text"
-						},
-						{
-							"key": "PlaceAddress",
-							"value": "",
-							"type": "text"
-						},
-						{
-							"key": "HostRole",
-							"value": "Chairperson",
-							"type": "text"
-						},
-						{
-							"key": "HostName",
-							"value": "API testing",
-							"type": "text"
-						},
-						{
-							"key": "ContactPersonRole",
-							"value": "",
-							"type": "text"
-						},
-						{
-							"key": "ContactPersonName",
-							"value": "",
-							"type": "text"
-						},
-						{
-							"key": "Note",
-							"value": "",
-							"type": "text"
-						},
-						{
-							"key": "TabletThreshold",
-							"value": "0.5",
-							"type": "text"
-						},
-						{
-							"key": "AreaThreshold",
-							"value": "0",
-							"type": "text"
-						},
-						{
-							"key": "Description",
-							"value": "",
-							"type": "text"
-						},
-						{
-							"key": "NotificationType",
-							"value": "App",
-							"type": "text"
-						},
-						{
-							"key": "AssemblyDueAt",
-							"value": "{{Today}} 23:00",
-							"type": "text"
-						},
-						{
-							"key": "TopicDtoJsonStrings",
-							"value": "[{\"title\":\"API testing\",\"description\":\"API testing\",\"attendanceThreshold\":0.5,\"consentThreshold\":0.5}]",
-							"type": "text"
-						},
-						{
-							"key": "UnitOwnerListExcel",
-							"type": "file",
-							"src": "./file/錯誤的excel.xlsx"
-						}
-					]
-				},
-				"url": {
-					"raw": "{{uoa}}/UnitOwnerAssembly/CreateAssembly",
-					"host": [
-						"{{uoa}}"
-					],
-					"path": [
-						"UnitOwnerAssembly",
-						"CreateAssembly"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "區權會建立_坪數未填的Excel",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"exec": [
-							"const textData = pm.response.text();\r",
-							"\r",
-							"pm.test(\"區權會建立上傳坪數未填的excel錯誤提示正確\", function () {\r",
-							"    pm.expect(textData).to.include(\"Object reference not set to an instance of an object.\");\r",
-							"});"
-						],
-						"type": "text/javascript"
-					}
-				},
-				{
-					"listen": "prerequest",
-					"script": {
-						"exec": [
-							""
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
-			"protocolProfileBehavior": {
-				"disabledSystemHeaders": {}
-			},
-			"request": {
-				"auth": {
-					"type": "bearer",
-					"bearer": [
-						{
-							"key": "token",
-							"value": "{{comLoginToken}}",
-							"type": "string"
-						}
-					]
-				},
-				"method": "POST",
-				"header": [
-					{
-						"key": "authority",
-						"value": "uoa-dev.kingnetsmart.com.tw"
-					},
-					{
-						"key": "sec-ch-ua",
-						"value": "\" Not A;Brand\";v=\"99\", \"Chromium\";v=\"98\", \"Google Chrome\";v=\"98\""
-					},
-					{
-						"key": "authenticationscheme",
-						"value": "SmartlifeBackstageAuthenticationHandler"
-					},
-					{
-						"key": "authorization",
-						"value": "Bearer x4/h3t9g+2cGflxQRaGaIF68z1OUZS07yKnghDk/eXnkckEOgMkTkfUNDqC516LzKe8bmYlkf+mm4PLYZlQLvRWmg278WKvksmlITMea0ZSZHaegajR3G97BYj1QGsKfxFw0jIkCHdbVjdXdgoXlG55e3e38FvMbi3DQ+8xh8cp8q2uGaSyql9LV9GwzYbfGBQlTd7vY5QgfYUwiYbufl9jUBm877Mdc9D3CRNuHPHUwDE60FHSsKF2sbS9VrinAyJiqlXn0nUbVGU8lXP7Xj0MFeAjncmM+GNYMxwnpURVvuhZN6OjQVVujE9hKt2qgQfo2E/kgkLBOPTkCLMNLPMWocAav4rGd1e0l5WlrJ/EjhZKgu4iR1+BgUCxIKjpWW4IamUNYz93qoJYRoHktw/Nk8hCch5i4TXXtzeipPhFWKK42f2ypfUkly3DX96MahmvJLPClz0yKRbbJ2DNZBFGQ/WTbu9aGeR3rC5N3Ro3Sm2iChMWYEhQKCkaE3NbOYjCCVlFka7LvTsUzON7NeefwR4bCEfNiYlR8HLDCCvQ/xKyQ2bG/TGKvOOR5xTWON1N6nQ7XNrF/eSXU4XNALQ==",
-						"disabled": true
-					},
-					{
-						"key": "sec-ch-ua-mobile",
-						"value": "?0"
-					},
-					{
-						"key": "user-agent",
-						"value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/98.0.4758.81 Safari/537.36"
-					},
-					{
-						"key": "sec-ch-ua-platform",
-						"value": "\"Windows\""
-					},
-					{
-						"key": "accept",
-						"value": "*/*"
-					},
-					{
-						"key": "origin",
-						"value": "https://local.kingnetsmart.com.tw"
-					},
-					{
-						"key": "sec-fetch-site",
-						"value": "same-site"
-					},
-					{
-						"key": "sec-fetch-mode",
-						"value": "cors"
-					},
-					{
-						"key": "sec-fetch-dest",
-						"value": "empty"
-					},
-					{
-						"key": "referer",
-						"value": "https://local.kingnetsmart.com.tw/"
-					},
-					{
-						"key": "accept-language",
-						"value": "zh-TW,zh;q=0.9,en-US;q=0.8,en;q=0.7,zh-CN;q=0.6,ig;q=0.5,th;q=0.4"
-					},
-					{
-						"key": "Cookie",
-						"value": "",
-						"type": "text",
-						"disabled": true
-					}
-				],
-				"body": {
-					"mode": "formdata",
-					"formdata": [
-						{
-							"key": "Title",
-							"value": "API testing",
-							"type": "text"
-						},
-						{
-							"key": "IssueTextNumber",
-							"value": "",
-							"type": "text"
-						},
-						{
-							"key": "Category",
-							"value": "Regular",
-							"type": "text"
-						},
-						{
-							"key": "AssemblyStartAt",
-							"value": "{{Today}} 06:00",
-							"type": "text"
-						},
-						{
-							"key": "CommunityId",
-							"value": "15072201",
-							"type": "text"
-						},
-						{
-							"key": "PlaceName",
-							"value": "API testing",
-							"type": "text"
-						},
-						{
-							"key": "PlaceAddress",
-							"value": "",
-							"type": "text"
-						},
-						{
-							"key": "HostRole",
-							"value": "Chairperson",
-							"type": "text"
-						},
-						{
-							"key": "HostName",
-							"value": "API testing",
-							"type": "text"
-						},
-						{
-							"key": "ContactPersonRole",
-							"value": "",
-							"type": "text"
-						},
-						{
-							"key": "ContactPersonName",
-							"value": "",
-							"type": "text"
-						},
-						{
-							"key": "Note",
-							"value": "",
-							"type": "text"
-						},
-						{
-							"key": "TabletThreshold",
-							"value": "0.5",
-							"type": "text"
-						},
-						{
-							"key": "AreaThreshold",
-							"value": "0",
-							"type": "text"
-						},
-						{
-							"key": "Description",
-							"value": "",
-							"type": "text"
-						},
-						{
-							"key": "NotificationType",
-							"value": "App",
-							"type": "text"
-						},
-						{
-							"key": "AssemblyDueAt",
-							"value": "{{Today}} 23:00",
-							"type": "text"
-						},
-						{
-							"key": "TopicDtoJsonStrings",
-							"value": "[{\"title\":\"API testing\",\"description\":\"API testing\",\"attendanceThreshold\":0.5,\"consentThreshold\":0.5}]",
-							"type": "text"
-						},
-						{
-							"key": "UnitOwnerListExcel",
-							"type": "file",
-							"src": "./file/開發期測試區坪數未填prod.xlsx"
-						}
-					]
-				},
-				"url": {
-					"raw": "{{uoa}}/UnitOwnerAssembly/CreateAssembly",
-					"host": [
-						"{{uoa}}"
-					],
-					"path": [
-						"UnitOwnerAssembly",
-						"CreateAssembly"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "區權會建立_錯誤社區的excel",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"exec": [
-							"const textData = pm.response.text();\r",
-							"\r",
-							"pm.test(\"區權會建立上傳其他社區的excel錯誤提示正確\", function () {\r",
-							"    pm.expect(textData).to.include(\"區權人名單含有不正確的戶別資料(可能是不同社區資料)\");\r",
-							"});"
-						],
-						"type": "text/javascript"
-					}
-				},
-				{
-					"listen": "prerequest",
-					"script": {
-						"exec": [
-							""
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
-			"protocolProfileBehavior": {
-				"disabledSystemHeaders": {}
-			},
-			"request": {
-				"auth": {
-					"type": "bearer",
-					"bearer": [
-						{
-							"key": "token",
-							"value": "{{comLoginToken}}",
-							"type": "string"
-						}
-					]
-				},
-				"method": "POST",
-				"header": [
-					{
-						"key": "authority",
-						"value": "uoa-dev.kingnetsmart.com.tw"
-					},
-					{
-						"key": "sec-ch-ua",
-						"value": "\" Not A;Brand\";v=\"99\", \"Chromium\";v=\"98\", \"Google Chrome\";v=\"98\""
-					},
-					{
-						"key": "authenticationscheme",
-						"value": "SmartlifeBackstageAuthenticationHandler"
-					},
-					{
-						"key": "authorization",
-						"value": "Bearer x4/h3t9g+2cGflxQRaGaIF68z1OUZS07yKnghDk/eXnkckEOgMkTkfUNDqC516LzKe8bmYlkf+mm4PLYZlQLvRWmg278WKvksmlITMea0ZSZHaegajR3G97BYj1QGsKfxFw0jIkCHdbVjdXdgoXlG55e3e38FvMbi3DQ+8xh8cp8q2uGaSyql9LV9GwzYbfGBQlTd7vY5QgfYUwiYbufl9jUBm877Mdc9D3CRNuHPHUwDE60FHSsKF2sbS9VrinAyJiqlXn0nUbVGU8lXP7Xj0MFeAjncmM+GNYMxwnpURVvuhZN6OjQVVujE9hKt2qgQfo2E/kgkLBOPTkCLMNLPMWocAav4rGd1e0l5WlrJ/EjhZKgu4iR1+BgUCxIKjpWW4IamUNYz93qoJYRoHktw/Nk8hCch5i4TXXtzeipPhFWKK42f2ypfUkly3DX96MahmvJLPClz0yKRbbJ2DNZBFGQ/WTbu9aGeR3rC5N3Ro3Sm2iChMWYEhQKCkaE3NbOYjCCVlFka7LvTsUzON7NeefwR4bCEfNiYlR8HLDCCvQ/xKyQ2bG/TGKvOOR5xTWON1N6nQ7XNrF/eSXU4XNALQ==",
-						"disabled": true
-					},
-					{
-						"key": "sec-ch-ua-mobile",
-						"value": "?0"
-					},
-					{
-						"key": "user-agent",
-						"value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/98.0.4758.81 Safari/537.36"
-					},
-					{
-						"key": "sec-ch-ua-platform",
-						"value": "\"Windows\""
-					},
-					{
-						"key": "accept",
-						"value": "*/*"
-					},
-					{
-						"key": "origin",
-						"value": "https://local.kingnetsmart.com.tw"
-					},
-					{
-						"key": "sec-fetch-site",
-						"value": "same-site"
-					},
-					{
-						"key": "sec-fetch-mode",
-						"value": "cors"
-					},
-					{
-						"key": "sec-fetch-dest",
-						"value": "empty"
-					},
-					{
-						"key": "referer",
-						"value": "https://local.kingnetsmart.com.tw/"
-					},
-					{
-						"key": "accept-language",
-						"value": "zh-TW,zh;q=0.9,en-US;q=0.8,en;q=0.7,zh-CN;q=0.6,ig;q=0.5,th;q=0.4"
-					},
-					{
-						"key": "Cookie",
-						"value": "",
-						"type": "text",
-						"disabled": true
-					}
-				],
-				"body": {
-					"mode": "formdata",
-					"formdata": [
-						{
-							"key": "Title",
-							"value": "API testing",
-							"type": "text"
-						},
-						{
-							"key": "IssueTextNumber",
-							"value": "",
-							"type": "text"
-						},
-						{
-							"key": "Category",
-							"value": "Regular",
-							"type": "text"
-						},
-						{
-							"key": "AssemblyStartAt",
-							"value": "{{Today}} 06:00",
-							"type": "text"
-						},
-						{
-							"key": "CommunityId",
-							"value": "15072201",
-							"type": "text"
-						},
-						{
-							"key": "PlaceName",
-							"value": "API testing",
-							"type": "text"
-						},
-						{
-							"key": "PlaceAddress",
-							"value": "",
-							"type": "text"
-						},
-						{
-							"key": "HostRole",
-							"value": "Chairperson",
-							"type": "text"
-						},
-						{
-							"key": "HostName",
-							"value": "API testing",
-							"type": "text"
-						},
-						{
-							"key": "ContactPersonRole",
-							"value": "",
-							"type": "text"
-						},
-						{
-							"key": "ContactPersonName",
-							"value": "",
-							"type": "text"
-						},
-						{
-							"key": "Note",
-							"value": "",
-							"type": "text"
-						},
-						{
-							"key": "TabletThreshold",
-							"value": "0.5",
-							"type": "text"
-						},
-						{
-							"key": "AreaThreshold",
-							"value": "0",
-							"type": "text"
-						},
-						{
-							"key": "Description",
-							"value": "",
-							"type": "text"
-						},
-						{
-							"key": "NotificationType",
-							"value": "App",
-							"type": "text"
-						},
-						{
-							"key": "AssemblyDueAt",
-							"value": "{{Today}} 23:00",
-							"type": "text"
-						},
-						{
-							"key": "TopicDtoJsonStrings",
-							"value": "[{\"title\":\"API testing\",\"description\":\"API testing\",\"attendanceThreshold\":0.5,\"consentThreshold\":0.5}]",
-							"type": "text"
-						},
-						{
-							"key": "UnitOwnerListExcel",
-							"type": "file",
-							"src": "./file/其他社區的excel.xlsx"
-						}
-					]
-				},
-				"url": {
-					"raw": "{{uoa}}/UnitOwnerAssembly/CreateAssembly",
-					"host": [
-						"{{uoa}}"
-					],
-					"path": [
-						"UnitOwnerAssembly",
-						"CreateAssembly"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "區權會議案建立",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"exec": [
-							"pm.test(\"建立區權會議案成功 200\", function () {\r",
+							"pm.test(\"區權會議案建立成功，狀態200\", function () {\r",
 							"    pm.response.to.have.status(200);\r",
 							"});"
 						],
@@ -2193,13 +2193,13 @@
 			"response": []
 		},
 		{
-			"name": "上傳檔案",
+			"name": "區權會上傳檔案正確執行",
 			"event": [
 				{
 					"listen": "test",
 					"script": {
 						"exec": [
-							"pm.test(\"上傳檔案成功 200\", function () {\r",
+							"pm.test(\"區權會上傳檔案成功，狀態200\", function () {\r",
 							"    pm.response.to.have.status(200);\r",
 							"});\r",
 							"const textData = pm.response.text()\r",
@@ -2261,7 +2261,7 @@
 			"response": []
 		},
 		{
-			"name": "區權會附檔列表取得_確認上傳的檔案",
+			"name": "區權會檔案取得正確執行",
 			"event": [
 				{
 					"listen": "test",
@@ -2270,7 +2270,7 @@
 							"const jsonData = pm.response.json();\r",
 							"const UploadFileName = pm.collectionVariables.get(\"UploadFileName\")\r",
 							"\r",
-							"pm.test(\"驗證有出現上傳的檔案\", function () {\r",
+							"pm.test(\"區權會所上傳的檔案有正確取得\", function () {\r",
 							"    pm.expect(jsonData[0].path.substr(67,36)).to.eql(UploadFileName);\r",
 							"});\r",
 							"pm.collectionVariables.set(\"UploadFileId\", jsonData[0].id)\r",
@@ -2323,13 +2323,13 @@
 			"response": []
 		},
 		{
-			"name": "替換檔案",
+			"name": "區權會替換檔案正確執行",
 			"event": [
 				{
 					"listen": "test",
 					"script": {
 						"exec": [
-							"pm.test(\"替換檔案成功 200\", function () {\r",
+							"pm.test(\"區權會替換檔案成功，狀態200\", function () {\r",
 							"    pm.response.to.have.status(200);\r",
 							"});\r",
 							"const textData = pm.response.text()\r",
@@ -2395,7 +2395,7 @@
 			"response": []
 		},
 		{
-			"name": "區權會附檔列表取得_確認替換的檔案",
+			"name": "區權會檔案取得正確執行，驗證所替換的檔案",
 			"event": [
 				{
 					"listen": "test",
@@ -2404,7 +2404,7 @@
 							"const jsonData = pm.response.json();\r",
 							"const ReplaceFileName = pm.collectionVariables.get(\"ReplaceFileName\")\r",
 							"\r",
-							"pm.test(\"驗證有出現上傳的檔案\", function () {\r",
+							"pm.test(\"區權會所替換的檔案有正確取得\", function () {\r",
 							"    pm.expect(jsonData[0].path.substr(67,36)).to.eql(ReplaceFileName);\r",
 							"});\r",
 							"pm.collectionVariables.set(\"ReplaceFileId\", jsonData[0].id)"
@@ -2455,13 +2455,13 @@
 			"response": []
 		},
 		{
-			"name": "刪除檔案",
+			"name": "區權會刪除檔案正確執行",
 			"event": [
 				{
 					"listen": "test",
 					"script": {
 						"exec": [
-							"pm.test(\"刪除檔案成功 200\", function () {\r",
+							"pm.test(\"區權會刪除檔案成功，狀態200\", function () {\r",
 							"    pm.response.to.have.status(200);\r",
 							"});"
 						],
@@ -2513,14 +2513,14 @@
 			"response": []
 		},
 		{
-			"name": "區權會附檔列表取得_確認刪除的檔案",
+			"name": "區權會檔案取得正確執行，驗證所刪除的檔案",
 			"event": [
 				{
 					"listen": "test",
 					"script": {
 						"exec": [
 							"const jsonData = pm.response.json();\r",
-							"pm.test(\"驗證有出現上傳的檔案\", function () {\r",
+							"pm.test(\"區權會所刪除的檔案有正確消失\", function () {\r",
 							"    pm.expect(jsonData).to.eql([]);\r",
 							"});\r",
 							""
@@ -2571,7 +2571,7 @@
 			"response": []
 		},
 		{
-			"name": "區權人確認卡片取得(By戶別Id)_三采企業大樓A1F1",
+			"name": "區權人確認卡片取得(By戶別Id)_三采企業大樓A1F1 (需再修改寫法)",
 			"event": [
 				{
 					"listen": "test",
@@ -2623,7 +2623,7 @@
 						},
 						{
 							"key": "TabletId",
-							"value": "1507220077"
+							"value": "1704100029"
 						}
 					]
 				}
@@ -2631,13 +2631,13 @@
 			"response": []
 		},
 		{
-			"name": "匯入區權人模板(Excel)取得",
+			"name": "匯出區權人資料(Excel)正確執行",
 			"event": [
 				{
 					"listen": "test",
 					"script": {
 						"exec": [
-							"pm.test(\"區權會Excel取得成功 200\", function () {\r",
+							"pm.test(\"匯出區權人資料(Excel)，狀態200\", function () {\r",
 							"    pm.response.to.have.status(200);\r",
 							"});"
 						],
@@ -2686,23 +2686,23 @@
 			"response": []
 		},
 		{
-			"name": "區權會議案列表取得",
+			"name": "區權會議案列表取得正確執行",
 			"event": [
 				{
 					"listen": "test",
 					"script": {
 						"exec": [
 							"const jsonData = pm.response.json();\r",
-							"pm.test(\"區權會取得議案列表成功 200\", function () {\r",
+							"pm.test(\"區權會議案列表取得成功，狀態200\", function () {\r",
 							"    pm.response.to.have.status(200);\r",
 							"});\r",
-							"pm.test(\"議案1名稱正確\", function () {\r",
+							"pm.test(\"所建立的區權會議案名稱驗證\", function () {\r",
 							"    pm.expect(jsonData[0].title).to.eql(\"API testing\");\r",
 							"});\r",
-							"pm.test(\"議案1出席標準正確\", function () {\r",
+							"pm.test(\"所建立的區權會議案出席標準驗證\", function () {\r",
 							"    pm.expect(jsonData[0].attendanceThreshold).to.eql(0.5);\r",
 							"});\r",
-							"pm.test(\"議案1投票標準正確\", function () {\r",
+							"pm.test(\"所建立的區權會議案投票標準驗證\", function () {\r",
 							"    pm.expect(jsonData[0].consentThreshold).to.eql(0.5);\r",
 							"});\r",
 							"pm.collectionVariables.set(\"TopicId\", jsonData[0].id)"
@@ -2758,13 +2758,13 @@
 			"response": []
 		},
 		{
-			"name": "區權人報到狀況列表(Excel)取得",
+			"name": "區權人報到狀況列表(Excel)正確執行",
 			"event": [
 				{
 					"listen": "test",
 					"script": {
 						"exec": [
-							"pm.test(\"取得區權會區權人報到狀態列表excel成功 200\", function () {\r",
+							"pm.test(\"匯出區權人報到狀態列表(Excel)成功，狀態200\", function () {\r",
 							"    pm.response.to.have.status(200);\r",
 							"});"
 						],
@@ -2863,13 +2863,13 @@
 			"response": []
 		},
 		{
-			"name": "出席證列表取得",
+			"name": "出席證列表取得正確執行",
 			"event": [
 				{
 					"listen": "test",
 					"script": {
 						"exec": [
-							"pm.test(\"出席證列表取得成功 200\", function () {\r",
+							"pm.test(\"會議出席證列表取得成功，狀態200\", function () {\r",
 							"    pm.response.to.have.status(200);\r",
 							"});\r",
 							"const jsonData = pm.response.json();\r",
@@ -2979,9 +2979,9 @@
 							"pm.test(\"區權人確認卡片取得(By出席證條碼) 成功 200\", function () {\r",
 							"    pm.response.to.have.status(200);\r",
 							"});\r",
-							"pm.test(\"區權人確認卡片取得(By出席證條碼) 戶別正確為 B1F2\", function () {\r",
+							"pm.test(\"區權人確認卡片取得(By出席證條碼) 戶別正確為 A2F1\", function () {\r",
 							"    var jsonData = pm.response.json();\r",
-							"    pm.expect(jsonData.tabletName).to.eql(\"B1F2\");\r",
+							"    pm.expect(jsonData.tabletName).to.eql(\"A2F1\");\r",
 							"});"
 						],
 						"type": "text/javascript"
@@ -3266,7 +3266,7 @@
 						},
 						{
 							"key": "AssemblyStartAt",
-							"value": "2022-02-09 06:30",
+							"value": "{{Today}} 06:30",
 							"type": "text"
 						},
 						{
@@ -3331,7 +3331,7 @@
 						},
 						{
 							"key": "AssemblyDueAt",
-							"value": "2022-02-09 21:00",
+							"value": "{{Today}} 21:00",
 							"type": "text"
 						},
 						{
@@ -3465,64 +3465,6 @@
 							"key": "AssemblyId",
 							"value": "{{AssemblyId}}"
 						}
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "區權人批次編輯",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"exec": [
-							"pm.test(\"區權人批次編輯成功 200\", function () {\r",
-							"    pm.response.to.have.status(200);\r",
-							"});"
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
-			"request": {
-				"auth": {
-					"type": "bearer",
-					"bearer": [
-						{
-							"key": "token",
-							"value": "{{comLoginToken}}",
-							"type": "string"
-						}
-					]
-				},
-				"method": "PUT",
-				"header": [
-					{
-						"key": "accept",
-						"value": "text/plain"
-					},
-					{
-						"key": "AuthenticationScheme",
-						"value": "SmartlifeBackstageAuthenticationHandler"
-					},
-					{
-						"key": "Content-Type",
-						"value": "application/json-patch+json"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\"assemblyId\":\"{{AssemblyId}}\",\"editUnitOwnerDtos\":[{\"unitOwnerId\":\"{{UnitOwnerId}}\",\"unitOwnerName\":\"API testing\",\"tabletArea\":100},{\"unitOwnerId\":\"{{UnitOwnerId1}}\",\"unitOwnerName\":\"API testing2\",\"tabletArea\":200}]}"
-				},
-				"url": {
-					"raw": "{{uoa}}/UnitOwnerAssembly/EditUnitOwners",
-					"host": [
-						"{{uoa}}"
-					],
-					"path": [
-						"UnitOwnerAssembly",
-						"EditUnitOwners"
 					]
 				}
 			},
@@ -4157,13 +4099,6 @@
 							"    pm.expect(jsonData[0].registerAt).to.include(RegisterUnitOwnerTime);\r",
 							"    console.log(jsonData[0].registerAt)\r",
 							"    console.log(RegisterUnitOwnerTime)\r",
-							"});\r",
-							"\r",
-							"pm.test(\"驗證區權人 1 號 區權人姓名有正確被批次修改\", function () {\r",
-							"    pm.expect(jsonData[0].unitOwnerName).to.eql(\"API testing\");\r",
-							"});\r",
-							"pm.test(\"驗證區權人 1 號 區權人姓名有正確被批次修改\", function () {\r",
-							"    pm.expect(jsonData[0].tabletArea).to.eql(100);\r",
 							"});\r",
 							"\r",
 							"\r",
@@ -5007,7 +4942,37 @@
 							"    pm.expect(jsonData[1].registerAt).to.eql(\"\");\r",
 							"});\r",
 							"\r",
+							"const a = []\r",
+							"// jsonData.forEach(e => { delete e.id; delete e.registerAt; delete e.unregisterAt; a.push(e) }) // 刪除object方式\r",
+							"jsonData.forEach(e => a.push({ unitOwnerId: e.id, mode: \"NotChanged\", unitOwnerName: e.unitOwnerName, tabletArea: e.tabletArea, tabletName: e.tabletName }))\r",
 							"\r",
+							"a[0] = { // 異動資料\r",
+							"    unitOwnerId: a[0].unitOwnerId,\r",
+							"    mode: \"Edit\",\r",
+							"    unitOwnerName: \"API Edit\",\r",
+							"    tabletArea: 400,\r",
+							"    tabletName: a[0].tabletName\r",
+							"}\r",
+							"\r",
+							"a[1] = { // 刪除資料\r",
+							"    unitOwnerId: a[1].unitOwnerId,\r",
+							"    mode: \"Delete\",\r",
+							"    unitOwnerName: a[1].unitOwnerName,\r",
+							"    tabletArea: a[1].tabletArea,\r",
+							"    tabletName: \"API Delete\"\r",
+							"}\r",
+							"\r",
+							"a.push({ // 新增資料\r",
+							"    mode: \"Add\",\r",
+							"    tabletArea: 1,\r",
+							"    tabletId: \"1704100031\",\r",
+							"    tabletName: \"B1F1\",\r",
+							"    unitOwnerName: \"API Add\",\r",
+							"})\r",
+							"\r",
+							"a.reverse(); // 翻轉排序\r",
+							"\r",
+							"pm.collectionVariables.set('Data', JSON.stringify(a))\r",
 							""
 						],
 						"type": "text/javascript"
@@ -5256,13 +5221,9 @@
 					}
 				],
 				"url": {
-					"raw": "https://uoa-dev.kingnetsmart.com.tw/UnitOwnerAssembly/GetOperationListByUnitOwnerId?AssemblyId={{AssemblyId}}&UnitOwnerId={{UnitOwnerId}}",
-					"protocol": "https",
+					"raw": "{{uoa}}/UnitOwnerAssembly/GetOperationListByUnitOwnerId?AssemblyId={{AssemblyId}}&UnitOwnerId={{UnitOwnerId}}",
 					"host": [
-						"uoa-dev",
-						"kingnetsmart",
-						"com",
-						"tw"
+						"{{uoa}}"
 					],
 					"path": [
 						"UnitOwnerAssembly",
@@ -5283,13 +5244,13 @@
 			"response": []
 		},
 		{
-			"name": "區權人批次刪除(規則上還有問題)",
+			"name": "區權會編輯模式",
 			"event": [
 				{
 					"listen": "test",
 					"script": {
 						"exec": [
-							"pm.test(\"區權人批次刪除成功 200\", function () {\r",
+							"pm.test(\"區權會編輯模式成功 200\", function () {\r",
 							"    pm.response.to.have.status(200);\r",
 							"});"
 						],
@@ -5308,7 +5269,7 @@
 						}
 					]
 				},
-				"method": "DELETE",
+				"method": "PATCH",
 				"header": [
 					{
 						"key": "accept",
@@ -5325,16 +5286,138 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\"assemblyId\":\"{{AssemblyId}}\",\"unitOwnerIds\":[\"{{UnitOwnerId}}\",\"{{UnitOwnerId1}}\"]}"
+					"raw": "{\r\n    \"assemblyId\": \"{{AssemblyId}}\",\r\n    \"modifyUnitOwnerDtos\": {{Data}}\r\n}"
 				},
 				"url": {
-					"raw": "{{uoa}}/UnitOwnerAssembly/DeleteUnitOwners",
+					"raw": "{{uoa}}/UnitOwnerAssembly/ModifyUnitOwners",
 					"host": [
 						"{{uoa}}"
 					],
 					"path": [
 						"UnitOwnerAssembly",
-						"DeleteUnitOwners"
+						"ModifyUnitOwners"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "區權人列表取得_驗證編輯模式",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"const jsonData = pm.response.json();\r",
+							"const EditUnitOwnerArr = JSON.parse(pm.collectionVariables.get(\"Data\"))\r",
+							"\r",
+							"\r",
+							"EditUnitOwnerArr.forEach(function(e, i, arr) {\r",
+							"    if(e.mode === \"Delete\") {\r",
+							"        arr.splice(i, 1);\r",
+							"    }\r",
+							"});\r",
+							"console.log(jsonData[0])\r",
+							"console.log(EditUnitOwnerArr[0])\r",
+							"const a =[]\r",
+							"const b =[]\r",
+							"jsonData.forEach(e => a.push({unitOwnerName : e.unitOwnerName, tabletArea : e.tabletArea}))\r",
+							"EditUnitOwnerArr.forEach(e => b.push({unitOwnerName : e.unitOwnerName, tabletArea : e.tabletArea}))\r",
+							"console.log(a)\r",
+							"console.log(b)\r",
+							"pm.test(\"驗證編輯模式 排序、區權人姓名、坪數 正確\", function () {\r",
+							"    pm.expect(a).to.eql(b);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{comLoginToken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "authority",
+						"value": "uoa-dev.kingnetsmart.com.tw"
+					},
+					{
+						"key": "sec-ch-ua",
+						"value": "\" Not A;Brand\";v=\"99\", \"Chromium\";v=\"98\", \"Google Chrome\";v=\"98\""
+					},
+					{
+						"key": "authenticationscheme",
+						"value": "SmartlifeBackstageAuthenticationHandler"
+					},
+					{
+						"key": "authorization",
+						"value": "Bearer x4/h3t9g+2cGflxQRaGaIF68z1OUZS07yKnghDk/eXnkckEOgMkTkfUNDqC516LzKe8bmYlkf+mm4PLYZlQLvRWmg278WKvksmlITMea0ZSZHaegajR3G97BYj1QGsKfxFw0jIkCHdbVjdXdgoXlG55e3e38FvMbi3DQ+8xh8cp8q2uGaSyql9LV9GwzYbfGBQlTd7vY5QgfYUwiYbufl9jUBm877Mdc9D3CRNuHPHUwDE60FHSsKF2sbS9VrinAyJiqlXn0nUbVGU8lXP7Xj0MFeAjncmM+GNYMxwnpURVvuhZN6OjQVVujE9hKt2qgQfo2E/kgkLBOPTkCLMNLPMWocAav4rGd1e0l5WlrJ/EjhZKgu4iR1+BgUCxIKjpWW4IamUNYz93qoJYRoHktw1L373oq4Kn/ieocGiT2Em96nGSA2wtE/CmWJqvw+fyG7neOK6EbU7/8Ly+pwbHj7lyUon4tJdhQdpszn0EhEaWkAUg8JxFd3uJazuDV1WVgPs0OLUmRh/wTJCEhLri7gQHUtLKM27lNzl8IIyf0XF7iAh+v8c7HUCgWUA2Cr6zO3vYTDLk2BgF8uFTnmlklow==",
+						"disabled": true
+					},
+					{
+						"key": "sec-ch-ua-mobile",
+						"value": "?0"
+					},
+					{
+						"key": "user-agent",
+						"value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/98.0.4758.81 Safari/537.36"
+					},
+					{
+						"key": "sec-ch-ua-platform",
+						"value": "\"Windows\""
+					},
+					{
+						"key": "accept",
+						"value": "*/*"
+					},
+					{
+						"key": "origin",
+						"value": "https://local.kingnetsmart.com.tw"
+					},
+					{
+						"key": "sec-fetch-site",
+						"value": "same-site"
+					},
+					{
+						"key": "sec-fetch-mode",
+						"value": "cors"
+					},
+					{
+						"key": "sec-fetch-dest",
+						"value": "empty"
+					},
+					{
+						"key": "referer",
+						"value": "https://local.kingnetsmart.com.tw/"
+					},
+					{
+						"key": "accept-language",
+						"value": "zh-TW,zh;q=0.9,en-US;q=0.8,en;q=0.7,zh-CN;q=0.6,ig;q=0.5,th;q=0.4"
+					}
+				],
+				"url": {
+					"raw": "{{uoa}}/UnitOwnerAssembly/GetUnitOwnerList?AssemblyId={{AssemblyId}}",
+					"host": [
+						"{{uoa}}"
+					],
+					"path": [
+						"UnitOwnerAssembly",
+						"GetUnitOwnerList"
+					],
+					"query": [
+						{
+							"key": "AssemblyId",
+							"value": "{{AssemblyId}}"
+						}
 					]
 				}
 			},
@@ -5349,7 +5432,9 @@
 						"exec": [
 							"pm.test(\"Delete Assembly Success\", function () {\r",
 							"    pm.response.to.have.status(200);\r",
-							"});"
+							"});\r",
+							"\r",
+							"pm.collectionVariables.clear();"
 						],
 						"type": "text/javascript"
 					}
@@ -5470,7 +5555,7 @@
 	],
 	"variable": [
 		{
-			"key": "comLoginToken",
+			"key": "Today",
 			"value": ""
 		},
 		{
@@ -5482,67 +5567,15 @@
 			"value": ""
 		},
 		{
+			"key": "comLoginToken",
+			"value": ""
+		},
+		{
 			"key": "AssemblyId",
 			"value": ""
 		},
 		{
-			"key": "Today",
-			"value": ""
-		},
-		{
-			"key": "UnitOwnerId",
-			"value": ""
-		},
-		{
-			"key": "UnregisterUnitOwnerTime",
-			"value": ""
-		},
-		{
-			"key": "RegisterUnitOwnerTime",
-			"value": ""
-		},
-		{
-			"key": "TopicId",
-			"value": ""
-		},
-		{
-			"key": "UnitOwnerId1",
-			"value": ""
-		},
-		{
-			"key": "UnitOwnerId2",
-			"value": ""
-		},
-		{
-			"key": "UnitOwner01barcode",
-			"value": ""
-		},
-		{
-			"key": "File1",
-			"value": ""
-		},
-		{
-			"key": "UploadFile",
-			"value": ""
-		},
-		{
-			"key": "ReplaceFile",
-			"value": ""
-		},
-		{
-			"key": "UploadFileName",
-			"value": ""
-		},
-		{
-			"key": "UploadFileId",
-			"value": ""
-		},
-		{
-			"key": "ReplaceFileName",
-			"value": ""
-		},
-		{
-			"key": "ReplaceFileId",
+			"key": "Data",
 			"value": ""
 		}
 	]

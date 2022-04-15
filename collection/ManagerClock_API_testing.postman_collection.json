@@ -37,8 +37,8 @@
 							"    body: {\r",
 							"        mode: 'raw',\r",
 							"        raw: JSON.stringify({\r",
-							"            \"Account\": \"092122931_\",\r",
-							"            \"Password\": \"850404\",\r",
+							"            \"Account\": \"0944444401\",\r",
+							"            \"Password\": \"888888\",\r",
 							"            \"Latitude\": 0,\r",
 							"            \"Longitude\": 0\r",
 							"        })\r",
@@ -46,7 +46,7 @@
 							"}, function (err, response) {\r",
 							"    const jsonResponse = response.json();\r",
 							"    pm.collectionVariables.set(\"housekeeperToken\", jsonResponse.Data.Token);\r",
-							"    pm.collectionVariables.set(\"Com_id\", jsonResponse.Data.communities[1].Id);\r",
+							"    pm.collectionVariables.set(\"Com_id\", jsonResponse.Data.communities[0].Id);\r",
 							"});\r",
 							"\r",
 							"pm.sendRequest(\"http://worldtimeapi.org/api/timezone/Asia/Taipei\", function (err, res) {\r",
@@ -120,7 +120,7 @@
 						"exec": [
 							"const jsonData = pm.response.json();\r",
 							"pm.test(\"驗證卡號有綁定實名制帳號但未被加入企業雲\", function () {\r",
-							"    pm.expect(jsonData.Data.AuthorizationInfo.Phone).to.eql(\"092122931_\");\r",
+							"    pm.expect(jsonData.Data.AuthorizationInfo.Phone).to.eql(\"0944444401\");\r",
 							"});"
 						],
 						"type": "text/javascript"
@@ -141,7 +141,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{ \"ClockCard\": \"123\"}"
+					"raw": "{ \"ClockCard\": \"789789\"}"
 				},
 				"url": {
 					"raw": "{{kingnetsmart}}/core/api/ManagerClock/ClockIn/Validation",
@@ -189,7 +189,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{ \"ClockCard\": \"321\"}"
+					"raw": "{ \"ClockCard\": \"123456888\"}"
 				},
 				"url": {
 					"raw": "{{kingnetsmart}}/core/api/ManagerClock/ClockIn/Validation",
@@ -343,7 +343,7 @@
 					"formdata": [
 						{
 							"key": "ClockCard",
-							"value": "321",
+							"value": "123456888",
 							"type": "text"
 						},
 						{
@@ -480,7 +480,7 @@
 					"formdata": [
 						{
 							"key": "ClockCard",
-							"value": "321",
+							"value": "123456888",
 							"type": "text"
 						},
 						{
@@ -596,10 +596,10 @@
 							"   pm.expect(jsonData.Data.ManagerClocks[0].ManagerName).to.eql(\"羅恩圻\");\r",
 							"});\r",
 							"pm.test(\"驗證打卡資料正確(實名制打卡有綁企業雲)-ManagerJob\", function () {\r",
-							"   pm.expect(jsonData.Data.ManagerClocks[0].ManagerJob).to.eql(\"秘書\");\r",
+							"   pm.expect(jsonData.Data.ManagerClocks[0].ManagerJob).to.eql(\"\");\r",
 							"});\r",
 							"pm.test(\"驗證打卡資料正確(實名制打卡有綁企業雲)-ManagerShifts\", function () {\r",
-							"   pm.expect(jsonData.Data.ManagerClocks[0].ManagerShifts).to.eql(\"早班\");\r",
+							"   pm.expect(jsonData.Data.ManagerClocks[0].ManagerShifts).to.eql(\"\");\r",
 							"});\r",
 							"pm.test(\"驗證打卡資料正確(實名制打卡有綁企業雲)-ClockStatusName\", function () {\r",
 							"   pm.expect(jsonData.Data.ManagerClocks[0].ClockStatusName).to.eql(\"正常\");\r",
@@ -707,7 +707,7 @@
 					"formdata": [
 						{
 							"key": "ClockCard",
-							"value": "123",
+							"value": "789789",
 							"type": "text"
 						},
 						{
@@ -823,7 +823,7 @@
 							"    pm.response.to.have.status(200);\r",
 							"});\r",
 							"pm.test(\"驗證打卡資料正確_實名制打卡沒有綁企業雲\", function(){\r",
-							"    pm.expect(jsonData.Data.Name).to.equal('羅恩圻')\r",
+							"    pm.expect(jsonData.Data.Name).to.equal('後臺測試社區')\r",
 							"    pm.expect(jsonData.Data.ClockTime).to.include(realtime)\r",
 							"})"
 						],
@@ -857,7 +857,7 @@
 					"formdata": [
 						{
 							"key": "ClockCard",
-							"value": "123",
+							"value": "789789",
 							"type": "text"
 						},
 						{
@@ -970,7 +970,7 @@
 							"   pm.expect(jsonData.Data.ManagerClocks[0].ClockId).to.eql(clockid);\r",
 							"});\r",
 							"pm.test(\"驗證打卡資料正確(實名制打卡沒有綁企業雲)-ManagerName\", function () {\r",
-							"   pm.expect(jsonData.Data.ManagerClocks[0].ManagerName).to.eql(\"羅恩圻\");\r",
+							"   pm.expect(jsonData.Data.ManagerClocks[0].ManagerName).to.eql(\"後臺測試社區\");\r",
 							"});\r",
 							"pm.test(\"驗證打卡資料正確(實名制打卡沒有綁企業雲)-ManagerJob\", function () {\r",
 							"   pm.expect(jsonData.Data.ManagerClocks[0].ManagerJob).to.eql(\"測試\");\r",
@@ -1081,22 +1081,22 @@
 					"formdata": [
 						{
 							"key": "Phone",
-							"value": "0921229318",
+							"value": "0944444401",
 							"type": "text"
 						},
 						{
 							"key": "Name",
-							"value": "羅恩圻",
+							"value": "後臺測試社區",
 							"type": "text"
 						},
 						{
 							"key": "JobTitleId",
-							"value": "2",
+							"value": "{{JobTitles}}",
 							"type": "text"
 						},
 						{
 							"key": "ShiftClassId",
-							"value": "1",
+							"value": "{{ShiftClasses}}",
 							"type": "text"
 						},
 						{
@@ -1270,7 +1270,7 @@
 							"    pm.response.to.have.status(200);\r",
 							"});\r",
 							"pm.test(\"驗證打卡資料正確_一次性打卡_已註冊實名制\", function(){\r",
-							"    pm.expect(jsonData.Data.Name).to.equal('羅恩圻')\r",
+							"    pm.expect(jsonData.Data.Name).to.equal('後臺測試社區')\r",
 							"    pm.expect(jsonData.Data.ClockTime).to.include(realtime)\r",
 							"})"
 						],
@@ -1304,7 +1304,7 @@
 					"formdata": [
 						{
 							"key": "Phone",
-							"value": "0921229318",
+							"value": "0944444401",
 							"type": "text"
 						},
 						{
@@ -1418,7 +1418,7 @@
 							"   pm.expect(jsonData.Data.ManagerClocks[0].ClockId).to.eql(clockid);\r",
 							"});\r",
 							"pm.test(\"驗證打卡資料正確(一次性打卡已註冊實名制)-ManagerName\", function () {\r",
-							"   pm.expect(jsonData.Data.ManagerClocks[0].ManagerName).to.eql(\"羅恩圻\");\r",
+							"   pm.expect(jsonData.Data.ManagerClocks[0].ManagerName).to.eql(\"後臺測試社區\");\r",
 							"});\r",
 							"pm.test(\"驗證打卡資料正確(一次性打卡已註冊實名制)-ManagerJob\", function () {\r",
 							"   pm.expect(jsonData.Data.ManagerClocks[0].ManagerJob).to.eql(\"測試\");\r",
@@ -1529,7 +1529,7 @@
 					"formdata": [
 						{
 							"key": "Phone",
-							"value": "0944444444",
+							"value": "0944444405",
 							"type": "text"
 						},
 						{
@@ -1539,12 +1539,12 @@
 						},
 						{
 							"key": "JobTitleId",
-							"value": "2",
+							"value": "{{JobTitles}}",
 							"type": "text"
 						},
 						{
 							"key": "ShiftClassId",
-							"value": "1",
+							"value": "{{ShiftClasses}}",
 							"type": "text"
 						},
 						{
@@ -1686,7 +1686,7 @@
 					"formdata": [
 						{
 							"key": "Phone",
-							"value": "0944444444",
+							"value": "0944444405",
 							"type": "text"
 						},
 						{
