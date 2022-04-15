@@ -6,7 +6,7 @@ async function Web_APItesting_prod() {
 
     // 跨案場打卡_異常打卡API測試
     newman.run({
-        collection: require('./collection/ManagerClock_API_testing.postman_collection'),
+        collection: require('./collection_prod/ManagerClock_API_testing.postman_collection.json'),
         environment: require('./environment/Prod.postman_environment.json'),
         reporters: ['junit', 'cli', 'htmlextra'],
         reporter: { junit: { export: `./newman/${today}-ManagerClock.xml` } }
@@ -17,7 +17,7 @@ async function Web_APItesting_prod() {
 
     // 區權會API測試 
     newman.run({
-        collection: require('./collection/UnitOwnerAssembly_Prod_API_testing.postman_collection.json'),
+        collection: require('./collection_prod/UnitOwnerAssembly_Prod_API_testing.postman_collection.json'),
         environment: require('./environment/Prod.postman_environment.json'),
         reporters: ['junit', 'cli', 'htmlextra'],
         reporter: { junit: { export: `./newman/${today}-UnitOwnerAssembly.xml` } }
@@ -28,7 +28,7 @@ async function Web_APItesting_prod() {
 
     // 實名制帳號綁定卡號API測試
     newman.run({
-        collection: require('./collection/AuthorizationCarrier_API_testing.postman_collection.json'),
+        collection: require('./collection_prod/AuthorizationCarrier_API_testing.postman_collection.json'),
         environment: require('./environment/Prod.postman_environment.json'),
         reporters: ['junit', 'cli', 'htmlextra'],
         reporter: { junit: { export: `./newman/${today}-AuthorizationCarrier.xml` } }
