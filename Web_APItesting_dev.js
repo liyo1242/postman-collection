@@ -15,7 +15,7 @@ async function Web_APItesting_dev() {
         console.log('collection run complete!');
     });
 
-    // 區權會API測試 
+    // 區權會API測試
     newman.run({
         collection: require('./collection_dev/UnitOwnerAssembly_API_testing.postman_collection.json'),
         environment: require('./environment/Dev.postman_environment.json'),

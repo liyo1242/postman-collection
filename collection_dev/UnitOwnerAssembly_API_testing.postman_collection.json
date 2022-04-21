@@ -107,7 +107,7 @@
 			"response": []
 		},
 		{
-			"name": "區權會建立時會議標題為空，無法建立會議",
+			"name": "CreateAssembly-區權會建立時會議標題為空，無法建立會議",
 			"event": [
 				{
 					"listen": "test",
@@ -327,7 +327,7 @@
 			"response": []
 		},
 		{
-			"name": "區權會建立時會議開始時間為空，無法建立會議",
+			"name": "CreateAssembly-區權會建立時會議開始時間為空，無法建立會議",
 			"event": [
 				{
 					"listen": "test",
@@ -547,7 +547,7 @@
 			"response": []
 		},
 		{
-			"name": "區權會建立時會議地點為空，無法建立會議",
+			"name": "CreateAssembly-區權會建立時會議地點為空，無法建立會議",
 			"event": [
 				{
 					"listen": "test",
@@ -767,7 +767,7 @@
 			"response": []
 		},
 		{
-			"name": "區權會建立時會議主辦人職稱為空，無法建立會議",
+			"name": "CreateAssembly-區權會建立時會議主辦人職稱為空，無法建立會議",
 			"event": [
 				{
 					"listen": "test",
@@ -987,7 +987,7 @@
 			"response": []
 		},
 		{
-			"name": "區權會建立時會議主辦人為空，無法建立會議",
+			"name": "CreateAssembly-區權會建立時會議主辦人為空，無法建立會議",
 			"event": [
 				{
 					"listen": "test",
@@ -1207,7 +1207,7 @@
 			"response": []
 		},
 		{
-			"name": "區權會建立時區權人檔案錯誤，無法建立會議",
+			"name": "CreateAssembly-區權會建立時區權人檔案錯誤，無法建立會議",
 			"event": [
 				{
 					"listen": "test",
@@ -1427,7 +1427,7 @@
 			"response": []
 		},
 		{
-			"name": "區權會建立時區權人檔案坪數未填，無法建立會議",
+			"name": "CreateAssembly-區權會建立時區權人檔案坪數未填，無法建立會議",
 			"event": [
 				{
 					"listen": "test",
@@ -1646,7 +1646,7 @@
 			"response": []
 		},
 		{
-			"name": "區權會建立時使用錯誤社區的區權人資料，無法建立會議",
+			"name": "CreateAssembly-區權會建立時使用錯誤社區的區權人資料，無法建立會議",
 			"event": [
 				{
 					"listen": "test",
@@ -1865,7 +1865,7 @@
 			"response": []
 		},
 		{
-			"name": "區權會建立可正確執行",
+			"name": "CreateAssembly-區權會建立可正確執行",
 			"event": [
 				{
 					"listen": "test",
@@ -2086,7 +2086,7 @@
 			"response": []
 		},
 		{
-			"name": "區權會議案建立正確執行",
+			"name": "InsertTopics-區權會議案建立正確執行",
 			"event": [
 				{
 					"listen": "test",
@@ -2193,7 +2193,7 @@
 			"response": []
 		},
 		{
-			"name": "區權會上傳檔案正確執行",
+			"name": "UploadFile-區權會上傳檔案正確執行",
 			"event": [
 				{
 					"listen": "test",
@@ -2261,7 +2261,7 @@
 			"response": []
 		},
 		{
-			"name": "區權會檔案取得正確執行",
+			"name": "GetFileList-區權會檔案取得正確執行",
 			"event": [
 				{
 					"listen": "test",
@@ -2323,7 +2323,7 @@
 			"response": []
 		},
 		{
-			"name": "區權會替換檔案正確執行",
+			"name": "ReplaceFile-區權會替換檔案正確執行",
 			"event": [
 				{
 					"listen": "test",
@@ -2395,7 +2395,7 @@
 			"response": []
 		},
 		{
-			"name": "區權會檔案取得正確執行，驗證所替換的檔案",
+			"name": "GetFileList-區權會檔案取得正確執行，驗證所替換的檔案",
 			"event": [
 				{
 					"listen": "test",
@@ -2455,7 +2455,7 @@
 			"response": []
 		},
 		{
-			"name": "區權會刪除檔案正確執行",
+			"name": "DeleteFile-區權會刪除檔案正確執行",
 			"event": [
 				{
 					"listen": "test",
@@ -2513,7 +2513,7 @@
 			"response": []
 		},
 		{
-			"name": "區權會檔案取得正確執行，驗證所刪除的檔案",
+			"name": "GetFileList-區權會檔案取得正確執行，驗證所刪除的檔案",
 			"event": [
 				{
 					"listen": "test",
@@ -2571,7 +2571,7 @@
 			"response": []
 		},
 		{
-			"name": "匯出區權人資料Excel正確執行",
+			"name": "GetImportationTemplate-匯出區權人資料Excel正確執行",
 			"event": [
 				{
 					"listen": "test",
@@ -2629,7 +2629,7 @@
 			"response": []
 		},
 		{
-			"name": "區權會議案列表取得正確執行",
+			"name": "GetTopicList-區權會議案列表取得正確執行",
 			"event": [
 				{
 					"listen": "test",
@@ -2701,7 +2701,7 @@
 			"response": []
 		},
 		{
-			"name": "出席證列表取得正確執行",
+			"name": "GetAttendanceCardList-出席證列表取得正確執行",
 			"event": [
 				{
 					"listen": "test",
@@ -2789,7 +2789,7 @@
 					}
 				],
 				"url": {
-					"raw": "{{uoa}}/UnitOwnerAssembly/GetAttendanceCardList?AssemblyId=3a033ea5-2b60-f5cd-57a4-21ef1d61faf1",
+					"raw": "{{uoa}}/UnitOwnerAssembly/GetAttendanceCardList?AssemblyId={{AssemblyId}}",
 					"host": [
 						"{{uoa}}"
 					],
@@ -2800,7 +2800,7 @@
 					"query": [
 						{
 							"key": "AssemblyId",
-							"value": "3a033ea5-2b60-f5cd-57a4-21ef1d61faf1"
+							"value": "{{AssemblyId}}"
 						}
 					]
 				}
@@ -2808,7 +2808,7 @@
 			"response": []
 		},
 		{
-			"name": "區權會資料取得正確執行",
+			"name": "GetAssembly-區權會資料取得正確執行",
 			"event": [
 				{
 					"listen": "test",
@@ -2935,7 +2935,7 @@
 			"response": []
 		},
 		{
-			"name": "區權會編輯正確執行",
+			"name": "EditAssembly-區權會編輯正確執行",
 			"event": [
 				{
 					"listen": "test",
@@ -3129,7 +3129,7 @@
 			"response": []
 		},
 		{
-			"name": "區權人列表取得正確執行",
+			"name": "GetUnitOwnerList-區權人列表取得正確執行",
 			"event": [
 				{
 					"listen": "test",
@@ -3244,7 +3244,7 @@
 			"response": []
 		},
 		{
-			"name": "區權人報到，會議狀態未發布之前無法進行報到",
+			"name": "RegisterUnitOwner-區權人報到，會議狀態未發布之前無法進行報到",
 			"event": [
 				{
 					"listen": "test",
@@ -3353,7 +3353,7 @@
 			"response": []
 		},
 		{
-			"name": "區權會發佈正確執行",
+			"name": "PublishAssembly-區權會發佈正確執行",
 			"event": [
 				{
 					"listen": "test",
@@ -3460,7 +3460,7 @@
 			"response": []
 		},
 		{
-			"name": "區權會列表資訊取得，驗證會議狀態是已發佈",
+			"name": "GetAssemblyList-區權會列表資訊取得，驗證會議狀態是已發佈",
 			"event": [
 				{
 					"listen": "test",
@@ -3520,7 +3520,7 @@
 			"response": []
 		},
 		{
-			"name": "取得智生活條碼綁定戶別正確執行",
+			"name": "GetUnitOwnerCardListByMultipleWays-取得智生活條碼綁定戶別正確執行",
 			"event": [
 				{
 					"listen": "test",
@@ -3564,13 +3564,9 @@
 					}
 				],
 				"url": {
-					"raw": "https://uoa-dev.kingnetsmart.com.tw/UnitOwnerAssembly/GetUnitOwnerCardListByMultipleWays?AssemblyId={{AssemblyId}}&Code=3F3J1X1D98L45B1Y",
-					"protocol": "https",
+					"raw": "{{uoa}}/UnitOwnerAssembly/GetUnitOwnerCardListByMultipleWays?AssemblyId={{AssemblyId}}&Code=3F3J1X1D98L45B1Y",
 					"host": [
-						"uoa-dev",
-						"kingnetsmart",
-						"com",
-						"tw"
+						"{{uoa}}"
 					],
 					"path": [
 						"UnitOwnerAssembly",
@@ -3591,7 +3587,7 @@
 			"response": []
 		},
 		{
-			"name": "取得管理版載具綁定戶別正確執行",
+			"name": "GetUnitOwnerCardListByMultipleWays-取得管理版載具綁定戶別正確執行",
 			"event": [
 				{
 					"listen": "test",
@@ -3635,13 +3631,9 @@
 					}
 				],
 				"url": {
-					"raw": "https://uoa-dev.kingnetsmart.com.tw/UnitOwnerAssembly/GetUnitOwnerCardListByMultipleWays?AssemblyId={{AssemblyId}}&Code=xcDMd7p3TP9zJfCoXQh6Nw==",
-					"protocol": "https",
+					"raw": "{{uoa}}/UnitOwnerAssembly/GetUnitOwnerCardListByMultipleWays?AssemblyId={{AssemblyId}}&Code=123",
 					"host": [
-						"uoa-dev",
-						"kingnetsmart",
-						"com",
-						"tw"
+						"{{uoa}}"
 					],
 					"path": [
 						"UnitOwnerAssembly",
@@ -3654,7 +3646,7 @@
 						},
 						{
 							"key": "Code",
-							"value": "xcDMd7p3TP9zJfCoXQh6Nw=="
+							"value": "123"
 						}
 					]
 				}
@@ -3662,7 +3654,7 @@
 			"response": []
 		},
 		{
-			"name": "區權人一號本人報到正確執行",
+			"name": "RegisterUnitOwner-區權人一號本人報到正確執行",
 			"event": [
 				{
 					"listen": "test",
@@ -3775,7 +3767,7 @@
 			"response": []
 		},
 		{
-			"name": "區權人二號本人報到正確執行",
+			"name": "RegisterUnitOwner-區權人二號本人報到正確執行",
 			"event": [
 				{
 					"listen": "test",
@@ -3875,7 +3867,7 @@
 			"response": []
 		},
 		{
-			"name": "區權人三號代理報到成功，狀態200",
+			"name": "RegisterAgent-區權人三號代理報到成功，狀態200",
 			"event": [
 				{
 					"listen": "test",
@@ -3987,7 +3979,7 @@
 			"response": []
 		},
 		{
-			"name": "區權人列表取得，驗證所報到的一號區權人狀態",
+			"name": "GetUnitOwnerList-區權人列表取得，驗證所報到的一號區權人狀態",
 			"event": [
 				{
 					"listen": "test",
@@ -4101,7 +4093,7 @@
 			"response": []
 		},
 		{
-			"name": "區權人一號簽退正確執行",
+			"name": "UnregisterUnitOwner-區權人一號簽退正確執行",
 			"event": [
 				{
 					"listen": "test",
@@ -4213,7 +4205,7 @@
 			"response": []
 		},
 		{
-			"name": "區權人列表取得，驗證區權人一號狀態為已簽退",
+			"name": "GetUnitOwnerList-區權人列表取得，驗證區權人一號狀態為已簽退",
 			"event": [
 				{
 					"listen": "test",
@@ -4327,7 +4319,7 @@
 			"response": []
 		},
 		{
-			"name": "區權人報到狀況列表Excel取得正確執行",
+			"name": "GetRegistrationExport-區權人報到狀況列表Excel取得正確執行",
 			"event": [
 				{
 					"listen": "test",
@@ -4391,7 +4383,7 @@
 			"response": []
 		},
 		{
-			"name": "區權會儀表板資料取得正確執行",
+			"name": "GetDashboardData-區權會儀表板資料取得正確執行",
 			"event": [
 				{
 					"listen": "test",
@@ -4504,7 +4496,7 @@
 			"response": []
 		},
 		{
-			"name": "區權人取消簽退正確執行，取消簽退區權人一號",
+			"name": "CancelUnitOwnerUnregistration-區權人取消簽退正確執行，取消簽退區權人一號",
 			"event": [
 				{
 					"listen": "test",
@@ -4611,7 +4603,7 @@
 			"response": []
 		},
 		{
-			"name": "區權人列表取得，驗證取消簽退的區權人一號",
+			"name": "GetUnitOwnerList-區權人列表取得，驗證取消簽退的區權人一號",
 			"event": [
 				{
 					"listen": "test",
@@ -4724,7 +4716,7 @@
 			"response": []
 		},
 		{
-			"name": "區權人取消報到，取消報到區權人二號",
+			"name": "CancelUnitOwnerRegistration-區權人取消報到，取消報到區權人二號",
 			"event": [
 				{
 					"listen": "test",
@@ -4831,7 +4823,7 @@
 			"response": []
 		},
 		{
-			"name": "區權人列表取得，驗證取消報到的區權人二號",
+			"name": "GetUnitOwnerList-區權人列表取得，驗證取消報到的區權人二號",
 			"event": [
 				{
 					"listen": "test",
@@ -4975,7 +4967,7 @@
 			"response": []
 		},
 		{
-			"name": "區權會儀表板資料取得正確執行",
+			"name": "GetDashboardData-區權會儀表板資料取得正確執行",
 			"event": [
 				{
 					"listen": "test",
@@ -5089,7 +5081,7 @@
 			"response": []
 		},
 		{
-			"name": "簽到退異動資料取得正確執行_驗證區權人一號",
+			"name": "GetOperationListByUnitOwnerId-簽到退異動資料取得正確執行_驗證區權人一號",
 			"event": [
 				{
 					"listen": "test",
@@ -5153,7 +5145,7 @@
 			"response": []
 		},
 		{
-			"name": "區權會編輯模式正確執行",
+			"name": "ModifyUnitOwners-區權會編輯模式正確執行",
 			"event": [
 				{
 					"listen": "test",
@@ -5211,7 +5203,7 @@
 			"response": []
 		},
 		{
-			"name": "區權人列表取得，驗證編輯模式後的區權人列表",
+			"name": "GetUnitOwnerList-區權人列表取得，驗證編輯模式後的區權人列表",
 			"event": [
 				{
 					"listen": "test",
@@ -5331,7 +5323,7 @@
 			"response": []
 		},
 		{
-			"name": "區權會刪除正確執行",
+			"name": "DeleteAssembly-區權會刪除正確執行",
 			"event": [
 				{
 					"listen": "test",
@@ -5479,54 +5471,6 @@
 		},
 		{
 			"key": "AssemblyId",
-			"value": ""
-		},
-		{
-			"key": "Data",
-			"value": ""
-		},
-		{
-			"key": "UploadFileName",
-			"value": ""
-		},
-		{
-			"key": "TopicId",
-			"value": ""
-		},
-		{
-			"key": "UnitOwner01barcode",
-			"value": ""
-		},
-		{
-			"key": "UnitOwnerId",
-			"value": ""
-		},
-		{
-			"key": "UnitOwnerId1",
-			"value": ""
-		},
-		{
-			"key": "UnitOwnerId2",
-			"value": ""
-		},
-		{
-			"key": "RegisterUnitOwnerTime",
-			"value": ""
-		},
-		{
-			"key": "UnregisterUnitOwnerTime",
-			"value": ""
-		},
-		{
-			"key": "RegisterUnitOwner01Time",
-			"value": ""
-		},
-		{
-			"key": "RegisterUnitOwner02Time",
-			"value": ""
-		},
-		{
-			"key": "RegisterUnitOwner03Time",
 			"value": ""
 		}
 	]

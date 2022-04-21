@@ -26,7 +26,7 @@ async function Web_APItesting_staging() {
         console.log('collection run complete!');
     });
 
-    //實名制帳號綁定卡號API測試
+    // 實名制帳號綁定卡號API測試
     newman.run({
         collection: require('./collection_prod/AuthorizationCarrier_API_testing.postman_collection.json'),
         environment: require('./environment/Staging.postman_environment.json'),
