@@ -3155,10 +3155,14 @@
 							"pm.collectionVariables.set(\"UnitOwnerId2\", jsonData[2].id)\r",
 							"const unitOwnerList = []\r",
 							"jsonData.forEach(e => unitOwnerList.push(e.id))\r",
+<<<<<<< HEAD
 							"pm.collectionVariables.set(\"unitOwnerList\", unitOwnerList)\r",
 							"const registerIndex = jsonData.findIndex(e => e.registrationStatus == 'Registered')\r",
 							"pm.collectionVariables.set('registerIndex', registerIndex)\r",
 							""
+=======
+							"pm.collectionVariables.set(\"unitOwnerList\", unitOwnerList)"
+>>>>>>> 74c7a62237c473698567e66403ece953420e486f
 						],
 						"type": "text/javascript"
 					}
@@ -4445,7 +4449,11 @@
 							"    pm.expect(jsonData.title).to.include(\"API testin\");\r",
 							"});\r",
 							"pm.test(\"區權會儀表板資料，驗證所建立會議報到人數正確\", function () {\r",
+<<<<<<< HEAD
 							"    pm.expect(jsonData.tabletValue).to.equal(51);\r",
+=======
+							"    pm.expect(jsonData.tabletValue).to.equal(50);\r",
+>>>>>>> 74c7a62237c473698567e66403ece953420e486f
 							"});\r",
 							"pm.test(\"區權會儀表板資料，驗證所建立會議簽退人數正確\", function () {\r",
 							"    pm.expect(jsonData.unregisterValue).to.equal(1);\r",
@@ -4901,11 +4909,19 @@
 							"}\r",
 							"\r",
 							"\r",
+<<<<<<< HEAD
 							"notEditUnitOwnerArray[length - 1] = { // 刪除區權人資料\r",
 							"    unitOwnerId: notEditUnitOwnerArray[length - 1].unitOwnerId,\r",
 							"    mode: \"Delete\",\r",
 							"    unitOwnerName: notEditUnitOwnerArray[length - 1].unitOwnerName,\r",
 							"    tabletArea: notEditUnitOwnerArray[length - 1].tabletArea,\r",
+=======
+							"notEditUnitOwnerArray[length-1] = { // 刪除區權人資料\r",
+							"    unitOwnerId: notEditUnitOwnerArray[length-1].unitOwnerId,\r",
+							"    mode: \"Delete\",\r",
+							"    unitOwnerName: notEditUnitOwnerArray[length-1].unitOwnerName,\r",
+							"    tabletArea: notEditUnitOwnerArray[length-1].tabletArea,\r",
+>>>>>>> 74c7a62237c473698567e66403ece953420e486f
 							"    tabletName: \"API Delete\"\r",
 							"}\r",
 							"\r",
@@ -5029,7 +5045,11 @@
 							"    pm.expect(jsonData.title).to.include(\"API testing\");\r",
 							"});\r",
 							"pm.test(\"區權會儀表板資料，驗證所建立會議報到人數正確\", function () {\r",
+<<<<<<< HEAD
 							"    pm.expect(jsonData.tabletValue).to.equal(50);\r",
+=======
+							"    pm.expect(jsonData.tabletValue).to.equal(49);\r",
+>>>>>>> 74c7a62237c473698567e66403ece953420e486f
 							"});\r",
 							"pm.test(\"區權會儀表板資料，驗證所建立會議簽退人數正確\", function () {\r",
 							"    pm.expect(jsonData.unregisterValue).to.equal(0);\r",
@@ -5553,6 +5573,7 @@
 						],
 						"type": "text/javascript"
 					}
+<<<<<<< HEAD
 				},
 				{
 					"listen": "prerequest",
@@ -5590,6 +5611,8 @@
 						],
 						"type": "text/javascript"
 					}
+=======
+>>>>>>> 74c7a62237c473698567e66403ece953420e486f
 				}
 			],
 			"request": {
@@ -5634,6 +5657,7 @@
 				}
 			},
 			"response": []
+<<<<<<< HEAD
 		},
 		{
 			"name": "GetTopic-取得單一議案資訊，驗證所新增的臨時議案",
@@ -6796,13 +6820,42 @@
 		},
 		{
 			"name": "CloseVoting-關閉重新投票正確執行，不同意",
+=======
+		},
+		{
+			"name": "GetTopic-取得單一議案資訊，驗證所新增的臨時議案",
+>>>>>>> 74c7a62237c473698567e66403ece953420e486f
 			"event": [
 				{
 					"listen": "test",
 					"script": {
 						"exec": [
+<<<<<<< HEAD
 							"pm.test(\"關閉重新投票正確執行，狀態200\", function () {\r",
 							"    pm.response.to.have.status(200);\r",
+=======
+							"const jsonData = pm.response.json();",
+							"pm.test(\"取得單一議案資訊成功，狀態200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"pm.test(\"取得單一議案資訊，驗證title名稱\", function () {",
+							"    pm.expect(jsonData.title).to.eql('API testing3 Add');",
+							"});",
+							"pm.test(\"取得單一議案資訊，驗證description名稱\", function () {",
+							"    pm.expect(jsonData.description).to.eql('API testing3 Add');",
+							"});",
+							"pm.test(\"取得單一議案資訊，驗證attendanceThreshold標準\", function () {",
+							"    pm.expect(jsonData.attendanceThreshold).to.eql(0.1);",
+							"});",
+							"pm.test(\"取得單一議案資訊，驗證consentThreshold標準\", function () {",
+							"    pm.expect(jsonData.consentThreshold).to.eql(0.1);",
+							"});",
+							"pm.test(\"取得單一議案資訊，驗證useTablet=true\", function () {",
+							"    pm.expect(jsonData.useTablet).to.eql(true);",
+							"});",
+							"pm.test(\"取得單一議案資訊，驗證useArea=false\", function () {",
+							"    pm.expect(jsonData.useArea).to.eql(false);",
+>>>>>>> 74c7a62237c473698567e66403ece953420e486f
 							"});"
 						],
 						"type": "text/javascript"
@@ -6820,15 +6873,24 @@
 						}
 					]
 				},
+<<<<<<< HEAD
 				"method": "POST",
 				"header": [
 					{
 						"key": "accept",
 						"value": "*/*"
+=======
+				"method": "GET",
+				"header": [
+					{
+						"key": "accept",
+						"value": "text/plain"
+>>>>>>> 74c7a62237c473698567e66403ece953420e486f
 					},
 					{
 						"key": "AuthenticationScheme",
 						"value": "SmartlifeBackstageAuthenticationHandler"
+<<<<<<< HEAD
 					},
 					{
 						"key": "Content-Type",
@@ -6841,24 +6903,49 @@
 				},
 				"url": {
 					"raw": "{{uoa}}/UnitOwnerAssembly/CloseVoting",
+=======
+					}
+				],
+				"url": {
+					"raw": "{{uoa}}/UnitOwnerAssembly/GetTopic?AssemblyId={{AssemblyId}}&TopicId={{addTopic}}",
+>>>>>>> 74c7a62237c473698567e66403ece953420e486f
 					"host": [
 						"{{uoa}}"
 					],
 					"path": [
 						"UnitOwnerAssembly",
+<<<<<<< HEAD
 						"CloseVoting"
+=======
+						"GetTopic"
+					],
+					"query": [
+						{
+							"key": "AssemblyId",
+							"value": "{{AssemblyId}}"
+						},
+						{
+							"key": "TopicId",
+							"value": "{{addTopic}}"
+						}
+>>>>>>> 74c7a62237c473698567e66403ece953420e486f
 					]
 				}
 			},
 			"response": []
 		},
 		{
+<<<<<<< HEAD
 			"name": "GetVotingDashboardData-取得投票dashboard資訊，驗證重新投票開始 Copy",
+=======
+			"name": "UpdateTopic-編輯臨時議案正確執行",
+>>>>>>> 74c7a62237c473698567e66403ece953420e486f
 			"event": [
 				{
 					"listen": "test",
 					"script": {
 						"exec": [
+<<<<<<< HEAD
 							"const jsonData = pm.response.json();\r",
 							"\r",
 							"pm.test(\"取得投票dashboard資訊，驗證重新投票已關閉decision\", function () {\r",
@@ -6866,6 +6953,91 @@
 							"});\r",
 							"pm.test(\"取得投票dashboard資訊，驗證重新投票已關閉topicStatus\", function () {\r",
 							"    pm.expect(jsonData.topicStatus).to.eql('decided');\r",
+=======
+							"pm.test(\"編輯臨時議案成功，狀態200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{comLoginToken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [
+					{
+						"key": "accept",
+						"value": "*/*"
+					},
+					{
+						"key": "AuthenticationScheme",
+						"value": "SmartlifeBackstageAuthenticationHandler"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer x4/h3t9g+2cGflxQRaGaIF68z1OUZS07yKnghDk/eXnkckEOgMkTkfUNDqC516LzKe8bmYlkf+mm4PLYZlQLvRWmg278WKvksmlITMea0ZSZHaegajR3G97BYj1QGsKfxFw0jIkCHdbVjdXdgoXlG55e3e38FvMbi3DQ+8xh8cp8q2uGaSyql9LV9GwzYbfGBQlTd7vY5QgfYUwiYbufl9jUBm877Mdc9D3CRNuHPHUwDE60FHSsKF2sbS9VrinAyJiqlXn0nUbVGU8lXP7Xj6r4JxDw8VpZz+t1vr4fN1oNS4Yw7MRIs8LSNPzGADUN7tTLcq8rLuExzdIxvf4XoltZHvJwHcozkbvGD/gslWTaRz3hmLB/ufM3oBS1xaKZHJ2I60Ey29sUQaSX5md50/lwsYdArc5yNVu0MGDsIDvjg4e5upMhjA7pGrtNtbfyEqaTwIn0Th4KJIxNJ+I9VscBPcW3UXubk5f5svFTIhKW2ThTpRGBi2QOfozi6Z0Uhgob0RaGODVyqS200Zr/s2aUBOA2D1UCmkUi4Pw0rhwKk/n3lJcwxN2Dpl9EJGAV3XFjuvfBriSQ29I27gW4tg=="
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json-patch+json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"assemblyId\":\"{{AssemblyId}}\",\"topicId\":\"{{addTopic}}\",\"editNote\":\"API test update Topic 1\",\"topicDto\":{\"title\":\"API update\",\"description\":\"API update\",\"attendanceThreshold\":0.33,\"consentThreshold\":0.33}}"
+				},
+				"url": {
+					"raw": "{{uoa}}/UnitOwnerAssembly/UpdateTopic",
+					"host": [
+						"{{uoa}}"
+					],
+					"path": [
+						"UnitOwnerAssembly",
+						"UpdateTopic"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetTopic-取得單一議案資訊，驗證編輯後的臨時議案",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"const jsonData = pm.response.json();",
+							"pm.test(\"取得單一議案資訊，驗證編輯後的臨時議案title名稱\", function () {",
+							"    pm.expect(jsonData.title).to.eql('API update');",
+							"});",
+							"pm.test(\"取得單一議案資訊，驗證編輯後的臨時議案description名稱\", function () {",
+							"    pm.expect(jsonData.description).to.eql('API update');",
+							"});",
+							"pm.test(\"取得單一議案資訊，驗證編輯後的臨時議案attendanceThreshold標準\", function () {",
+							"    pm.expect(jsonData.attendanceThreshold).to.eql(0.33);",
+							"});",
+							"pm.test(\"取得單一議案資訊，驗證編輯後的臨時議案consentThreshold標準\", function () {",
+							"    pm.expect(jsonData.consentThreshold).to.eql(0.33);",
+							"});",
+							"pm.test(\"取得單一議案資訊，驗證編輯後的臨時議案useTablet=true\", function () {",
+							"    pm.expect(jsonData.useTablet).to.eql(true);",
+							"});",
+							"pm.test(\"取得單一議案資訊，驗證編輯後的臨時議案useArea=false\", function () {",
+							"    pm.expect(jsonData.useArea).to.eql(false);",
+							"});",
+							"pm.test(\"取得單一議案資訊，驗證編輯後臨時議案的編輯紀錄\", function () {",
+							"    pm.expect(jsonData.editingRecords[0].note).to.include(\"API test update Topic 1\");",
+>>>>>>> 74c7a62237c473698567e66403ece953420e486f
 							"});"
 						],
 						"type": "text/javascript"
@@ -6892,20 +7064,16 @@
 					{
 						"key": "AuthenticationScheme",
 						"value": "SmartlifeBackstageAuthenticationHandler"
-					},
-					{
-						"key": "Authorization",
-						"value": "Bearer x4/h3t9g+2cGflxQRaGaIF68z1OUZS07yKnghDk/eXnkckEOgMkTkfUNDqC516LzKe8bmYlkf+mm4PLYZlQLvRWmg278WKvksmlITMea0ZSZHaegajR3G97BYj1QGsKfxFw0jIkCHdbVjdXdgoXlG55e3e38FvMbi3DQ+8xh8cp8q2uGaSyql9LV9GwzYbfGBQlTd7vY5QgfYUwiYbufl9jUBm877Mdc9D3CRNuHPHUwDE60FHSsKF2sbS9VrinAyJiqlXn0nUbVGU8lXP7Xj6r4JxDw8VpZz+t1vr4fN1oNS4Yw7MRIs8LSNPzGADUN7tTLcq8rLuExzdIxvf4XoltZHvJwHcozkbvGD/gslWTaRz3hmLB/ufM3oBS1xaKZHJ2I60Ey29sUQaSX5md505RA24C9zJuUfaEyZPp2HXwDSMUDwPlFyeQQjkGWwVki5bj6nMQfICdzEMC0TqSOXuyxx2xAT1e+2CP1N4Pvtk3swpEgoXxgp2RIRzaUeOYBPBTFCgY7xLBeFmjPq4J0pH1guFVAJqMVyY6FANCrYOwfpjMV3Ui1CVGmwpNW9F4km7Sd6TFIvrk+APLEDtR4jA=="
 					}
 				],
 				"url": {
-					"raw": "{{uoa}}/UnitOwnerAssembly/GetVotingDashboardData?AssemblyId={{AssemblyId}}&TopicId={{addTopic}}",
+					"raw": "{{uoa}}/UnitOwnerAssembly/GetTopic?AssemblyId={{AssemblyId}}&TopicId={{addTopic}}",
 					"host": [
 						"{{uoa}}"
 					],
 					"path": [
 						"UnitOwnerAssembly",
-						"GetVotingDashboardData"
+						"GetTopic"
 					],
 					"query": [
 						{
@@ -6920,6 +7088,298 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "UpdateTopic-編輯議案正確執行",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"編輯議案成功，狀態200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{comLoginToken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [
+					{
+						"key": "accept",
+						"value": "*/*"
+					},
+					{
+						"key": "AuthenticationScheme",
+						"value": "SmartlifeBackstageAuthenticationHandler"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer x4/h3t9g+2cGflxQRaGaIF68z1OUZS07yKnghDk/eXnkckEOgMkTkfUNDqC516LzKe8bmYlkf+mm4PLYZlQLvRWmg278WKvksmlITMea0ZSZHaegajR3G97BYj1QGsKfxFw0jIkCHdbVjdXdgoXlG55e3e38FvMbi3DQ+8xh8cp8q2uGaSyql9LV9GwzYbfGBQlTd7vY5QgfYUwiYbufl9jUBm877Mdc9D3CRNuHPHUwDE60FHSsKF2sbS9VrinAyJiqlXn0nUbVGU8lXP7Xj6r4JxDw8VpZz+t1vr4fN1oNS4Yw7MRIs8LSNPzGADUN7tTLcq8rLuExzdIxvf4XoltZHvJwHcozkbvGD/gslWTaRz3hmLB/ufM3oBS1xaKZHJ2I60Ey29sUQaSX5md50/lwsYdArc5yNVu0MGDsIDvjg4e5upMhjA7pGrtNtbfyEqaTwIn0Th4KJIxNJ+I9VscBPcW3UXubk5f5svFTIhKW2ThTpRGBi2QOfozi6Z0Uhgob0RaGODVyqS200Zr/s2aUBOA2D1UCmkUi4Pw0rhwKk/n3lJcwxN2Dpl9EJGAV3XFjuvfBriSQ29I27gW4tg=="
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json-patch+json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"assemblyId\":\"{{AssemblyId}}\",\"topicId\":\"{{TopicId}}\",\"editNote\":\"API test update Topic 2\",\"topicDto\":{\"title\":\"API update\",\"description\":\"API update\",\"attendanceThreshold\":0.33,\"consentThreshold\":0.33}}"
+				},
+				"url": {
+					"raw": "{{uoa}}/UnitOwnerAssembly/UpdateTopic",
+					"host": [
+						"{{uoa}}"
+					],
+					"path": [
+						"UnitOwnerAssembly",
+						"UpdateTopic"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetTopic-取得單一議案資訊，驗證編輯後的議案",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"const jsonData = pm.response.json();",
+							"pm.test(\"取得單一議案資訊，驗證編輯後的議案title名稱\", function () {",
+							"    pm.expect(jsonData.title).to.eql('API update');",
+							"});",
+							"pm.test(\"取得單一議案資訊，驗證編輯後的議案description名稱\", function () {",
+							"    pm.expect(jsonData.description).to.eql('API update');",
+							"});",
+							"pm.test(\"取得單一議案資訊，驗證編輯後的議案attendanceThreshold標準\", function () {",
+							"    pm.expect(jsonData.attendanceThreshold).to.eql(0.33);",
+							"});",
+							"pm.test(\"取得單一議案資訊，驗證編輯後的議案consentThreshold標準\", function () {",
+							"    pm.expect(jsonData.consentThreshold).to.eql(0.33);",
+							"});",
+							"pm.test(\"取得單一議案資訊，驗證編輯後的議案useTablet=true\", function () {",
+							"    pm.expect(jsonData.useTablet).to.eql(true);",
+							"});",
+							"pm.test(\"取得單一議案資訊，驗證編輯後的議案useArea=false\", function () {",
+							"    pm.expect(jsonData.useArea).to.eql(false);",
+							"});",
+							"pm.test(\"取得單一議案資訊，驗證編輯後臨時議案的編輯紀錄\", function () {",
+							"    pm.expect(jsonData.editingRecords[0].note).to.include(\"API test update Topic 2\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{comLoginToken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "accept",
+						"value": "text/plain"
+					},
+					{
+						"key": "AuthenticationScheme",
+						"value": "SmartlifeBackstageAuthenticationHandler"
+					}
+				],
+				"url": {
+					"raw": "{{uoa}}/UnitOwnerAssembly/GetTopic?AssemblyId={{AssemblyId}}&TopicId={{TopicId}}",
+					"host": [
+						"{{uoa}}"
+					],
+					"path": [
+						"UnitOwnerAssembly",
+						"GetTopic"
+					],
+					"query": [
+						{
+							"key": "AssemblyId",
+							"value": "{{AssemblyId}}"
+						},
+						{
+							"key": "TopicId",
+							"value": "{{TopicId}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DeleteAssembly-區權會刪除正確執行",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"區權會刪除成功，狀態200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.collectionVariables.clear(); // 刪除所有collection變數"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{comLoginToken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "authority",
+						"value": "uoa-dev.kingnetsmart.com.tw"
+					},
+					{
+						"key": "sec-ch-ua",
+						"value": "\" Not A;Brand\";v=\"99\", \"Chromium\";v=\"98\", \"Google Chrome\";v=\"98\""
+					},
+					{
+						"key": "authenticationscheme",
+						"value": "SmartlifeBackstageAuthenticationHandler"
+					},
+					{
+						"key": "content-type",
+						"value": "application/json;charset=UTF-8"
+					},
+					{
+						"key": "authorization",
+						"value": "Bearer x4/h3t9g+2cGflxQRaGaIF68z1OUZS07yKnghDk/eXnkckEOgMkTkfUNDqC516LzKe8bmYlkf+mm4PLYZlQLvRWmg278WKvksmlITMea0ZSZHaegajR3G97BYj1QGsKfxFw0jIkCHdbVjdXdgoXlG55e3e38FvMbi3DQ+8xh8cp8q2uGaSyql9LV9GwzYbfGBQlTd7vY5QgfYUwiYbufl9jUBm877Mdc9D3CRNuHPHUwDE60FHSsKF2sbS9VrinAyJiqlXn0nUbVGU8lXP7Xj0MFeAjncmM+GNYMxwnpURVvuhZN6OjQVVujE9hKt2qgQfo2E/kgkLBOPTkCLMNLPMWocAav4rGd1e0l5WlrJ/EjhZKgu4iR1+BgUCxIKjpWW4IamUNYz93qoJYRoHktw1L373oq4Kn/ieocGiT2Em96nGSA2wtE/CmWJqvw+fyG7neOK6EbU7/8Ly+pwbHj7lyUon4tJdhQdpszn0EhEaWkAUg8JxFd3uJazuDV1WVgPs0OLUmRh/wTJCEhLri7gQHUtLKM27lNzl8IIyf0XF7iAh+v8c7HUCgWUA2Cr6zO3vYTDLk2BgF8uFTnmlklow==",
+						"disabled": true
+					},
+					{
+						"key": "sec-ch-ua-mobile",
+						"value": "?0"
+					},
+					{
+						"key": "user-agent",
+						"value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/98.0.4758.81 Safari/537.36"
+					},
+					{
+						"key": "sec-ch-ua-platform",
+						"value": "\"Windows\""
+					},
+					{
+						"key": "accept",
+						"value": "*/*"
+					},
+					{
+						"key": "origin",
+						"value": "https://local.kingnetsmart.com.tw"
+					},
+					{
+						"key": "sec-fetch-site",
+						"value": "same-site"
+					},
+					{
+						"key": "sec-fetch-mode",
+						"value": "cors"
+					},
+					{
+						"key": "sec-fetch-dest",
+						"value": "empty"
+					},
+					{
+						"key": "referer",
+						"value": "https://local.kingnetsmart.com.tw/"
+					},
+					{
+						"key": "accept-language",
+						"value": "zh-TW,zh;q=0.9,en-US;q=0.8,en;q=0.7,zh-CN;q=0.6,ig;q=0.5,th;q=0.4"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"assemblyId\":\"{{AssemblyId}}\"}"
+				},
+				"url": {
+					"raw": "{{uoa}}/UnitOwnerAssembly/DeleteAssembly",
+					"host": [
+						"{{uoa}}"
+					],
+					"path": [
+						"UnitOwnerAssembly",
+						"DeleteAssembly"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "Today",
+			"value": ""
+		},
+		{
+			"key": "housekeeperToken",
+			"value": ""
+		},
+		{
+			"key": "Com_id",
+			"value": ""
+		},
+		{
+			"key": "comLoginToken",
+			"value": ""
+		},
+		{
+			"key": "AssemblyId",
+			"value": ""
 		},
 		{
 			"name": "GetAttendanceCardList-出席證列表取得正確執行 Copy",
@@ -7035,66 +7495,12 @@
 			"response": []
 		},
 		{
-			"name": "StartVoting-會議開始執行成功(記名)",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"exec": [
-							"pm.test(\"會議開始執行成功(記名)，狀態200\", function () {\r",
-							"    pm.response.to.have.status(200);\r",
-							"});"
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
-			"request": {
-				"auth": {
-					"type": "bearer",
-					"bearer": [
-						{
-							"key": "token",
-							"value": "{{comLoginToken}}",
-							"type": "string"
-						}
-					]
-				},
-				"method": "POST",
-				"header": [
-					{
-						"key": "accept",
-						"value": "*/*"
-					},
-					{
-						"key": "AuthenticationScheme",
-						"value": "SmartlifeBackstageAuthenticationHandler"
-					},
-					{
-						"key": "Authorization",
-						"value": "Bearer x4/h3t9g+2cGflxQRaGaIF68z1OUZS07yKnghDk/eXnkckEOgMkTkfUNDqC516LzKe8bmYlkf+mm4PLYZlQLvRWmg278WKvksmlITMea0ZSZHaegajR3G97BYj1QGsKfxFw0jIkCHdbVjdXdgoXlG55e3e38FvMbi3DQ+8xh8cp8q2uGaSyql9LV9GwzYbfGBQlTd7vY5QgfYUwiYbufl9jUBm877Mdc9D3CRNuHPHUwDE60FHSsKF2sbS9VrinAyJiqlXn0nUbVGU8lXP7Xj6r4JxDw8VpZz+t1vr4fN1oNS4Yw7MRIs8LSNPzGADUN7tTLcq8rLuExzdIxvf4XoltZHvJwHcozkbvGD/gslWTaRz3hmLB/ufM3oBS1xaKZHJ2I60Ey29sUQaSX5md50weWYj+tqARNm4xQejQmX7TIcru8GHWR8zo1qTvcvYVHNALvkoQz2KQTBV+Yrg0H75Ux8VAI5q5Yrg16DctFzxiQV1OVgJBzRXw4N09CVd51GzexaHOJpm8ufsBbBQt0DgTNg4dDmf780tFRuEaQtrgwk74NiVAFAK0+6cG1hB+w7RS1eY0ZIC7pkNcluYhdsg=="
-					},
-					{
-						"key": "Content-Type",
-						"value": "application/json-patch+json"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\"assemblyId\":\"{{AssemblyId}}\",\"topicId\":\"{{TopicId}}\",\"isAnonymous\":false}"
-				},
-				"url": {
-					"raw": "{{uoa}}/UnitOwnerAssembly/StartVoting",
-					"host": [
-						"{{uoa}}"
-					],
-					"path": [
-						"UnitOwnerAssembly",
-						"StartVoting"
-					]
-				}
-			},
-			"response": []
+			"key": "TopicId2",
+			"value": ""
+		},
+		{
+			"key": "UnitOwner01barcode",
+			"value": ""
 		},
 		{
 			"name": "GetVotes-投票儀表板票數取得(不記名) Copy",
@@ -7359,145 +7765,8 @@
 			"response": []
 		},
 		{
-			"name": "GetVotingDashboardData-取得投票dashboard資訊，驗證實名投票",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"exec": [
-							"const jsonData = pm.response.json();\r",
-							"\r",
-							"pm.test(\"取得投票dashboard資訊，驗證實名投票已關閉decision\", function () {\r",
-							"    pm.expect(jsonData.decision).to.eql('同意');\r",
-							"});\r",
-							"pm.test(\"取得投票dashboard資訊，驗證實名投票已關閉topicStatus\", function () {\r",
-							"    pm.expect(jsonData.topicStatus).to.eql('decided');\r",
-							"});\r",
-							"pm.test(\"取得投票dashboard資訊，驗證實名投票已關閉votedNumber\", function () {\r",
-							"    pm.expect(jsonData.votedNumber).to.eql(41);\r",
-							"});\r",
-							"pm.test(\"取得投票dashboard資訊，驗證實名投票已關閉agreedNumber\", function () {\r",
-							"    pm.expect(jsonData.agreedNumber).to.eql(21);\r",
-							"});"
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
-			"request": {
-				"auth": {
-					"type": "bearer",
-					"bearer": [
-						{
-							"key": "token",
-							"value": "{{comLoginToken}}",
-							"type": "string"
-						}
-					]
-				},
-				"method": "GET",
-				"header": [
-					{
-						"key": "accept",
-						"value": "text/plain"
-					},
-					{
-						"key": "AuthenticationScheme",
-						"value": "SmartlifeBackstageAuthenticationHandler"
-					},
-					{
-						"key": "Authorization",
-						"value": "Bearer x4/h3t9g+2cGflxQRaGaIF68z1OUZS07yKnghDk/eXnkckEOgMkTkfUNDqC516LzKe8bmYlkf+mm4PLYZlQLvRWmg278WKvksmlITMea0ZSZHaegajR3G97BYj1QGsKfxFw0jIkCHdbVjdXdgoXlG55e3e38FvMbi3DQ+8xh8cp8q2uGaSyql9LV9GwzYbfGBQlTd7vY5QgfYUwiYbufl9jUBm877Mdc9D3CRNuHPHUwDE60FHSsKF2sbS9VrinAyJiqlXn0nUbVGU8lXP7Xj6r4JxDw8VpZz+t1vr4fN1oNS4Yw7MRIs8LSNPzGADUN7tTLcq8rLuExzdIxvf4XoltZHvJwHcozkbvGD/gslWTaRz3hmLB/ufM3oBS1xaKZHJ2I60Ey29sUQaSX5md505RA24C9zJuUfaEyZPp2HXwDSMUDwPlFyeQQjkGWwVki5bj6nMQfICdzEMC0TqSOXuyxx2xAT1e+2CP1N4Pvtk3swpEgoXxgp2RIRzaUeOYBPBTFCgY7xLBeFmjPq4J0pH1guFVAJqMVyY6FANCrYOwfpjMV3Ui1CVGmwpNW9F4km7Sd6TFIvrk+APLEDtR4jA=="
-					}
-				],
-				"url": {
-					"raw": "{{uoa}}/UnitOwnerAssembly/GetVotingDashboardData?AssemblyId={{AssemblyId}}&TopicId={{TopicId}}",
-					"host": [
-						"{{uoa}}"
-					],
-					"path": [
-						"UnitOwnerAssembly",
-						"GetVotingDashboardData"
-					],
-					"query": [
-						{
-							"key": "AssemblyId",
-							"value": "{{AssemblyId}}"
-						},
-						{
-							"key": "TopicId",
-							"value": "{{TopicId}}"
-						}
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "VotingResultExport-區權會決議結果excel取得正確執行",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"exec": [
-							"pm.test(\"區權會決議結果excel取得成功，狀態200\", function () {\r",
-							"    pm.response.to.have.status(200);\r",
-							"});\r",
-							"const Content = pm.response.headers.get('Content-Disposition')\r",
-							"const excelName = decodeURI(Content)\r",
-							"\r",
-							"pm.test(\"匯出excel資料顯示正確\", function () {\r",
-							"    pm.expect(excelName).to.include('區權會');\r",
-							"});"
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
-			"request": {
-				"auth": {
-					"type": "bearer",
-					"bearer": [
-						{
-							"key": "token",
-							"value": "{{comLoginToken}}",
-							"type": "string"
-						}
-					]
-				},
-				"method": "GET",
-				"header": [
-					{
-						"key": "accept",
-						"value": "*/*"
-					},
-					{
-						"key": "AuthenticationScheme",
-						"value": "SmartlifeBackstageAuthenticationHandler"
-					},
-					{
-						"key": "Authorization",
-						"value": "Bearer x4/h3t9g+2cGflxQRaGaIF68z1OUZS07yKnghDk/eXnkckEOgMkTkfUNDqC516LzKe8bmYlkf+mm4PLYZlQLvRWmg278WKvksmlITMea0ZSZHaegajR3G97BYj1QGsKfxFw0jIkCHdbVjdXdgoXlG55e3e38FvMbi3DQ+8xh8cp8q2uGaSyql9LV9GwzYbfGBQlTd7vY5QgfYUwiYbufl9jUBm877Mdc9D3CRNuHPHUwDE60FHSsKF2sbS9VrinAyJiqlXn0nUbVGU8lXP7Xj6r4JxDw8VpZz+t1vr4fN1oNS4Yw7MRIs8LSNPzGADUN7tTLcq8rLuExzdIxvf4XoltZHvJwHcozkbvGD/gslWTaRz3hmLB/ufM3oBS1xaKZHJ2I60Ey29sUQaSX5md50yLsF1aU30xmaVEesX7z+jgJ6Dq/iyhzT3g7QRAsXKJWS/mU2QL7ERN6EjPGwFaE4n5brPZ0vaJ1E54N3PaCWLW9ejgXWU6/e113KIEuX/TniNVmh6oSxhOtoEURdkFLNNCF6wLRf2irl1tpG7tU0YKBbdBTbaFNWt9Sb7Ah9ZRDW4N9IYck/OUDTRDBYp0O5w=="
-					}
-				],
-				"url": {
-					"raw": "{{uoa}}/UnitOwnerAssembly/GetAssemblyVotingResultExport?AssemblyId={{AssemblyId}}",
-					"host": [
-						"{{uoa}}"
-					],
-					"path": [
-						"UnitOwnerAssembly",
-						"GetAssemblyVotingResultExport"
-					],
-					"query": [
-						{
-							"key": "AssemblyId",
-							"value": "{{AssemblyId}}"
-						}
-					]
-				}
-			},
-			"response": []
+			"key": "unitOwnerList",
+			"value": ""
 		},
 		{
 			"name": "DeleteAssembly-區權會刪除正確執行",
@@ -7620,13 +7889,20 @@
 			}
 		},
 		{
-			"listen": "test",
-			"script": {
-				"type": "text/javascript",
-				"exec": [
-					""
-				]
-			}
+			"key": "RegisterUnitOwner03Time",
+			"value": ""
+		},
+		{
+			"key": "UnregisterUnitOwnerTime",
+			"value": ""
+		},
+		{
+			"key": "Data",
+			"value": ""
+		},
+		{
+			"key": "addTopic",
+			"value": ""
 		}
 	]
 }
