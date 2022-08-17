@@ -4,13 +4,11 @@ var FormData = require('form-data');
 async function lineNotify(messagecontent) {
     const token = process.env.LINE_TOKEN;
 
-    // 使用 form-data 傳遞資料
     const form_data = new FormData();
     form_data.append("message", messagecontent);
 
-    // 設定 LINE Notify 的 權杖 & form-data
     const headers = Object.assign({
-        'Authorization': `Bearer fIzMKzNPmTZ6Qr28OAjAq7UyOl9YaE5mD3oJmWIBeK5`
+        'Authorization': `Bearer LINE_TOKEN`
     }, form_data.getHeaders());
 
     axios({
@@ -19,13 +17,11 @@ async function lineNotify(messagecontent) {
         data: form_data,
         headers: headers
     }).then(function (response) {
-        // HTTP狀態碼 200 代表成功
         console.log("HTTP狀態碼:" + response.status);
-        // 觀察回傳的資料是否與 POSTMAN 測試一致
         console.log(response.data);
     }).catch(function (error) {
         console.error("LINE通知發送失敗");
-        if (error.response) { // 顯示錯誤原因            
+        if (error.response) {
             console.error("HTTP狀態碼:" + error.response.status);
             console.error(error.response.data);
         } else {
@@ -33,4 +29,4 @@ async function lineNotify(messagecontent) {
         }
     });
 }
-module.exports.lineNotify = lineNotify; 
+module.exports.lineNotify = lineNotify;

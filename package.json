@@ -4,11 +4,7 @@
   "description": "",
   "main": "CrossClockIn.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "KingnetRD@vs-ssh.visualstudio.com:v3/KingnetRD/QA-AutoTest-Web/QA-AutoTest-Api"
+    "test:dev": "node ./dev.spec.js"
   },
   "author": "",
   "license": "ISC",
